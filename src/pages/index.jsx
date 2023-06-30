@@ -14,7 +14,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <Grid>
-        {/* <Hero /> */}
+        <Hero />
         {data.allMdx.nodes.map(({ frontmatter }) => {
           return <WorkCard frontmatter={frontmatter} />
         })}

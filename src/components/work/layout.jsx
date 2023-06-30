@@ -23,7 +23,11 @@ export default function PostLayout({
 }) {
   return (
     <Layout>
-      <Image src={relativePath} className="rounded-sm" />
+      <Image
+        src={relativePath}
+        initial={{ scale: 1.05 }}
+        animate={{ scale: 1 }}
+      />
       <motion.div {...fadeIn}>
         <Grid>
           <h1>{title}</h1>
@@ -46,6 +50,7 @@ const components = {
   h2: props => <h3 {...props} className="mt-6 mb-0" />,
   h3: props => <h4 {...props} className="mb-0.5" />,
   Image,
+  Video,
   p: props => <p {...props} />,
   //   table: props => <table {...props} className="my-1 text-left" />,
   //   thead: props => <thead {...props} className="uppercase" />,

@@ -39,6 +39,10 @@ h2 {
   @apply text-3xl;
 }
 
+h3 {
+  @apply text-2xl;
+}
+
 .wrapper {
   width: 100%;
   display: grid;
