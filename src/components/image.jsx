@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { useMemo } from "react"
 import { motion } from "framer-motion"
 
-export default function Image({ src }) {
+export default function Image({ src, className }) {
   const data = useStaticQuery(
     graphql`
       query getAllImages {
@@ -33,8 +33,12 @@ export default function Image({ src }) {
   const image = matchedImage?.childImageSharp?.gatsbyImageData
 
   return !!image ? (
-    <motion.div transition={{ ease: [0.37, 0, 0.63, 1] }} layoutId={src}>
-      <GatsbyImage image={image} />
+    <motion.div
+      transition={{ ease: [0.65, 0, 0.35, 1], duration: 0.5 }}
+      layoutId={src}
+      className="full-bleed"
+    >
+      <GatsbyImage image={image} className={`w-full ${className}`} />
     </motion.div>
   ) : (
     <p>Image not found</p>

@@ -1,7 +1,73 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../../static/fonts/proxima-nova-regular.otf") format("opentype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../../static/fonts/proxima-nova-bold.otf") format("opentype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Bookmania";
+  src: url("../../static/fonts/bookmania-bold.otf") format("opentype");
+  font-weight: 700;
+}
+
+h1 {
+  font-family: "Bookmania";
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-family: "Proxima Nova";
+}
+
+h1 {
+  @apply text-5xl;
+}
+
+h2 {
+  @apply text-3xl;
+}
+
+.wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns:
+    4.5rem
+    1fr
+    4.5rem;
+}
+
+.wrapper > * {
+  grid-column: 2 / 3;
+}
+
+.wrapper > * > * {
+  grid-column: 2 / 3;
+}
+
+.reading {
+  grid-column: 3 / 4;
+}
+
+.full-bleed {
+  grid-column: 1 / -1;
+}
+
+.left-col {
+  grid-column: 1 / 2;
+}
+
+.right-col {
+  grid-column: -2 / -1;
+}

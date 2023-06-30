@@ -1,31 +1,24 @@
 import * as React from "react"
-import { useState } from "react"
 
-import Layout from "../components/layout"
+import Layout from "../components/app"
 import Seo from "../components/seo"
 import { graphql } from "gatsby"
 import { Link } from "gatsby"
-import Video from "../components/video"
 import { motion } from "framer-motion"
 import Image from "../components/image"
+import Hero from "../components/home/hero"
+import Grid from "../components/grid"
+import WorkCard from "../components/home/work-card"
 
 const IndexPage = ({ data }) => {
   return (
     <Layout>
-      <motion.h1 exit={{ opacity: 0 }}>Welcome to my portfolio!</motion.h1>
-      {data.allMdx.nodes.map(({ frontmatter: { thumbnail, slug, title } }) => {
-        return (
-          <motion.div
-            // layoutId="wrapper"
-            // transition={{ duration: 5 }}
-            className="w-full h-full flex items-center"
-          >
-            <Link to={slug}>
-              <Image src="test-dog.jpeg" />
-            </Link>
-          </motion.div>
-        )
-      })}
+      <Grid>
+        {/* <Hero /> */}
+        {data.allMdx.nodes.map(({ frontmatter }) => {
+          return <WorkCard frontmatter={frontmatter} />
+        })}
+      </Grid>
     </Layout>
   )
 }
@@ -47,8 +40,10 @@ export const pageQuery = graphql`
           thumbnail {
             relativePath
           }
-          slug
+          company
           title
+          description
+          slug
         }
       }
     }

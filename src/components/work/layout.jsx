@@ -1,11 +1,14 @@
 import React from "react"
-import Seo from "./seo"
+import Seo from "../seo"
 import { graphql } from "gatsby"
-import Layout from "./layout"
+import Layout from "../app"
 import { MDXProvider } from "@mdx-js/react"
-import Image from "./image"
-import Video from "./video"
+import Image from "../image"
+import Video from "../video"
 import { motion } from "framer-motion"
+import Grid from "../grid"
+
+import { fadeIn } from "../../styles/animations"
 
 export default function PostLayout({
   data: {
@@ -20,17 +23,12 @@ export default function PostLayout({
 }) {
   return (
     <Layout>
-      <div className="w-3/4">
-        <Image src={relativePath} />
-      </div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        // transition={{ delay: 1 }}
-      >
-        <h1>{title}</h1>
-        <MDXProvider components={components}>{children}</MDXProvider>
+      <Image src={relativePath} className="rounded-sm" />
+      <motion.div {...fadeIn}>
+        <Grid>
+          <h1>{title}</h1>
+          <MDXProvider components={components}>{children}</MDXProvider>
+        </Grid>
       </motion.div>
     </Layout>
   )
@@ -48,7 +46,7 @@ const components = {
   h2: props => <h3 {...props} className="mt-6 mb-0" />,
   h3: props => <h4 {...props} className="mb-0.5" />,
   Image,
-  //   p: props => <p {...props} />,
+  p: props => <p {...props} />,
   //   table: props => <table {...props} className="my-1 text-left" />,
   //   thead: props => <thead {...props} className="uppercase" />,
   //   th: props => (
