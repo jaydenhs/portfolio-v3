@@ -15,7 +15,7 @@ module.exports = {
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [
-    // MDX
+    //// MDX
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -30,19 +30,22 @@ module.exports = {
       },
     },
 
-    // Image Optimization
-    `gatsby-plugin-image`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    //// Image Optimization
 
-    // Manifest
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    // static images
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `images`,
+    //     path: `${__dirname}/src/images`,
+    //   },
+    // },
+    // dynamic images
+    `gatsby-transformer-sharp`,
+
+    //// Manifest
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -58,7 +61,7 @@ module.exports = {
       },
     },
 
-    // Styles
+    //// Styles
     "gatsby-plugin-postcss",
   ],
 }
