@@ -3,22 +3,16 @@ import * as React from "react"
 import Layout from "../components/app"
 import Seo from "../components/seo"
 import { graphql } from "gatsby"
-import { Link } from "gatsby"
-import { motion } from "framer-motion"
-import Image from "../components/image"
 import Hero from "../components/home/hero"
-import Grid from "../components/grid"
 import WorkCard from "../components/home/work-card"
 
 const IndexPage = ({ data }) => {
   return (
     <Layout>
-      <Grid>
-        <Hero />
-        {data.allMdx.nodes.map(({ frontmatter }) => {
-          return <WorkCard frontmatter={frontmatter} />
-        })}
-      </Grid>
+      <Hero />
+      {data.allMdx.nodes.map(({ frontmatter }) => {
+        return <WorkCard frontmatter={frontmatter} />
+      })}
     </Layout>
   )
 }

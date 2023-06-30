@@ -43,6 +43,15 @@ h3 {
   @apply text-2xl;
 }
 
+.reading {
+  width: min(65ch, 100%);
+}
+
+section {
+  @apply my-32;
+}
+
+/* 
 .wrapper {
   width: 100%;
   display: grid;
@@ -74,4 +83,4 @@ h3 {
 
 .right-col {
   grid-column: -2 / -1;
-}
+} */

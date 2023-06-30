@@ -1,4 +1,5 @@
 import React from "react"
+import AutoLink from "../auto-link"
 import { Link } from "gatsby"
 import { motion } from "framer-motion"
 import Image from "../image"
@@ -14,8 +15,8 @@ export default function WorkCard({
   },
 }) {
   return (
-    <motion.div className="flex items-center">
-      <Link to={slug} className="w-full">
+    <motion.div className="mx-4 sm:mx-16 flex items-center">
+      <AutoLink to={slug} className="w-full">
         <Image
           src={relativePath}
           divClassName="rounded-3xl"
@@ -29,7 +30,7 @@ export default function WorkCard({
           </div>
           <p>{description}</p>
         </motion.div>
-      </Link>
+      </AutoLink>
     </motion.div>
   )
 }

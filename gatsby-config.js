@@ -63,5 +63,8 @@ module.exports = {
 
     //// Styles
     "gatsby-plugin-postcss",
+
+    //// Netlify
+    "gatsby-plugin-netlify",
   ],
 }

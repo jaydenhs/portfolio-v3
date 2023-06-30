@@ -3,10 +3,12 @@ import Seo from "../seo"
 import { graphql } from "gatsby"
 import Layout from "../app"
 import { MDXProvider } from "@mdx-js/react"
+import { motion } from "framer-motion"
+
+import Intro from "./intro"
 import Image from "../image"
 import Video from "../video"
-import { motion } from "framer-motion"
-import Grid from "../grid"
+import AutoLink from "../auto-link"
 
 import { fadeIn } from "../../styles/animations"
 
@@ -29,10 +31,7 @@ export default function PostLayout({
         animate={{ scale: 1 }}
       />
       <motion.div {...fadeIn}>
-        <Grid>
-          <h1>{title}</h1>
-          <MDXProvider components={components}>{children}</MDXProvider>
-        </Grid>
+        <MDXProvider components={components}>{children}</MDXProvider>
       </motion.div>
     </Layout>
   )
@@ -43,23 +42,25 @@ export default function PostLayout({
 const components = {
   h1: props => (
     <>
-      <h2 {...props} className="mt-12 text-orange-500" />{" "}
+      <h1 {...props} className="mt-12 text-orange-500" />{" "}
       <hr className="mb-2" />
     </>
   ),
-  h2: props => <h3 {...props} className="mt-6 mb-0" />,
-  h3: props => <h4 {...props} className="mb-0.5" />,
+  h2: props => <h2 {...props} className="mb-0" />,
+  h3: props => <h3 {...props} className="mb-0.5" />,
+  p: props => <p {...props} />,
+  table: props => <table {...props} className="my-1 text-left" />,
+  thead: props => <thead {...props} className="uppercase" />,
+  th: props => (
+    <th {...props} className="w-1/4 align-top text-gray-800 pb-0.5" />
+  ),
+  td: props => <td {...props} className="align-top text-gray-700 pr-4 pb-1" />,
+  // blockquote: props => <Quote {...props} />,
+  //   ol: props => <ol {...props} className="list-decimal pl-8 space-y-1" />,
   Image,
   Video,
-  p: props => <p {...props} />,
-  //   table: props => <table {...props} className="my-1 text-left" />,
-  //   thead: props => <thead {...props} className="uppercase" />,
-  //   th: props => (
-  //     <th {...props} className="w-1/4 align-top text-gray-800 pb-0.5" />
-  //   ),
-  //   td: props => <td {...props} className="align-top text-gray-700 pr-4 pb-1" />,
-  //   blockquote: props => <Quote {...props} />,
-  //   ol: props => <ol {...props} className="list-decimal pl-8 space-y-1" />,
+  Intro,
+  AutoLink,
 }
 
 export const Head = () => <Seo />
