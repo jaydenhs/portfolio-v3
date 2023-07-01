@@ -51,6 +51,17 @@ section {
   @apply py-32;
 }
 
+.scroll-container {
+  @apply relative h-screen overflow-y-scroll;
+}
+
+.scroll-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
 /* 
 .wrapper {
   width: 100%;

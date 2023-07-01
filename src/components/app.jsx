@@ -9,7 +9,6 @@ import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { motion } from "framer-motion"
 import "../styles/global.css"
-import { AnimatePresence } from "framer-motion"
 
 import Header from "./header"
 
@@ -25,10 +24,11 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <body>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <motion.main>{children}</motion.main>
-      {/* <footer
+    <body className="scroll-container">
+      <div className="scroll-content">
+        <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+        <motion.main>{children}</motion.main>
+        {/* <footer
         style={{
           marginTop: `var(--space-5)`,
           fontSize: `var(--font-sm)`,
@@ -38,6 +38,7 @@ const Layout = ({ children }) => {
         {` `}
         <a href="https://www.gatsbyjs.com">Gatsby</a>
       </footer> */}
+      </div>
     </body>
   )
 }
