@@ -2,7 +2,9 @@ import React from "react"
 import { Link } from "gatsby"
 import { styled } from "styled-components"
 
-const AutoLink = ({ to, children, ...rest }) => {
+const AutoLink = ({ to, children, test, ...rest }) => {
+  console.log({ test })
+
   // internal link if to does not have "static" in it (primarily for resume) and does not start with /
   const regex = /^((?!static).)*$/
   const internal = regex.test(`${to}`) && `${to}`.startsWith("/")

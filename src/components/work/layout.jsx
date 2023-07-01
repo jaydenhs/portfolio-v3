@@ -40,23 +40,6 @@ export default function PostLayout({
 //move all headings down one hierarchy for simplicity writing mdx (less #'s)
 //apply all classNames that are specific to content within the flow here
 const components = {
-  h1: props => (
-    <>
-      <h1 {...props} className="mt-12 text-orange-500" />{" "}
-      <hr className="mb-2" />
-    </>
-  ),
-  h2: props => <h2 {...props} className="mb-0" />,
-  h3: props => <h3 {...props} className="mb-0.5" />,
-  p: props => <p {...props} />,
-  table: props => <table {...props} className="my-1 text-left" />,
-  thead: props => <thead {...props} className="uppercase" />,
-  th: props => (
-    <th {...props} className="w-1/4 align-top text-gray-800 pb-0.5" />
-  ),
-  td: props => <td {...props} className="align-top text-gray-700 pr-4 pb-1" />,
-  // blockquote: props => <Quote {...props} />,
-  //   ol: props => <ol {...props} className="list-decimal pl-8 space-y-1" />,
   Image,
   Video,
   Intro,

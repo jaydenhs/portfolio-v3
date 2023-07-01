@@ -2,7 +2,7 @@ import React, { useMemo } from "react"
 import { motion } from "framer-motion"
 
 function Video({ path }) {
-  const webm = require("../work/thumbnail.webm")
+  // const webm = require("../work/thumbnail.webm")
   return (
     <figure style={{ width: "100%" }}>
       <motion.video

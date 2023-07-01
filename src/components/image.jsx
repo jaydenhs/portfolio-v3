@@ -50,3 +50,8 @@ export default function Image({ src, imgClassName, divClassName, ...rest }) {
     <p>Image not found</p>
   )
 }
+
+// Three cases:
+// 1. Viewport is fully scrolled up
+// 2. Viewport is scrolled
+// 3. Viewport is scrolled, element is out of the frame (only on work layouts)
