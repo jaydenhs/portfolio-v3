@@ -2,12 +2,11 @@ import React, { useMemo } from "react"
 import { motion } from "framer-motion"
 
 function Video({ path }) {
-  // const webm = require("../work/thumbnail.webm")
+  const webm = require(`../work/shopify/${path}`)
   return (
     <figure style={{ width: "100%" }}>
       <motion.video
         key="video"
-        // layoutId="videoLayoutId"
         autoPlay="autoplay"
         loop="loop"
         muted

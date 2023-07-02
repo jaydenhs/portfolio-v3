@@ -3,7 +3,7 @@ import { styled } from "styled-components"
 import tw from "twin.macro"
 
 export default function Intro({ children }) {
-  return <Section className="reading">{children}</Section>
+  return <Section className="reading-grid">{children}</Section>
 }
 
 const Section = styled.section`
@@ -22,10 +22,10 @@ const Section = styled.section`
   }
 
   & th {
-    ${tw`text-left font-bold text-gray-400`}
+    ${tw`text-gray-400`}
   }
 
   & td {
-    ${tw`align-top text-gray-600`}
+    ${tw`text-gray-600`}
   }
 `

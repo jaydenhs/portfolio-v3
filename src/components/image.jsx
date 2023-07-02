@@ -36,7 +36,7 @@ export default function Image({ src, imgClassName, divClassName, ...rest }) {
     <motion.div
       transition={{ ease: [0.65, 0, 0.35, 1], duration: 0.5 }}
       layoutId={src}
-      className={`full-bleed overflow-hidden ${divClassName}`}
+      className={`overflow-hidden ${divClassName}`}
     >
       <motion.div {...rest}>
         <GatsbyImage

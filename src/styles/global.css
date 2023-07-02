@@ -18,8 +18,13 @@
   font-weight: 700;
 }
 
+body {
+  @apply text-gray-600;
+}
+
 h1 {
   font-family: "Bookmania";
+  @apply text-black;
 }
 
 h2,
@@ -43,12 +48,16 @@ h3 {
   @apply text-2xl;
 }
 
-.reading {
-  width: min(65ch, 100%);
+p {
+  @apply text-base leading-relaxed;
 }
 
-section {
-  @apply py-32;
+th {
+  @apply text-left font-bold;
+}
+
+td {
+  @apply align-top;
 }
 
 .scroll-container {
@@ -62,36 +71,36 @@ section {
   width: 100%;
 }
 
-/* 
-.wrapper {
-  width: 100%;
-  display: grid;
+section {
+  @apply py-32 w-full grid;
   grid-template-columns:
-    4.5rem
     1fr
-    4.5rem;
+    min(65ch, 100%)
+    1fr;
 }
 
-.wrapper > * {
+section > * {
   grid-column: 2 / 3;
-}
-
-.wrapper > * > * {
-  grid-column: 2 / 3;
-}
-
-.reading {
-  grid-column: 3 / 4;
 }
 
 .full-bleed {
+  grid-column: 1 / -1 !important;
+}
+
+.reading {
+  width: min(65ch, 100%);
+}
+
+/* Really hacky fix to section nesting, address later */
+.sub-section {
+  @apply mt-12 space-y-4 grid;
   grid-column: 1 / -1;
+  grid-template-columns:
+    1fr
+    min(65ch, 100%)
+    1fr;
 }
 
-.left-col {
-  grid-column: 1 / 2;
+.sub-section > * {
+  grid-column: 2 / 3;
 }
-
-.right-col {
-  grid-column: -2 / -1;
-} */

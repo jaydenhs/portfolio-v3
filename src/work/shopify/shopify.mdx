@@ -1,0 +1,137 @@
+---
+company: Shopify
+title: Build any commerce experience
+description: I was a design technologist intern, focused on redesigning and prototyping the developer documentation search experience.
+slug: /shopify
+thumbnail: thumbnail-shopify.jpg
+---
+
+<Intro>
+## I was a Design Technologist Intern at <AutoLink to="https://www.shopify.com/">Shopify</AutoLink>, a global commerce platform that empowers millions of merchants worldwide to sell online, offline, and everywhere in between.
+## I co-designed, prototyped, and launched a reimagined on-site search experience on <AutoLink to="https://shopify.dev/">shopify.dev</AutoLink>, Shopify's third-party developer documentation site.
+
+ <table>
+    <colgroup>
+      <col className="w-1/3" />
+      <col className="w-1/3" />
+      <col className="w-1/3" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th>Team</th>
+        <th>Timeframe</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Product design<br/>
+          Prototyping with code
+        </td>
+        <td>
+          1 product manager
+          <br />1 product designer
+          <br />1 content designer
+        </td>
+        <td>February-April 2022</td>
+      </tr>
+    </tbody>
+
+  </table>
+</Intro>
+
+<section>
+  # Context
+
+  <div className="sub-section">
+    This is what the current on-site search experience looked like:
+    <div className="full-bleed">
+      <Video path="current-site.webm" />
+    </div>
+  </div>
+
+  <div className="sub-section pt-6">
+    Third-party developers found the current search experience **clunky and
+    irrelevant**, leading to **only 0.5% of daily users using our on-site search**.
+
+    > "Your search functionality is awful. I use Google instead of your built-in
+    > search bar to search the docs. It needs some tender love and care."
+    >
+    > \- a third-party Shopify developer
+  </div>
+</section>
+
+<section>
+  # The Challenge
+
+  <div className="sub-section">
+    With shopify.dev containing thousands of pages, the **inefficiency of our
+    on-site search** resulted in third-party developers being unable to find key API
+    resources quickly. This led to **decreased Shopify app ecosystem productivity**.
+  </div>
+</section>
+
+<section>
+  # Understanding the Infrastructure
+
+  <div className="sub-section">
+    First, I dove deep into understanding the current technical infrastructure.
+
+    Through this, I diagnosed foundational problems with how the backend was
+    serializing content. **We were giving messy information to our search engine
+    (ElasticSearch), and had terrible result relevancy as a result.**
+    <Image src="shopify/search-serialization.png" divClassName="full-bleed" />
+    This deep-dive also helped me set a shared understanding in my team of how our
+    search currently works.
+  </div>
+</section>
+
+<section>
+  # Defining UX Principles
+
+  <div className="sub-section">
+    Our design team started defining principles and solutions based on our
+    assumptions. But we were stopped by our product manager, who **questioned what
+    evidence these decisions were being based on.**
+
+    So we took a step back, and interviewed eight third-party developers. Based on
+    the frequency and intensity of their feedback, we defined the UX principles of
+    our search:
+
+    1. ### Design search results for scannability <p>Instead of manually parsing through cluttered descriptions and breadcrumbs, developers can now rely on scannable results to quickly identify the best option for their use case.</p>
+    2. ### Filtered search for the win <p>For a continuously-expanding information site like shopify.dev, providing developers the ability to narrow a large set of results down is critical.</p>
+    3. ### Personalize the experience <p>Developers only cared about the one or two APIs used in their work. By saving their filters, our on-site search experience would be more frictionless.</p>
+  </div>
+</section>
+
+<section>
+  # Wireframing
+
+  <div className="sub-section">
+    Following a competitive analysis and low-fidelity designs, I collaborated with
+    our senior product designer and content designer to create high-fidelity Figma
+    wireframes based on our principles:
+
+    <Image src="shopify/search-modal.jpg" divClassName="full-bleed" />
+  </div>
+</section>
+
+<section>
+  # Prototyping
+
+  <div className="sub-section">
+    **I created a prototype in our production codebase with React, Ruby on Rails,
+    and ElasticSearch.**
+
+    <Image src="shopify/tech-stack.jpg" />
+
+    I focused on designing the interaction-heavy filtering experiences that couldn't
+    easily be replicated in Figma, and would benefit the most from being
+    experimented with in a production environment.
+    
+    Here's what my prototype looked like:
+
+    <Video path="using-tabs.webm" />
+  </div>
+</section>
