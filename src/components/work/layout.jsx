@@ -11,6 +11,7 @@ import Video from "../video"
 import AutoLink from "../auto-link"
 import Quote from "./quote"
 import NumberedList from "./numbered-list"
+import SideBySide from "./side-by-side"
 
 import { fadeIn } from "../../styles/animations"
 import { styled } from "styled-components"
@@ -52,6 +53,7 @@ const components = {
   Video,
   Intro,
   AutoLink,
+  SideBySide,
 }
 
 export const Head = () => <Seo />

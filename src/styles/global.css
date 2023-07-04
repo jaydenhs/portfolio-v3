@@ -41,15 +41,15 @@ h1 {
 }
 
 h2 {
-  @apply text-3xl;
+  @apply text-3xl font-bold;
 }
 
 h3 {
-  @apply text-2xl;
+  @apply text-2xl font-bold;
 }
 
 p {
-  @apply text-base leading-relaxed;
+  @apply text-base leading-relaxed font-normal;
 }
 
 th {
@@ -58,6 +58,10 @@ th {
 
 td {
   @apply align-top;
+}
+
+figcaption {
+  @apply text-gray-400 text-center italic leading-relaxed;
 }
 
 .scroll-container {
@@ -87,13 +91,17 @@ section > * {
   grid-column: 1 / -1 !important;
 }
 
+.wide {
+  grid-column: 1 / -1 !important;
+}
+
 .reading {
   width: min(65ch, 100%);
 }
 
 /* Really hacky fix to section nesting, address later */
 .sub-section {
-  @apply mt-12 space-y-4 grid;
+  @apply mt-12 space-y-4 grid mx-8;
   grid-column: 1 / -1;
   grid-template-columns:
     1fr
@@ -103,4 +111,8 @@ section > * {
 
 .sub-section > * {
   grid-column: 2 / 3;
+}
+
+.wide {
+  grid-column: 1 / -1 !important;
 }

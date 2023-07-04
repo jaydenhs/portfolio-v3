@@ -23,7 +23,7 @@ export default function WorkCard({
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }}
         />
-        <motion.div {...fadeIn} className="grid grid-cols-2 p-6">
+        <motion.div {...fadeIn} className="grid grid-cols-2 md:px-6 px-0 py-6">
           <div>
             <h2 className="font-bold">{company}</h2>
             <h3 className="font-bold text-gray-500">{title}</h3>

@@ -17,7 +17,7 @@ export default function Image({ src, imgClassName, divClassName, ...rest }) {
           nodes {
             relativePath
             childImageSharp {
-              gatsbyImageData
+              gatsbyImageData(placeholder: BLURRED)
             }
           }
         }

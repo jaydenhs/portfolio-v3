@@ -46,8 +46,8 @@ thumbnail: thumbnail-shopify.jpg
 
   <div className="sub-section">
     This is what the current on-site search experience looked like:
-    <div className="full-bleed">
-      <Video path="current-site.webm" />
+    <div className="wide">
+      <Video src="shopify/current-site.webm" />
     </div>
   </div>
 
@@ -113,7 +113,7 @@ thumbnail: thumbnail-shopify.jpg
     our senior product designer and content designer to create high-fidelity Figma
     wireframes based on our principles:
 
-    <Image src="shopify/search-modal.jpg" divClassName="full-bleed" />
+    <Image src="shopify/search-modal.jpg" divClassName="full-bleed rounded-xl" />
   </div>
 </section>
 
@@ -132,6 +132,41 @@ thumbnail: thumbnail-shopify.jpg
     
     Here's what my prototype looked like:
 
-    <Video path="using-tabs.webm" />
+    <div className="pt-12 space-y-24">
+      <Video src="shopify/using-tabs.webm">
+        ### Filter-by-category tabs
+        Based on the search query, the search modal would display category-specific tabs. On click, the tabs would display results from that category. A mixture of results would be displayed by default in the 'All' tab.
+      </Video>
+      <Video src="shopify/dynamic-tabs.webm">
+        ### Dynamic tab positioning
+        These tabs would be dynamically ordered from left-to-right based on the relevance of their respective categories.    
+      </Video>
+      <Video src="shopify/filter-checkboxes.webm">
+        ### Personalized filters
+        The search modal would also enable developers to view content only from selected categories. This helped developers focus on results for the Shopify APIs of their current project.
+      </Video>
+      <Video src="shopify/filter-cookies.webm">
+        ### Saving filters
+        Even after navigating to away from the page, selected filters were preserved using cookies.
+      </Video>
+      <Video src="shopify/filter-clear-all.webm">
+        ### Clearing filters
+        If a developer wanted to remove their filters, they could clear them in one click.
+      </Video>
+    </div>
+  </div>
+</section>
+
+<section>
+  # Defining Edge Cases
+
+  <div className="sub-section">
+    Prototyping with code also forced our design team to solve edge cases we hadn't
+    accounted for. For example, to limit the length of the 'All (results)' tab, we truncated the
+    search results displayed in each section. After experimenting with different
+    algorithms, our design team chose the path that best complimented the
+    functionality in our designs.
+
+    <Video src="shopify/es-truncation.webm" caption="Results below the score threshold (highlighted in red) were retained to preserve 'View all results' functionality"/>
   </div>
 </section>
