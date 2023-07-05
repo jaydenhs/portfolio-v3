@@ -8,7 +8,7 @@ export default function NumberedList({ children }) {
 
 const StyledOl = styled.ol`
   counter-reset: my-counter;
-  ${tw`list-none py-4 pl-0 space-y-8`}
+  ${tw`list-none pl-0 space-y-8`}
 
   li {
     counter-increment: my-counter;

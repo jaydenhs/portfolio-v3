@@ -4,7 +4,13 @@ import { graphql, useStaticQuery } from "gatsby"
 import { useMemo } from "react"
 import { motion } from "framer-motion"
 
-export default function Image({ src, imgClassName, divClassName, ...rest }) {
+export default function Image({
+  src,
+  imgClassName,
+  divClassName,
+  maxWidth,
+  ...rest
+}) {
   const data = useStaticQuery(
     graphql`
       query getAllImages {
@@ -36,7 +42,8 @@ export default function Image({ src, imgClassName, divClassName, ...rest }) {
     <motion.div
       transition={{ ease: [0.65, 0, 0.35, 1], duration: 0.5 }}
       layoutId={src}
-      className={`overflow-hidden ${divClassName}`}
+      className={`overflow-hidden ${maxWidth && "mx-auto"} ${divClassName}`}
+      style={{ maxWidth: `${maxWidth}px` }}
     >
       <motion.div {...rest}>
         <GatsbyImage

@@ -39,11 +39,13 @@ export default function PostLayout({
       />
       <motion.div {...fadeIn}>
         <MDXProvider components={components}>
-          <ContentWrapper>{children}</ContentWrapper>
+          <ContentWrapper className="content">{children}</ContentWrapper>
         </MDXProvider>
       </motion.div>
-      <div className="mt-24 overflow-y-hidden">
-        <p className="wide mx-auto">Next project</p>
+      <div className="mt-24 overflow-y-hidden reading-grid">
+        <motion.p {...fadeIn} className="wide">
+          Next project
+        </motion.p>
         <WorkCard frontmatter={next.frontmatter} flipped clipped />
       </div>
     </Layout>

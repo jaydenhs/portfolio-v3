@@ -45,14 +45,14 @@ priority: 4
 <section>
   # Context
 
-  <div className="sub-section">
+  <section>
     This is what the current on-site search experience looked like:
     <div className="wide">
-      <Video src="shopify/current-site.webm" />
+      <Video src="shopify/current-site.webm" maxWidth={1440} />
     </div>
-  </div>
+  </section>
 
-  <div className="sub-section pt-6">
+  <section>
     Third-party developers found the current search experience **clunky and
     irrelevant**, leading to **only 0.5% of daily users using our on-site search**.
 
@@ -60,38 +60,40 @@ priority: 4
     > search bar to search the docs. It needs some tender love and care."
     >
     > \- a third-party Shopify developer
-  </div>
+  </section>
 </section>
 
 <section>
   # The Challenge
 
-  <div className="sub-section">
+  <section>
     With shopify.dev containing thousands of pages, the **inefficiency of our
     on-site search** resulted in third-party developers being unable to find key API
     resources quickly. This led to **decreased Shopify app ecosystem productivity**.
-  </div>
+  </section>
 </section>
 
 <section>
   # Understanding the Infrastructure
 
-  <div className="sub-section">
+  <section>
     First, I dove deep into understanding the current technical infrastructure.
 
     Through this, I diagnosed foundational problems with how the backend was
     serializing content. **We were giving messy information to our search engine
     (ElasticSearch), and had terrible result relevancy as a result.**
-    <Image src="shopify/search-serialization.png" divClassName="full-bleed" />
+
+    <Image src="shopify/search-serialization.png" divClassName="wide" maxWidth={1440} />
+
     This deep-dive also helped me set a shared understanding in my team of how our
     search currently works.
-  </div>
+  </section>
 </section>
 
 <section>
   # Defining UX Principles
 
-  <div className="sub-section">
+  <section>
     Our design team started defining principles and solutions based on our
     assumptions. But we were stopped by our product manager, who **questioned what
     evidence these decisions were being based on.**
@@ -99,29 +101,31 @@ priority: 4
     So we took a step back, and interviewed eight third-party developers. Based on
     the frequency and intensity of their feedback, we defined the UX principles of
     our search:
+  </section>
 
+  <section>
     1. ### Design search results for scannability <p>Instead of manually parsing through cluttered descriptions and breadcrumbs, developers can now rely on scannable results to quickly identify the best option for their use case.</p>
     2. ### Filtered search for the win <p>For a continuously-expanding information site like shopify.dev, providing developers the ability to narrow a large set of results down is critical.</p>
     3. ### Personalize the experience <p>Developers only cared about the one or two APIs used in their work. By saving their filters, our on-site search experience would be more frictionless.</p>
-  </div>
+  </section>
 </section>
 
 <section>
   # Wireframing
 
-  <div className="sub-section">
+  <section>
     Following a competitive analysis and low-fidelity designs, I collaborated with
     our senior product designer and content designer to create high-fidelity Figma
     wireframes based on our principles:
 
-    <Image src="shopify/search-modal.jpg" divClassName="full-bleed rounded-xl" />
-  </div>
+    <Image src="shopify/search-modal.jpg" divClassName="wide rounded-xl" />
+  </section>
 </section>
 
 <section>
   # Prototyping
 
-  <div className="sub-section">
+  <section>
     **I created a prototype in our production codebase with React, Ruby on Rails,
     and ElasticSearch.**
 
@@ -155,13 +159,13 @@ priority: 4
         If a developer wanted to remove their filters, they could clear them in one click.
       </Video>
     </div>
-  </div>
+  </section>
 </section>
 
 <section>
   # Defining Edge Cases
 
-  <div className="sub-section">
+  <section>
     My prototype also challenged our design team to solve edge cases we hadn't
     accounted for in our wireframes. 
     
@@ -171,27 +175,27 @@ priority: 4
     functionality in our designs.
 
     <Video src="shopify/es-truncation.webm" caption="Results below the score threshold (highlighted in red) were retained to preserve 'View all results' functionality"/>
-  </div>
+  </section>
 </section>
 
 <section>
   # Implementing for the Keyboard
 
-  <div className="sub-section">
+  <section>
     Another strength of coded prototypes is that it enabled our design team to
     design keyboard navigation, a feature required for developers.
 
     Here's what opening, navigating, and selecting in the search modal looked like:
 
     <Video src="shopify/keyboard-accessibility.webm" caption="Interactions were linked to / (open search bar), arrow keys (result navigation), Esc (close search bar), and Enter (open selected result)"/>
-  </div>
+  </section>
 </section>
 
 <section>
   # Learnings
 
-  <div className="sub-section">
+  <section>
     1. ### Don't operate on assumptions <p>Our team got too excited and made the mistake of defining UX principles before research. Had we not talked to developers, we would’ve not solved their biggest pain points. If I was to do this project again, I would start with research.</p>
     2. ### Prototyping is so, so rewarding <p>It is _incredibly_ empowering to prototype interaction-heavy experiences that would otherwise be impossible to create with traditional design software. The level of clarity it can bring to stakeholder conversations and user testing is unmatched.</p>
-  </div>
+  </section>
 </section>

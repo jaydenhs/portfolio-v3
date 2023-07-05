@@ -7,7 +7,6 @@
 
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { motion } from "framer-motion"
 import "../styles/global.css"
 
 import Header from "./header"
@@ -27,7 +26,7 @@ const Layout = ({ children }) => {
     <body className="scroll-container">
       <div className="scroll-content">
         <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-        <motion.main>{children}</motion.main>
+        <main>{children}</main>
         {/* <footer
         style={{
           marginTop: `var(--space-5)`,

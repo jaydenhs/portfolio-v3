@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { styled } from "styled-components"
 import tw from "twin.macro"
 
-function Video({ src, children, className, caption }) {
+function Video({ src, children, className, caption, maxWidth }) {
   const webm = require(`../work/${src}`)
 
   const videoRef = useRef(null)
@@ -23,15 +23,22 @@ function Video({ src, children, className, caption }) {
   }
 
   return (
-    <figure className={`flex flex-col w-full ${className}`}>
-      <div className="w-full space-y-2">{children}</div>
-      <div className="h-6" />
+    <figure
+      className={`flex flex-col w-full mx-auto ${className}`}
+      style={{ maxWidth: `${maxWidth}px` }}
+    >
+      {children && (
+        <>
+          <div className="w-full space-y-2">{children}</div>
+          <div className="h-6" />
+        </>
+      )}
       <div className="relative">
         <motion.video
           loop
           muted
           className="w-full rounded-xl"
-          autoPlay
+          // autoPlay
           ref={videoRef}
         >
           <source src={webm.default} type="video/webm" />
@@ -40,8 +47,12 @@ function Video({ src, children, className, caption }) {
           {isPlaying ? PauseIcon : PlayIcon}
         </VideoControl>
       </div>
-      <div className="h-4" />
-      <figcaption>{caption}</figcaption>
+      {caption && (
+        <>
+          <div className="h-4" />
+          <figcaption>{caption}</figcaption>
+        </>
+      )}
     </figure>
   )
 }
