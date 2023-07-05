@@ -42,8 +42,9 @@ export default function PostLayout({
           <ContentWrapper>{children}</ContentWrapper>
         </MDXProvider>
       </motion.div>
-      <div className="mt-24 h-64 overflow-y-hidden">
-        <WorkCard frontmatter={next.frontmatter} flipped />
+      <div className="mt-24 overflow-y-hidden">
+        <p className="wide mx-auto">Next project</p>
+        <WorkCard frontmatter={next.frontmatter} flipped clipped />
       </div>
     </Layout>
   )

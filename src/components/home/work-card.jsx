@@ -14,11 +14,15 @@ export default function WorkCard({
     slug,
   },
   flipped,
+  clipped,
 }) {
   const flippedClass = flipped ? "flex-col-reverse" : "flex-col"
 
   return (
-    <motion.div className="mx-4 sm:mx-16 flex items-center">
+    <motion.div
+      className="mx-4 sm:mx-16 flex items-center"
+      style={{ marginBottom: clipped ? "-10%" : "" }}
+    >
       <AutoLink to={slug} className={`w-full flex ${flippedClass}`}>
         <Image
           src={relativePath}
