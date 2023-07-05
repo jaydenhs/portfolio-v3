@@ -10,9 +10,11 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <Hero />
-      {data.allMdx.nodes.map(({ frontmatter }) => {
-        return <WorkCard frontmatter={frontmatter} />
-      })}
+      <div className="space-y-24 mb-24">
+        {data.allMdx.nodes.map(({ frontmatter }) => {
+          return <WorkCard frontmatter={frontmatter} />
+        })}
+      </div>
     </Layout>
   )
 }
@@ -28,7 +30,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query getPosts {
-    allMdx {
+    allMdx(sort: { frontmatter: { priority: DESC } }) {
       nodes {
         frontmatter {
           thumbnail {

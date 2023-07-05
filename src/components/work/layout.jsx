@@ -5,6 +5,8 @@ import Layout from "../app"
 import { MDXProvider } from "@mdx-js/react"
 import { motion } from "framer-motion"
 
+import WorkCard from "../home/work-card"
+
 import Intro from "./intro"
 import Image from "../image"
 import Video from "../video"
@@ -21,21 +23,28 @@ export default function PostLayout({
   data: {
     mdx: {
       frontmatter: {
-        title,
         thumbnail: { relativePath },
       },
     },
   },
+  pageContext: { next },
   children,
 }) {
   return (
     <Layout>
-      <Image src={relativePath} />
+      <Image
+        src={relativePath}
+        initial={{ scale: 1.05 }}
+        animate={{ scale: 1 }}
+      />
       <motion.div {...fadeIn}>
         <MDXProvider components={components}>
           <ContentWrapper>{children}</ContentWrapper>
         </MDXProvider>
       </motion.div>
+      <div className="mt-24 h-64 overflow-y-hidden">
+        <WorkCard frontmatter={next.frontmatter} flipped />
+      </div>
     </Layout>
   )
 }

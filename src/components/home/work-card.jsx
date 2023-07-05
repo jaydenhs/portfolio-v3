@@ -13,10 +13,13 @@ export default function WorkCard({
     description,
     slug,
   },
+  flipped,
 }) {
+  const flippedClass = flipped ? "flex-col-reverse" : "flex-col"
+
   return (
     <motion.div className="mx-4 sm:mx-16 flex items-center">
-      <AutoLink to={slug} className="w-full">
+      <AutoLink to={slug} className={`w-full flex ${flippedClass}`}>
         <Image
           src={relativePath}
           divClassName="rounded-3xl"

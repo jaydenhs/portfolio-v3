@@ -7,11 +7,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const { data } = await graphql(`
     {
-      allMdx {
+      allMdx(sort: { frontmatter: { priority: DESC } }) {
         nodes {
           id
           frontmatter {
+            title
+            company
+            description
             slug
+            priority
+            thumbnail {
+              relativePath
+            }
           }
           internal {
             contentFilePath
@@ -21,12 +28,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `)
 
-  data.allMdx.nodes.forEach(node => {
+  const posts = data.allMdx.nodes
+
+  posts.forEach((node, index) => {
+    const next = index === posts.length - 1 ? posts[0] : posts[index + 1]
+
     actions.createPage({
       path: node.frontmatter.slug,
       component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
       context: {
         id: node.id,
+        next,
       },
     })
   })
