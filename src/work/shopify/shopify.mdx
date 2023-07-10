@@ -3,7 +3,7 @@ company: Shopify
 title: Build any commerce experience
 description: I was a design technologist intern, prototyping and launching a redesigned developer documentation search that saved thousands of hours.
 slug: /shopify
-thumbnail: thumbnail-shopify.jpg
+thumbnail: images/thumbnail-shopify.jpg
 priority: 4
 color: [81, 49, 51]
 ---
@@ -52,7 +52,7 @@ color: [81, 49, 51]
   <section>
     This is what the current on-site search experience looked like:
     <div className="wide">
-      <Video src="shopify/current-site.webm" maxWidth={1440} />
+      <Video src="shopify/images/current-site.webm" maxWidth={1440} />
     </div>
   </section>
 
@@ -87,7 +87,7 @@ color: [81, 49, 51]
     serializing content. **We were giving messy information to our search engine
     (ElasticSearch), and had terrible result relevancy as a result.**
 
-    <Image src="shopify/search-serialization.png" divClassName="wide" maxWidth={1440} />
+    <Image src="shopify/images/search-serialization.png" divClassName="wide" maxWidth={1440} />
 
     This deep-dive also helped me set a shared understanding in my team of how our
     search currently works.
@@ -138,7 +138,7 @@ color: [81, 49, 51]
     our senior product designer and content designer to create high-fidelity Figma
     wireframes based on our principles:
 
-    <Image src="shopify/search-modal.jpg" divClassName="wide rounded-xl" />
+    <Image src="shopify/images/search-modal.jpg" divClassName="wide rounded-xl" />
   </section>
 </section>
 
@@ -149,7 +149,7 @@ color: [81, 49, 51]
     **I created a prototype in our production codebase with React, Ruby on Rails,
     and ElasticSearch.**
 
-    <Image src="shopify/tech-stack.jpg" />
+    <Image src="shopify/images/tech-stack.jpg" />
 
     I focused on designing the interaction-heavy filtering experiences that couldn't
     easily be replicated in Figma, and would benefit the most from being
@@ -158,23 +158,23 @@ color: [81, 49, 51]
     Here's what my prototype looked like:
 
     <div className="pt-12 space-y-24">
-      <Video src="shopify/using-tabs.webm">
+      <Video src="shopify/images/using-tabs.webm">
         ### Filter-by-category tabs
         Based on the search query, the search modal would display category-specific tabs. On click, the tabs would display results from that category. A mixture of results would be displayed by default in the 'All' tab.
       </Video>
-      <Video src="shopify/dynamic-tabs.webm">
+      <Video src="shopify/images/dynamic-tabs.webm">
         ### Dynamic tab positioning
         These tabs would be dynamically ordered from left-to-right based on the relevance of their respective categories.    
       </Video>
-      <Video src="shopify/filter-checkboxes.webm">
+      <Video src="shopify/images/filter-checkboxes.webm">
         ### Personalized filters
         The search modal would also enable developers to view content only from selected categories. This helped developers focus on results for the Shopify APIs of their current project.
       </Video>
-      <Video src="shopify/filter-cookies.webm">
+      <Video src="shopify/images/filter-cookies.webm">
         ### Saving filters
         Even after navigating to away from the page, selected filters were preserved using cookies.
       </Video>
-      <Video src="shopify/filter-clear-all.webm">
+      <Video src="shopify/images/filter-clear-all.webm">
         ### Clearing filters
         If a developer wanted to remove their filters, they could clear them in one click.
       </Video>
@@ -194,7 +194,7 @@ color: [81, 49, 51]
     algorithms, our design team chose the path that best complimented the
     functionality in our designs.
 
-    <Video src="shopify/es-truncation.webm" caption="Results below the score threshold (highlighted in red) were retained to preserve 'View all results' functionality"/>
+    <Video src="shopify/images/es-truncation.webm" caption="Results below the score threshold (highlighted in red) were retained to preserve 'View all results' functionality"/>
   </section>
 </section>
 
@@ -207,7 +207,7 @@ color: [81, 49, 51]
 
     Here's what opening, navigating, and selecting in the search modal looked like:
 
-    <Video src="shopify/keyboard-accessibility.webm" caption="Interactions were linked to / (open search bar), arrow keys (result navigation), Esc (close search bar), and Enter (open selected result)"/>
+    <Video src="shopify/images/keyboard-accessibility.webm" caption="Interactions were linked to / (open search bar), arrow keys (result navigation), Esc (close search bar), and Enter (open selected result)"/>
   </section>
 </section>
 
