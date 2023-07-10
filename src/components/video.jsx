@@ -1,14 +1,25 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { motion } from "framer-motion"
 
 import { styled } from "styled-components"
 import tw from "twin.macro"
 
-function Video({ src, children, className, caption, maxWidth }) {
+function Video({ src, children, className, caption, maxWidth, endPause = 1 }) {
   const webm = require(`../work/${src}`)
 
   const videoRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(true)
+
+  useEffect(() => {
+    const video = videoRef.current
+    const pauseBeforeLoop = () => {
+      video.pause()
+      setTimeout(() => {
+        video.play()
+      }, endPause * 1000)
+    }
+    video.addEventListener("ended", pauseBeforeLoop)
+  }, [])
 
   const handlePlayPause = () => {
     const video = videoRef.current
@@ -38,7 +49,7 @@ function Video({ src, children, className, caption, maxWidth }) {
           loop
           muted
           className="w-full rounded-xl"
-          // autoPlay
+          autoPlay
           ref={videoRef}
         >
           <source src={webm.default} type="video/webm" />

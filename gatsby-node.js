@@ -19,6 +19,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             thumbnail {
               relativePath
             }
+            color
           }
           internal {
             contentFilePath
@@ -39,6 +40,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         id: node.id,
         next,
+        color: node.frontmatter.color,
       },
     })
   })

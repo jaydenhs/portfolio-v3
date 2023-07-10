@@ -1,22 +1,30 @@
 import React from "react"
-import { styled } from "styled-components"
-import tw from "twin.macro"
 
-export default function NumberedList({ children }) {
-  return <StyledOl>{children}</StyledOl>
+const NumberedList = ({ data, className }) => {
+  return (
+    <div className={`space-y-8 ${className}`}>
+      {data.map(({ title, description }, index) => (
+        <div key={index}>
+          <div className="flex space-x-6 items-start">
+            <div className="flex flex-col items-center">
+              <span
+                className="flex items-center w-16 h-16 rounded-full"
+                style={{ background: "var(--primaryLL)" }}
+              >
+                <span className="mx-auto text-2xl">
+                  {`${index + 1}`.padStart(2, "0")}
+                </span>
+              </span>
+            </div>
+            <div className="space-y-2">
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
 }
 
-const StyledOl = styled.ol`
-  counter-reset: my-counter;
-  ${tw`list-none pl-0 space-y-8`}
-
-  li {
-    counter-increment: my-counter;
-    ${tw`relative flex items-start`}
-  }
-
-  li:before {
-    content: counter(my-counter) ".";
-    ${tw`flex-shrink-0 w-16 h-16 mr-4 text-2xl py-4 text-center rounded-full bg-blue-100`}
-  }
-`
+export default NumberedList

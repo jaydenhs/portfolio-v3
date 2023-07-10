@@ -1,10 +1,261 @@
 ---
 company: StructionSite
 title: Automatically track construction progress
-description: I was a product design intern, delivering an import feature for a construction tracking tool which saved users thousands of hours.
+description: I was a product design intern, delivering an import feature for a construction tracking tool which saved $10,000/year in setup costs.
 slug: /structionsite
 thumbnail: thumbnail-structionsite.jpg
 priority: 3
+color: [35, 100, 50]
 ---
 
-This is StructionSite!
+<Intro>
+  ## I was a Product Design Intern at <AutoLink to="https://structionsite.com/">StructionSite</AutoLink>, a construction technology company revolutionizing the way teams capture, organize, and access jobsite data.
+  ## I designed, co-developed, and launched a quantity takeoff import feature that **saved $10,000/year** in setup costs.
+  
+ <table>
+    <colgroup>
+      <col className="w-1/3" />
+      <col className="w-1/3" />
+      <col className="w-1/3" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th>Team</th>
+        <th>Timeframe</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Product design<br/>
+          Front-end development
+        </td>
+        <td>
+          1 developer
+        </td>
+        <td>
+          July - August 2021<br/>
+          (4 weeks)
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</Intro>
+
+<section>
+  # Context
+
+  <section>
+    SmartTrack was StructionSite's product which intelligently tracked construction work. Setting up customers for a SmartTrack pilot was manually done, and the project setup took the bulk of the time, often taking two weeks
+    or more.
+
+    The process was composed of two steps:
+    1. Draw vectors in SmartTrack that match the customer's existing files
+    2. Assign those vectors properties based on the customer's requirements
+
+    <Video className="wide pt-4" src="structionsite/images/current-setup-process.webm" maxWidth={1440} />
+
+  </section>
+</section>
+
+<section>
+  # The Challenge
+
+  <section>
+    With customer files containing thousands of vectors, this painfully manual
+    process was wasting **hundreds of our internal team's valuable hours**. This
+    delay resulted in trial customers failing to see the value of SmartTrack,
+    leading to **high average customer acquisition cost and poor customer
+    experience**.
+  </section>
+</section>
+
+<section>
+  # Defining Success
+
+  <section>
+    I began by interviewing five users to better understand their pain points. I
+    also set up a project myself to better empathize with the frustrations
+    expressed.
+
+    From those conversations, I centered the success of this project around these
+    goals:
+  </section>
+
+  <section>
+    <NumberedList
+      data={[
+        {
+          title: 'Maximize efficiency',
+          description:
+          'The most critical goal was to reduce the time required to setup each customer project. The shorter the process, the lower our customer acquisition cost becomes.',
+        },
+        {
+          title: 'Improve intuitiveness',
+          description:
+          "Aligning the mental model of SmartTrack's features, modes, and tooling with construction industry standards would improve setup accuracy.",
+        },
+        {
+          title: 'Reduce frustration',
+          description:
+          'Users are able to easily amend mistakes and accomplish their tasks without interruption.',
+        },
+      ]}
+    />
+  </section>
+</section>
+
+<section>
+  # The A-ha Moment
+  
+  <section>
+    My belief that there had to be a better way to set up projects was confirmed
+    when one of the users stated this:
+
+    > "The ideal state of SmartTrack is being able to import customers' existing
+    > data. Importing customers' files would be nice to have as a baseline, and
+    > then it's just verification afterwards."
+    >
+    > \- SmartTrack's customer success manager
+
+    Instead of manually duplicating all of the customer's data into SmartTrack, let's import it instead!
+  </section>
+</section>
+
+<section>
+  # Technical Exploration
+
+  <section>
+    Before sketching out any designs, I first needed to validate if such an import
+    feature was possible. I created a simple file in one of the most popular
+    construction tracking programs and opened the exported PDF in Notepad.
+
+    To my delight, it had all of the information I needed. All of the vertices
+    and properties were available as plain text in Bluebeam Revu's exports.  
+
+    <Image divClassName="wide pt-4" src="structionsite/images/data-mapping.jpg" maxWidth={1440} />
+  </section>
+</section>
+
+<section>
+  # Pivoting for Impact
+
+  <section>
+    Prior to detailing this option further, I wanted to ensure that we were building
+    the most impactful file import option. After discussing with our customer
+    success manager, I discovered that over 90% of our current SmartTrack customers
+    submitted files from a different program.
+
+    To **maximize the value** gained from a first iteration of this feature, I
+    decided to pivot to importing from this more popular program instead.
+
+    <Image src='structionsite/images/pivoting-to-ost.png' maxWidth={400} />
+
+    Through a similar process as before, I validated that necessary information was
+    available within this program's exports.
+  </section>
+</section>
+
+<section>
+  # Defining a User Flow
+
+  <section>
+    I created a user flow to better define the scope of the solution I was building.
+    This also gave me the perfect opportunity to receive early feedback from
+    stakeholders and validate feasibility with developers.
+
+    <Image src='structionsite/images/import-user-flow-1.png' />
+  </section>
+</section>
+
+<section>
+  # Presenting the Concept
+
+  <section>
+    To communicate this user flow, I created a simple set of designs:
+
+    <Image divClassName="wide" src='structionsite/images/import-initial-mockups.png' />
+  </section>
+</section>
+
+<section>
+  # Refining for Production
+
+  <section>
+    After incorporating feedback from our weekly product and design team meeting,
+    the project was **green-lit for production** and I was provided with one
+    engineer to pair with for a week.
+
+    I prepared a specifications doc of the user interfaces and parsing algorithms
+    necessary for hand-off in Notion. After discussing with my engineer, I realized
+    I was missing two key pieces: we could only import one page from the customer file at a time, and there were non-trivial loading times.
+
+    Thus, I needed to revise my user flow to:
+
+    <Image divClassName="wide" src='structionsite/images/import-user-flow-2.png' maxWidth={1000} />
+  </section>
+</section>
+
+<section>
+  # The Big Reveal
+
+  <section>
+    After the feature was released to production under a feature flag, I demoed it
+    live to the solutions engineer and customer success manager who inspired the
+    concept. They were very, very excited.
+
+    <Video className="wide" src='structionsite/images/adam-and-james-reaction.webm' maxWidth={1440} />
+  
+    > This is probably the single **most functionally developed feature** that I've
+    > seen in my time here that will fundamentally change how we do SmartTrack. This
+    > is pretty freakin' cool. Just drop out of school and stay here man!
+    >
+    > \- SmartTrack's solution engineer
+
+    Their reaction was so positive that I later presented at StructionSite's
+    All-Hands meeting, to even louder acclamation.
+
+    <Image divClassName="wide" src='structionsite/images/zoom-and-slack.png' maxWidth={1440} />
+  </section>
+</section>
+
+<section>
+  # Success!
+
+  <section>
+    The import feature exceeded my original goals. It reduced setup time from days
+    to mere seconds. By aligning with existing industry standards, it enabled
+    perfect accuracy. It did not simply reduce frustration, but now users were
+    excited to set up projects.
+
+    <Image divClassName="wide" src='structionsite/images/success-adam-and-joey.png' maxWidth={1440} />
+  </section>
+</section>
+
+<section>
+  # Learnings
+
+  <section>
+    <NumberedList
+      data={[
+        {
+          title: 'Approach the impossible',
+          description:
+            'Even if a feature seems infeasible, try to prove it out. Some of the best features come from simple experiments.',
+        },
+        {
+          title: 'Get your hands dirty',
+          description:
+            'My software development experience is just as applicable to the early proof-of-concept phases as it is to developer handoff. Leveraging existing data to increase product value is a tool that I will carry forward.',
+        },
+        {
+          title: 'User joy is the greatest reward',
+          description:
+            "Seeing how this feature has fundamentally improved so many users' lives brings an inescapable smile to my face. It feels so, so good to help others!",
+        },
+      ]}
+    />
+  </section>
+</section>

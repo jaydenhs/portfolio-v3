@@ -16,7 +16,7 @@ import NumberedList from "./numbered-list"
 import SideBySide from "./side-by-side"
 
 import { fadeIn } from "../../styles/animations"
-import { styled } from "styled-components"
+import { styled, css } from "styled-components"
 import tw from "twin.macro"
 
 export default function PostLayout({
@@ -27,7 +27,7 @@ export default function PostLayout({
       },
     },
   },
-  pageContext: { next },
+  pageContext: { color, next },
   children,
 }) {
   return (
@@ -39,10 +39,12 @@ export default function PostLayout({
       />
       <motion.div {...fadeIn}>
         <MDXProvider components={components}>
-          <ContentWrapper className="content">{children}</ContentWrapper>
+          <ContentWrapper color={color} className="content">
+            {children}
+          </ContentWrapper>
         </MDXProvider>
       </motion.div>
-      <div className="mt-24 overflow-y-hidden reading-grid">
+      <div className="pt-24 overflow-y-hidden reading-grid border-t-4 border-slate-150">
         <motion.p {...fadeIn} className="wide">
           Next project
         </motion.p>
@@ -54,18 +56,30 @@ export default function PostLayout({
 
 const ContentWrapper = styled.div`
   & > *:nth-child(even) {
-    ${tw`bg-slate-100`}
+    ${tw`bg-gray-50`}
   }
+
+  & > *:last-child {
+    ${tw`pb-64`}
+  }
+
+  ${({ color }) => css`
+    --primary: hsl(${color[0]}, ${color[1]}%, ${color[2]}%);
+    --primaryL: hsl(${color[0]}, ${color[1]}%, ${color[2] + 20}%);
+    --primaryLL: hsl(${color[0]}, ${color[1]}%, ${color[2] + 30}%);
+  `}
 `
 
 const components = {
   blockquote: props => <Quote {...props} />,
-  ol: props => <NumberedList {...props} />,
+  ol: props => <ol {...props} className="list-decimal pl-8 space-y-2" />,
+
   Image,
   Video,
   Intro,
   AutoLink,
   SideBySide,
+  NumberedList,
 }
 
 export const Head = () => <Seo />
