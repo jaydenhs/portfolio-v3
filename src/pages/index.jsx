@@ -33,9 +33,7 @@ export const pageQuery = graphql`
     allMdx(sort: { frontmatter: { priority: DESC } }) {
       nodes {
         frontmatter {
-          thumbnail {
-            relativePath
-          }
+          thumbnail
           company
           title
           description

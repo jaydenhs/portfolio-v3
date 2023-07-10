@@ -2,7 +2,7 @@ import React from "react"
 import { styled } from "styled-components"
 import tw from "twin.macro"
 
-export default function Intro({ children }) {
+export default function Intro({ children, tableData }) {
   return <Section className="reading-grid">{children}</Section>
 }
 

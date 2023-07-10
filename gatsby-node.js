@@ -16,9 +16,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             description
             slug
             priority
-            thumbnail {
-              relativePath
-            }
+            thumbnail
             color
           }
           internal {

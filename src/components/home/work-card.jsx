@@ -6,13 +6,7 @@ import Image from "../image"
 import { fadeIn } from "../../styles/animations"
 
 export default function WorkCard({
-  frontmatter: {
-    thumbnail: { relativePath },
-    company,
-    title,
-    description,
-    slug,
-  },
+  frontmatter: { thumbnail, company, title, description, slug },
   flipped,
   clipped,
 }) {
@@ -25,13 +19,13 @@ export default function WorkCard({
     >
       <AutoLink to={slug} className={`w-full flex ${flippedClass}`}>
         <Image
-          src={relativePath}
+          src={thumbnail}
           divClassName="rounded-3xl"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }}
         />
-        <motion.div {...fadeIn} className="grid grid-cols-2 py-6">
-          <div>
+        <motion.div {...fadeIn} className="grid grid-cols-2 gap-4 py-6">
+          <div className="space-y-1">
             <h2 className="font-bold">{company}</h2>
             <h3 className="font-bold text-gray-500">{title}</h3>
           </div>

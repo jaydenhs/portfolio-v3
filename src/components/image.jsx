@@ -22,6 +22,7 @@ export default function Image({
         ) {
           nodes {
             relativePath
+            relativeDirectory
             childImageSharp {
               gatsbyImageData(placeholder: BLURRED)
             }
@@ -32,7 +33,11 @@ export default function Image({
   )
 
   const matchedImage = useMemo(
-    () => data.allFile.nodes.find(({ relativePath }) => src === relativePath),
+    () =>
+      data.allFile.nodes.find(
+        ({ relativePath, relativeDirectory }) =>
+          `${relativeDirectory}/${src}` === relativePath
+      ),
     [data, src]
   )
 

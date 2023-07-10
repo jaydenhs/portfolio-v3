@@ -14,6 +14,7 @@ import AutoLink from "../auto-link"
 import Quote from "./quote"
 import NumberedList from "./numbered-list"
 import SideBySide from "./side-by-side"
+import Table from "./table"
 
 import { fadeIn } from "../../styles/animations"
 import { styled, css } from "styled-components"
@@ -22,9 +23,7 @@ import tw from "twin.macro"
 export default function PostLayout({
   data: {
     mdx: {
-      frontmatter: {
-        thumbnail: { relativePath },
-      },
+      frontmatter: { thumbnail },
     },
   },
   pageContext: { color, next },
@@ -32,11 +31,7 @@ export default function PostLayout({
 }) {
   return (
     <Layout>
-      <Image
-        src={relativePath}
-        initial={{ scale: 1.05 }}
-        animate={{ scale: 1 }}
-      />
+      <Image src={thumbnail} initial={{ scale: 1.05 }} animate={{ scale: 1 }} />
       <motion.div {...fadeIn}>
         <MDXProvider components={components}>
           <ContentWrapper color={color} className="content">
@@ -80,6 +75,7 @@ const components = {
   AutoLink,
   SideBySide,
   NumberedList,
+  Table,
 }
 
 export const Head = () => <Seo />
@@ -92,9 +88,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         slug
-        thumbnail {
-          relativePath
-        }
+        thumbnail
       }
     }
   }
