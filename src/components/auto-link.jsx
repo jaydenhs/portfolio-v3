@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { styled } from "styled-components"
 
-const AutoLink = ({ to, children, test, ...rest }) => {
+const AutoLink = ({ to, children, light = false, ...rest }) => {
   // internal link if to does not have "static" in it (primarily for resume) and does not start with /
   const regex = /^((?!static).)*$/
   const internal = regex.test(`${to}`) && `${to}`.startsWith("/")
@@ -15,6 +15,7 @@ const AutoLink = ({ to, children, test, ...rest }) => {
         </Link>
       ) : (
         <AnimatedA
+          style={{ color: `${light ? "var(--primary)" : "var(--primaryD)"}` }}
           href={to}
           target="_blank"
           rel="noopener noreferrer"
@@ -28,7 +29,6 @@ const AutoLink = ({ to, children, test, ...rest }) => {
 }
 
 const AnimatedA = styled.a`
-  color: var(--primary);
   background: linear-gradient(
       to right,
       rgba(100, 200, 200, 0),

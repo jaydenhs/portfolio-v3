@@ -18,6 +18,7 @@ import Table from "./table"
 import BeforeAndAfter from "./before-and-after"
 import Grid from "./grid"
 import GridCell from "./grid-cell"
+import Metrics from "./metrics"
 
 import { fadeIn } from "../../styles/animations"
 import { styled, css } from "styled-components"
@@ -67,7 +68,7 @@ const ContentWrapper = styled.div`
   }
 
   ${({ color }) => css`
-    --primaryD: hsl(${color[0]}, ${color[1]}%, ${color[2] - 20}%);
+    --primaryD: hsl(${color[0]}, ${color[1]}%, ${color[2] - 15}%);
     --primary: hsl(${color[0]}, ${color[1]}%, ${color[2]}%);
     --primaryL: hsl(${color[0]}, ${color[1]}%, ${color[2] + 20}%);
     --primaryLL: hsl(${color[0]}, ${color[1]}%, ${color[2] + 30}%);
@@ -88,6 +89,7 @@ const components = {
   BeforeAndAfter,
   Grid,
   GridCell,
+  Metrics,
 }
 
 export const Head = () => <Seo />
