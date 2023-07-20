@@ -23,6 +23,7 @@ export default function WorkCard({
           divClassName="rounded-3xl"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }}
+          shared
         />
         <motion.div {...fadeIn} className="grid grid-cols-2 gap-4 py-6">
           <div className="space-y-1">

@@ -9,6 +9,7 @@ export default function Image({
   imgClassName,
   divClassName,
   maxWidth,
+  shared,
   ...rest
 }) {
   const data = useStaticQuery(
@@ -46,7 +47,7 @@ export default function Image({
   return !!image ? (
     <motion.div
       transition={{ ease: [0.65, 0, 0.35, 1], duration: 0.5 }}
-      layoutId={src}
+      layoutId={shared && src}
       className={`overflow-hidden ${maxWidth && "mx-auto"} ${divClassName}`}
       style={{ maxWidth: `${maxWidth}px` }}
     >

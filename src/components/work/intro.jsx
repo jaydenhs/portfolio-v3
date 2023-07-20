@@ -13,10 +13,6 @@ const Section = styled.section`
     ${tw`font-bold text-gray-400`}
   }
 
-  & a {
-    color: var(--primary);
-  }
-
   & strong {
     ${tw`text-gray-600`}
   }

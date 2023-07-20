@@ -11,7 +11,7 @@ color: [201, 70, 60]
 <Intro>
   ## I was a Product Design Intern at <AutoLink to="https://www.ontario.ca/page/ontario-digital-service">Ontario Digital Service</AutoLink>, a transformative government initiative reshaping the delivery of public services through digital innovation and accessibility.
 
-  ## I co-designed and launched an online renewal process for driver's licences and health cards with 5 million annual users.
+  ## I co-designed and launched an online renewal process for driver's licences, health cards, and photo cards with 5 million annual users.
 
   <Table>
     <td>
@@ -37,7 +37,7 @@ color: [201, 70, 60]
   # Defining the Problem
 
   <section>
-    On the existing online renewal platform, there were customer feedback forms. We categorized over 1,600 submissions to identify prominent complaints, resulting in the diagnosis of three major issues:
+    On the existing ServiceOntario online renewal platform, there were customer feedback forms. We categorized over 1,600 submissions to identify prominent complaints, resulting in the diagnosis of three major issues:
 
     <NumberedList
       data={[
@@ -67,7 +67,7 @@ color: [201, 70, 60]
   <section>
     We have observed that the ServiceOntario online renewal flows are not meeting user needs, which is causing low completion rates, negative user feedback, inclusion concerns, and low uptake on digital services.
 
-    How might we design a one-window digital renewal transaction flow that promotes usability and inclusion by reducing time on task and increasing positive feedback on eligibility?
+    How might we design a digital renewal transaction flow that promotes usability and inclusion by reducing time on task and increasing positive feedback on eligibility?
   </section>
 </section>
 
@@ -75,13 +75,159 @@ color: [201, 70, 60]
   # Creating Our Concept
 
   <section>
-    <SideBySide src="process-ideation.png">
+    <SideBySide src="process-ideation.png" maxWidth={1440}>
       ### Ideation
       Our team individually sketched user flows and interfaces in five-minute brainstorming sessions and presented our designs to the group.
     </SideBySide>
-    <SideBySide src="process-consolidate.jpg" mediaOnRight>
+    <SideBySide src="process-consolidate.jpg" mediaOnRight maxWidth={1440}>
       ### Consolidation
       We then combined the strengths of our ideas into a final user flow that represented our team’s vision of the redesigned renewal service’s golden path.
     </SideBySide>
+    <SideBySide src="process-lowfi.png" maxWidth={1440}>
+      ### Low Fidelity Prototype
+      With our lead designer, my fellow product designer and I then created a low-fidelity Balsamiq prototype that simulated this ideated flow.
+    </SideBySide>
   </section>
 </section>
+
+<section>
+  # Testing with the Public
+
+  <section>
+    Equipped with a low-fidelity prototype of our redesigned renewal platform, my co-designers and I traveled to downtown Toronto to conduct weekly guerilla user testing at the busiest ServiceOntario centre. Over the span of three weeks, I facilitated 23 15-minute interviews.
+
+    <div className="wide grid md:grid-cols-7 gap-4">
+      <Image divClassName="md:col-span-2 my-auto rounded-xl" src="user-testing-1.jpg"/>
+      <Image divClassName="md:col-span-3 rounded-xl" src="portrait-1.jpg"/>
+      <Image divClassName="md:col-span-2 my-auto rounded-xl" src="user-testing-2.jpg"/>
+    </div>
+  </section>
+</section>
+
+<section>
+  # Content is Key
+
+  <section>
+    A dominant complaint about our designs was a lack of clarity in its content. With a month of experience in the problem space, our team likely had become so familiar with government terminology that we had not considered how confusing its use would be to our user base.
+
+    We partnered with a content designer to implement users' feedback as we iterated our designs from low to high fidelity:
+
+    <BeforeAndAfter title="Remove ambiguous language" src={["ambiguous-b.png", "ambiguous-a.png"]} />
+    <BeforeAndAfter title="Include next steps after errors" src={["include-b.png", "include-a.png"]} />
+    <BeforeAndAfter title="Describe complex terminology" src={["complex-b.png", "complex-a.png"]} />
+  </section>
+</section>
+
+<section>
+  # Optimizing for Mobile
+
+  <section>
+    Through testing, we also discovered a crucial oversight in our initial design approach. Our team had overlooked the limitations of phone screens while designing, focusing instead on complete wireframes. However, user feedback on smaller screens highlighted the need for revisions to ensure a seamless mobile user experience.
+
+    To rectify this issue, we implemented the following design changes:
+
+    <BeforeAndAfter title="Keep essentials above the fold" src={["starting-b.png", "starting-a.png"]} />
+    <BeforeAndAfter title="Surface helpful information first" src={["surface-b.png", "surface-a.png"]} />
+  </section>
+</section>
+
+<section>
+  # The Reimagined Experience
+
+  <section>
+    Here's some highlights of our reimagined renewal process. <AutoLink to="https://www.figma.com/proto/1Ow2TgwYiF9wWjoaaHUmXr/ServiceOntario-Renewals?chrome=DOCUMENTATION&embed_host=share&kind=&node-id=309-7205&scaling=scale-down&viewport=254%2C147%2C0.015625">View our interactive Figma prototype.</AutoLink>
+
+    <Grid>
+      <GridCell cols={8} isTitle srcArray={["final-start.png"]}>
+        ## No more waiting in line. Renew any card from anywhere with our unified renewal platform.
+      </GridCell>
+      <GridCell cols={4} srcArray={["final-requirements.png"]}>
+        **Requirements**
+
+        Simplified requirements let users know what they'll need on hand at a glance.
+      </GridCell>
+      <GridCell cols={4} srcArray={["final-choose.png"]}>
+        **Card selection**
+
+        No more hunting for the right renewal website for each of your cards. Choose which ones you want to renew, and we'll optimize the process for you.
+      </GridCell>
+      <GridCell cols={8} srcArray={["final-eligibility.png", "final-eligibility-continue.png"]}>
+        **Eligibility**
+
+          Get guided step-by-step to check that you're able to renew online. If you're unable to, we'll recommend a way to continue.
+      </GridCell>
+      <GridCell cols={12} srcArray={["final-card.png", "final-card-error-1.png", "final-card-error-2.png"]}>
+        **Card Input**
+
+        Enter your cards' information, with the aid of examples and hint images to help you locate them. Even if you forget something, we'll highlight how to fix it.
+      </GridCell>
+      <GridCell cols={4} srcArray={["final-reminders.png"]}>
+        **Reminders**
+
+        Want to be reminded when it's time to renew again? We'll email, text, or call you, whatever's convenient for you.
+      </GridCell>
+      <GridCell cols={4} srcArray={["final-review-edit.png"]}>
+        **Review**
+
+        Check that all of your information is correct. If you've made a mistake, you can edit it on the same page.
+      </GridCell>
+      <GridCell cols={4} srcArray={["final-success.png"]}>
+        **Success**
+
+        You've renewed your cards! We've emailed you with confirmation and next steps, so you can confidently continue with your day.
+      </GridCell>
+  </Grid>
+  </section>
+</section>
+
+<section>
+  # The Launch
+
+  <section>
+    (include link to prototype, what happened, and success metrics)
+  </section>
+
+  <section>
+    > "Jayden understands complex nuances quickly and thinks in a user-centric way.
+    > He is excellent at trying something, getting valuable input from real users,
+    > iterating, and documenting findings. Beyond great results, it's a pleasure to
+    > work and collaborate with him. He's a quick study and also a collaborative
+    > partner with subject matter experts."
+    >
+    > Ministry of Transportation product owner
+  </section>
+</section>
+
+<section>
+  # Learnings and Reflections
+
+  <section>
+    <NumberedList
+      data={[
+        {
+          title: 'Talk to users directly',
+          description:
+            "No matter how confident I felt in my assumptions about the problem space, that's all they were - assumptions. This project reinforced my belief in the importance of user feedback to ensure that our prototype met real-world expectations and needs.",
+        },
+        {
+          title: 'Be comfortable with being uncomfortable',
+          description:
+            'Despite my extroversion, I remember how uncomfortable I was during our first guerilla user testing session. However, once I approached that first stranger and successfully conducted an interview, I recognized the situation as an opportunity to learn. While it will be frightening, I hope to approach future situations with a similar eagerness to explore.',
+        },
+        {
+          title: 'Challenge my capabilities',
+          description:
+            'When our team was told that we had a week to create a prototype with Balsamiq, an application that I had never used before, I knew that I was up for a challenge. After experiencing rapid growth in my skillset as a result of this short time frame, I have recognized that learning thrives in difficulty.',
+        },
+      ]}
+    />
+  </section>
+
+  <section>
+    Working in the Ontario Digital Service Kitchener-Waterloo Lab was an unforgettable experience. Not only did projects such as this allow me to exponentially grow my skillset through exposure to unique, enterprise-level opportunities, but this small but mighty team of six taught me how to enjoy every second of it!
+
+    <Image src='the-team.jpg' />
+  </section>
+</section>
+
+

@@ -28,6 +28,7 @@ const AutoLink = ({ to, children, test, ...rest }) => {
 }
 
 const AnimatedA = styled.a`
+  color: var(--primary);
   background: linear-gradient(
       to right,
       rgba(100, 200, 200, 0),

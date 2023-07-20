@@ -15,6 +15,9 @@ import Quote from "./quote"
 import NumberedList from "./numbered-list"
 import SideBySide from "./side-by-side"
 import Table from "./table"
+import BeforeAndAfter from "./before-and-after"
+import Grid from "./grid"
+import GridCell from "./grid-cell"
 
 import { fadeIn } from "../../styles/animations"
 import { styled, css } from "styled-components"
@@ -31,7 +34,12 @@ export default function PostLayout({
 }) {
   return (
     <Layout>
-      <Image src={thumbnail} initial={{ scale: 1.05 }} animate={{ scale: 1 }} />
+      <Image
+        src={thumbnail}
+        initial={{ scale: 1.05 }}
+        animate={{ scale: 1 }}
+        shared
+      />
       <motion.div {...fadeIn}>
         <MDXProvider components={components}>
           <ContentWrapper color={color} className="content">
@@ -59,6 +67,7 @@ const ContentWrapper = styled.div`
   }
 
   ${({ color }) => css`
+    --primaryD: hsl(${color[0]}, ${color[1]}%, ${color[2] - 20}%);
     --primary: hsl(${color[0]}, ${color[1]}%, ${color[2]}%);
     --primaryL: hsl(${color[0]}, ${color[1]}%, ${color[2] + 20}%);
     --primaryLL: hsl(${color[0]}, ${color[1]}%, ${color[2] + 30}%);
@@ -76,6 +85,9 @@ const components = {
   SideBySide,
   NumberedList,
   Table,
+  BeforeAndAfter,
+  Grid,
+  GridCell,
 }
 
 export const Head = () => <Seo />
