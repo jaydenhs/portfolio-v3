@@ -1,8 +1,7 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
-import { graphql, useStaticQuery } from "gatsby"
-import { useMemo } from "react"
 import { motion } from "framer-motion"
+import GetImage from "../utils/get-image"
 
 export default function Image({
   src,
@@ -12,37 +11,7 @@ export default function Image({
   shared,
   ...rest
 }) {
-  const data = useStaticQuery(
-    graphql`
-      query getAllImages {
-        allFile(
-          filter: {
-            internal: { mediaType: { regex: "/image/" } }
-            extension: { ne: "ico" }
-          }
-        ) {
-          nodes {
-            relativePath
-            relativeDirectory
-            childImageSharp {
-              gatsbyImageData(placeholder: BLURRED)
-            }
-          }
-        }
-      }
-    `
-  )
-
-  const matchedImage = useMemo(
-    () =>
-      data.allFile.nodes.find(
-        ({ relativePath, relativeDirectory }) =>
-          `${relativeDirectory}/${src}` === relativePath
-      ),
-    [data, src]
-  )
-
-  const image = matchedImage?.childImageSharp?.gatsbyImageData
+  let image = GetImage({ src: src })
 
   return !!image ? (
     <motion.div

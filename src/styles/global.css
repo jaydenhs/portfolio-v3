@@ -94,7 +94,7 @@ figcaption {
 }
 
 .content > section {
-  @apply py-24 reading-grid;
+  @apply py-32 reading-grid;
 }
 
 .content > section > section {

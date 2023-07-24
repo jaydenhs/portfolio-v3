@@ -7,11 +7,13 @@ export default function GridCell({
   srcArray,
   children,
 }) {
-  let extraDivClass = isTitle ? "" : "flex-col justify-between p-8 pb-0"
+  let extraDivClass = isTitle
+    ? "items-center"
+    : "flex-col justify-between p-8 pb-0"
 
   return (
     <div
-      className={`col-span-1 md:col-span-${cols} flex items-center bg-gray-200 rounded-3xl ${extraDivClass}`}
+      className={`col-span-1 md:col-span-${cols} flex bg-gray-200 rounded-3xl ${extraDivClass}`}
     >
       <div
         style={{ color: `${isTitle ? "var(--primaryD)" : ""}` }}

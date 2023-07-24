@@ -18,6 +18,7 @@ import Table from "./table"
 import BeforeAndAfter from "./before-and-after"
 import Grid from "./grid"
 import GridCell from "./grid-cell"
+import GridCellDesktop from "./grid-cell-desktop"
 import Metrics from "./metrics"
 
 import { fadeIn } from "../../styles/animations"
@@ -89,6 +90,7 @@ const components = {
   BeforeAndAfter,
   Grid,
   GridCell,
+  GridCellDesktop,
   Metrics,
 }
 

@@ -29,15 +29,13 @@ color: [35, 100, 50]
   # Context
 
   <section>
-    SmartTrack was StructionSite's product which intelligently tracked construction work. Setting up customers for a SmartTrack pilot was manually done, and the project setup took the bulk of the time, often taking two weeks
-    or more.
+    SmartTrack was StructionSite's product which intelligently tracked construction work. For customers to pilot SmartTrack, their construction plan needed to be digitally replicated on our platform.
 
-    The process was composed of two steps:
-    1. Draw vectors in SmartTrack that match the customer's existing files
-    2. Assign those vectors properties based on the customer's requirements
+    The replication process was composed of two steps:
+    1. Draw shapes in SmartTrack that match the customer's existing files
+    2. Assign those shapes properties based on the customer's requirements
 
     <Video className="wide pt-4" src="structionsite/images/current-setup-process.webm" maxWidth={1440} />
-
   </section>
 </section>
 
@@ -45,11 +43,7 @@ color: [35, 100, 50]
   # The Challenge
 
   <section>
-    With customer files containing thousands of vectors, this painfully manual
-    process was wasting **hundreds of our internal team's valuable hours**. This
-    delay resulted in trial customers failing to see the value of SmartTrack,
-    leading to **high average customer acquisition cost and poor customer
-    experience**.
+    With customer files containing thousands of shapes, this process spanned multiple weeks and cost tens of thousands of dollars in external contractors. This delay resulted in trial customers failing to see the value of SmartTrack, leading to high average customer acquisition cost and poor customer experience.
   </section>
 </section>
 
@@ -152,20 +146,10 @@ color: [35, 100, 50]
 </section>
 
 <section>
-  # Presenting the Concept
-
-  <section>
-    To communicate this user flow, I created a simple set of designs:
-
-    <Image divClassName="wide" src='import-initial-mockups.png' />
-  </section>
-</section>
-
-<section>
   # Refining for Production
 
   <section>
-    After incorporating feedback from our weekly product and design team meeting,
+    After iterating on design explorations based on weekly product and design team meeting feedback,
     the project was **green-lit for production** and I was provided with one
     engineer to pair with for a week.
 
@@ -180,6 +164,39 @@ color: [35, 100, 50]
 </section>
 
 <section>
+  # The Final Design
+
+  <section>
+    <Grid>
+      <GridCellDesktop isTitle srcArray={["final-completion.png"]} pt={12}>
+        ## No more manual replication of customer projects. 
+        ## Import them perfectly in seconds.
+      </GridCellDesktop>
+      <GridCellDesktop srcArray={["final-start-import.png"]}>
+        **Start**
+
+        Begin the import process by clicking "Import QTO" (QTO being quantity-takeoff, the industry term for the customer file).
+      </GridCellDesktop>
+      <GridCellDesktop srcArray={["final-skeleton.png"]}>
+        **File selection**
+
+        Select the customer file on your computer, and we'll smoothly load its contents. We've used a modal because you need to complete the import before doing anything else, but you can cancel the process at any time.
+      </GridCellDesktop>
+      <GridCellDesktop srcArray={["final-bid-page.png"]} pb={8}>
+        **Page selection**
+
+        After the file loads, search for and select the page you want to import the contents of.
+      </GridCellDesktop>
+      <GridCellDesktop srcArray={["final-completion.png"]}>
+        **Import complete**
+
+        As easy as that, you've imported a perfect replica of the customer file in SmartTrack, automatically selected for positioning. We've provided a confirmation to let you know _just_ how much time you saved!
+      </GridCellDesktop>
+    </Grid>
+  </section>
+</section>
+
+<section>
   # The Big Reveal
 
   <section>
@@ -188,13 +205,15 @@ color: [35, 100, 50]
     concept. They were very, very excited.
 
     <Video className="wide" src='structionsite/images/adam-and-james-reaction.webm' maxWidth={1440} />
-  
+  </section>
+  <section>
     > This is probably the single **most functionally developed feature** that I've
     > seen in my time here that will fundamentally change how we do SmartTrack. This
     > is pretty freakin' cool. Just drop out of school and stay here man!
     >
     > \- SmartTrack's solution engineer
-
+  </section>
+  <section>
     Their reaction was so positive that I later presented at StructionSite's
     All-Hands meeting, to even louder acclamation.
 
@@ -203,15 +222,24 @@ color: [35, 100, 50]
 </section>
 
 <section>
-  # Success!
+  # The Launch
 
   <section>
-    The import feature exceeded my original goals. It reduced setup time from days
-    to mere seconds. By aligning with existing industry standards, it enabled
-    perfect accuracy. It did not simply reduce frustration, but now users were
-    excited to set up projects.
+    After some additional bug testing, we launched the import feature. 
+    
+    The import feature exceeded my original goals. It reduced setup time from days to mere seconds. By aligning with existing industry standards, it enabled perfect accuracy. It did not simply reduce frustration, but now users were excited to set up projects.
 
     <Image divClassName="wide" src='success-adam-and-joey.png' maxWidth={1440} />
+  </section>
+
+  <section>
+    <Metrics disclaimer>
+      Time to pilot setup completion decreased by 88%
+
+      Customer acquisition cost decreased by $50,000/year
+
+      Post-setup corrections decreased by 27%
+    </Metrics>
   </section>
 </section>
 
