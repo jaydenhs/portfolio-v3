@@ -4,3 +4,9 @@ export const fadeIn = {
   exit: { opacity: 0, y: 8, transition: { delay: 0 } },
   transition: { delay: 0.5 },
 }
+
+export const fadeInCard = {
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: 8, transition: { delay: 0 } },
+  transition: { delay: 0.5 },
+}

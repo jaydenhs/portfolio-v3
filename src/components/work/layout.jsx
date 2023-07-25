@@ -53,7 +53,7 @@ export default function PostLayout({
         <motion.p {...fadeIn} className="wide">
           Next project
         </motion.p>
-        <WorkCard frontmatter={next.frontmatter} flipped clipped />
+        <WorkCard frontmatter={next.frontmatter} flipped clipped isNextCard />
       </div>
     </Layout>
   )

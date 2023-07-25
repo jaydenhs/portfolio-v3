@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, { useState, useEffect } from "react"
 
 import Layout from "../components/app"
 import Seo from "../components/seo"
@@ -7,12 +7,23 @@ import Hero from "../components/home/hero"
 import WorkCard from "../components/home/work-card"
 
 const IndexPage = ({ data }) => {
+  const [clickedSlug, setClickedSlug] = useState(null)
+  const handleClick = slug => {
+    setClickedSlug(slug)
+  }
+
   return (
     <Layout>
       <Hero />
       <div className="reading-grid space-y-24 mb-24">
         {data.allMdx.nodes.map(({ frontmatter }) => {
-          return <WorkCard frontmatter={frontmatter} />
+          return (
+            <WorkCard
+              frontmatter={frontmatter}
+              onClick={handleClick}
+              isClicked={clickedSlug === frontmatter.slug}
+            />
+          )
         })}
       </div>
     </Layout>

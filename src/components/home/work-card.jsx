@@ -1,14 +1,16 @@
 import React from "react"
 import AutoLink from "../auto-link"
-import { Link } from "gatsby"
 import { motion } from "framer-motion"
 import Image from "../image"
-import { fadeIn } from "../../styles/animations"
+import { fadeIn, fadeInCard } from "../../styles/animations"
 
 export default function WorkCard({
   frontmatter: { thumbnail, company, title, description, slug },
   flipped,
   clipped,
+  onClick,
+  isClicked = false,
+  isNextCard = false,
 }) {
   const flippedClass = flipped ? "flex-col-reverse" : "flex-col"
 
@@ -16,11 +18,15 @@ export default function WorkCard({
     <motion.div
       className="wide flex items-center"
       style={{ marginBottom: clipped ? "-10%" : "" }}
+      onClick={() => {
+        onClick && onClick(slug)
+      }}
     >
       <AutoLink to={slug} className={`w-full flex ${flippedClass}`}>
         <Image
           src={thumbnail}
           divClassName="rounded-3xl"
+          {...(!(isClicked || isNextCard) && fadeInCard)}
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }}
           shared
