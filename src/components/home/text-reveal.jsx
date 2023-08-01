@@ -9,7 +9,7 @@ import tw from "twin.macro"
 export default function TextReveal() {
   return (
     <TextContainer>
-      <TextLoop interval={6000}>
+      <TextLoop interval={4000}>
         <h1>product designer</h1>
         <h1>front-end developer</h1>
         <h1>concert pianist</h1>

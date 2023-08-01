@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { fadeIn } from "../../styles/animations"
 
 import { Canvas } from "react-three-fiber"
-import { Model } from "./model"
+import JaydenModel from "./jayden-model"
 import TextReveal from "./text-reveal"
 
 import { OrbitControls } from "@react-three/drei"
@@ -32,7 +32,7 @@ export default function Hero() {
             intensity={0.5}
           />
           <Suspense fallback={null}>
-            <Model />
+            <JaydenModel />
           </Suspense>
         </Canvas>
       </div>

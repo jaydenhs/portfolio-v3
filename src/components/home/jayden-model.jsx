@@ -5,11 +5,11 @@ Command: npx gltfjsx@6.2.10 jayden-animated.gltf
 
 import React, { useRef, useEffect, useState } from "react"
 import { useGLTF, useAnimations } from "@react-three/drei"
+import Scene from "./scene"
 
-export function Model(props) {
+export default function JaydenModel({ animationsArray }) {
+  const [activeScene, setActiveScene] = useState("talking")
   const group = useRef()
-  const talkingScene = useRef()
-  const typingScene = useRef()
 
   const { nodes, materials, animations } = useGLTF(
     "/models/jayden-animated-3.gltf"
@@ -21,16 +21,9 @@ export function Model(props) {
 
   useEffect(() => {
     actions[animationOrder[animationIndex]].reset().fadeIn(0.5).play()
-    if (animationIndex === 0) {
-      talkingScene.current.position.y = 0
-      typingScene.current.position.y = -5
-    }
-    if (animationIndex === 1) {
-      talkingScene.current.position.y = -5
-      typingScene.current.position.y = 0
-    }
+    setActiveScene(animationOrder[animationIndex])
     return () => {
-      actions[animationOrder[animationIndex]].fadeOut(0.5)
+      actions[animationOrder[animationIndex]]?.fadeOut(0.5)
     }
   }, [animationIndex])
 
@@ -45,14 +38,14 @@ export function Model(props) {
 
   // Effect to trigger the increment every second
   useEffect(() => {
-    const intervalId = setInterval(incrementCount, 6000)
+    const intervalId = setInterval(incrementCount, 4000)
 
     // Cleanup function to clear the interval when the component unmounts
     return () => clearInterval(intervalId)
   }, [animationIndex]) // Only re-run the effect if the count changes
 
   return (
-    <group ref={group} {...props} position={[1, -1.2, 0]} dispose={null}>
+    <group ref={group} position={[1, -1.2, 0]} dispose={null}>
       <group name="Scene">
         <group name="base">
           <primitive object={nodes.mixamorigHips} />
@@ -207,7 +200,7 @@ export function Model(props) {
           <group name="cs_thigh_fk" position={[0.5, 7.5, 0]} scale={0.822} />
           <group name="cs_toe" position={[0.5, 9.5, 0]} scale={0.429} />
         </group>
-        <group name="talking" ref={talkingScene}>
+        <Scene activeScene={activeScene} name="talking">
           <mesh
             name="Cube003"
             geometry={nodes.Cube003.geometry}
@@ -222,8 +215,8 @@ export function Model(props) {
             position={[0.419, 1.256, 1.924]}
             scale={[0.503, 0.529, 0.059]}
           />
-        </group>
-        <group name="typing" ref={typingScene}>
+        </Scene>
+        <Scene activeScene={activeScene} name="typing">
           <mesh
             name="Cube"
             geometry={nodes.Cube.geometry}
@@ -252,7 +245,7 @@ export function Model(props) {
             position={[0, 0.175, 0]}
             scale={[0.404, 0.175, 0.404]}
           />
-        </group>
+        </Scene>
         <mesh position-y={0} rotation-x={-Math.PI * 0.5} scale={10}>
           <planeGeometry />
           <meshBasicMaterial toneMapped={false} color="white" />
