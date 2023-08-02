@@ -12,15 +12,15 @@ import Loading from "./src/components/home/loading"
 
 export const wrapPageElement = ({ props, element }) => {
   // Only show the LoadingScreen on the index page
-  if (props.location.pathname === "/") {
-    return (
-      <Loading>
-        <AnimatePresence mode="wait" initial={false}>
-          {element}
-        </AnimatePresence>
-      </Loading>
-    )
-  }
+  // if (props.location.pathname === "/") {
+  //   return (
+  //     <Loading>
+  //       <AnimatePresence mode="wait" initial={false}>
+  //         {element}
+  //       </AnimatePresence>
+  //     </Loading>
+  //   )
+  // }
 
   return (
     <AnimatePresence mode="wait" initial={false}>
