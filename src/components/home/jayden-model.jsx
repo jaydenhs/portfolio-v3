@@ -6,14 +6,13 @@ Command: npx gltfjsx@6.2.10 jayden-animated.gltf
 import React, { useRef, useEffect, useState } from "react"
 import { useGLTF, useAnimations } from "@react-three/drei"
 import Scene from "./scene"
+import modelPath from "../../models/jayden-animated-3.gltf"
 
 export default function JaydenModel({ animationsArray }) {
   const [activeScene, setActiveScene] = useState("talking")
   const group = useRef()
 
-  const { nodes, materials, animations } = useGLTF(
-    "../../models/jayden-animated-3.gltf"
-  )
+  const { nodes, materials, animations } = useGLTF(modelPath)
 
   // const { actions } = useAnimations(animations, group)
 
