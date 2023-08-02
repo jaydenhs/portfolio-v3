@@ -14,35 +14,35 @@ export default function JaydenModel({ animationsArray }) {
   const { nodes, materials, animations } = useGLTF(
     "/models/jayden-animated-3.gltf"
   )
-  const { actions } = useAnimations(animations, group)
+  // const { actions } = useAnimations(animations, group)
 
-  const animationOrder = ["talking", "typing"]
-  const [animationIndex, setAnimationIndex] = useState(0)
+  // const animationOrder = ["talking", "typing"]
+  // const [animationIndex, setAnimationIndex] = useState(0)
 
-  useEffect(() => {
-    actions[animationOrder[animationIndex]].reset().fadeIn(0.5).play()
-    setActiveScene(animationOrder[animationIndex])
-    return () => {
-      actions[animationOrder[animationIndex]]?.fadeOut(0.5)
-    }
-  }, [animationIndex])
+  // useEffect(() => {
+  //   actions[animationOrder[animationIndex]].reset().fadeIn(0.5).play()
+  //   setActiveScene(animationOrder[animationIndex])
+  //   return () => {
+  //     actions[animationOrder[animationIndex]]?.fadeOut(0.5)
+  //   }
+  // }, [animationIndex])
 
-  // Function to increment the count
-  const incrementCount = () => {
-    if (animationIndex == animationOrder.length - 1) {
-      setAnimationIndex(0)
-    } else {
-      setAnimationIndex(animationIndex + 1)
-    }
-  }
+  // // Function to increment the count
+  // const incrementCount = () => {
+  //   if (animationIndex == animationOrder.length - 1) {
+  //     setAnimationIndex(0)
+  //   } else {
+  //     setAnimationIndex(animationIndex + 1)
+  //   }
+  // }
 
-  // Effect to trigger the increment every second
-  useEffect(() => {
-    const intervalId = setInterval(incrementCount, 4000)
+  // // Effect to trigger the increment every second
+  // useEffect(() => {
+  //   const intervalId = setInterval(incrementCount, 4000)
 
-    // Cleanup function to clear the interval when the component unmounts
-    return () => clearInterval(intervalId)
-  }, [animationIndex]) // Only re-run the effect if the count changes
+  //   // Cleanup function to clear the interval when the component unmounts
+  //   return () => clearInterval(intervalId)
+  // }, [animationIndex]) // Only re-run the effect if the count changes
 
   return (
     <group ref={group} position={[1, -1.2, 0]} dispose={null}>
@@ -200,7 +200,7 @@ export default function JaydenModel({ animationsArray }) {
           <group name="cs_thigh_fk" position={[0.5, 7.5, 0]} scale={0.822} />
           <group name="cs_toe" position={[0.5, 9.5, 0]} scale={0.429} />
         </group>
-        <Scene activeScene={activeScene} name="talking">
+        {/* <Scene activeScene={activeScene} name="talking">
           <mesh
             name="Cube003"
             geometry={nodes.Cube003.geometry}
@@ -249,7 +249,7 @@ export default function JaydenModel({ animationsArray }) {
         <mesh position-y={0} rotation-x={-Math.PI * 0.5} scale={10}>
           <planeGeometry />
           <meshBasicMaterial toneMapped={false} color="white" />
-        </mesh>
+        </mesh> */}
       </group>
     </group>
   )
