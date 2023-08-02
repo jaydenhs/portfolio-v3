@@ -12,8 +12,9 @@ export default function JaydenModel({ animationsArray }) {
   const group = useRef()
 
   const { nodes, materials, animations } = useGLTF(
-    "/models/jayden-animated-3.gltf"
+    "../../models/jayden-animated-3.gltf"
   )
+
   // const { actions } = useAnimations(animations, group)
 
   // const animationOrder = ["talking", "typing"]
@@ -255,4 +256,4 @@ export default function JaydenModel({ animationsArray }) {
   )
 }
 
-useGLTF.preload("/models/jayden-animated-3.gltf")
+useGLTF.preload("../../models/jayden-animated-3.gltf")
