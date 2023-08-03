@@ -6,7 +6,7 @@ Command: npx gltfjsx@6.2.10 jayden-animated.gltf
 import React, { useRef, useEffect, useState } from "react"
 import { useGLTF, useAnimations } from "@react-three/drei"
 import Scene from "./scene"
-import modelPath from "../../models/jayden-animated-3.gltf"
+import modelPath from "../../models/jayden-animated-4.glb"
 
 export default function JaydenModel({ animationsArray }) {
   const [activeScene, setActiveScene] = useState("talking")
@@ -16,11 +16,11 @@ export default function JaydenModel({ animationsArray }) {
 
   const { actions } = useAnimations(animations, group)
 
-  const animationOrder = ["talking", "typing"]
+  const animationOrder = ["talking", "typing", "waving"]
   const [animationIndex, setAnimationIndex] = useState(0)
 
   useEffect(() => {
-    actions[animationOrder[animationIndex]].reset().fadeIn(0.5).play()
+    actions[animationOrder[animationIndex]]?.reset().fadeIn(0.5).play()
     setActiveScene(animationOrder[animationIndex])
     return () => {
       actions[animationOrder[animationIndex]]?.fadeOut(0.5)
@@ -47,90 +47,6 @@ export default function JaydenModel({ animationsArray }) {
   return (
     <group ref={group} position={[1, -1.2, 0]} dispose={null}>
       <group name="Scene">
-        <group name="base">
-          <primitive object={nodes.mixamorigHips} />
-          <primitive object={nodes.Ctrl_Master} />
-          <primitive object={nodes.Ctrl_ArmPole_IK_Left} />
-          <primitive object={nodes.Ctrl_Hand_IK_Left} />
-          <primitive object={nodes.Ctrl_ArmPole_IK_Right} />
-          <primitive object={nodes.Ctrl_Hand_IK_Right} />
-          <primitive object={nodes.Ctrl_Foot_IK_Left} />
-          <primitive object={nodes.Ctrl_LegPole_IK_Left} />
-          <primitive object={nodes.Ctrl_Foot_IK_Right} />
-          <primitive object={nodes.Ctrl_LegPole_IK_Right} />
-          <skinnedMesh
-            name="Body"
-            geometry={nodes.Body.geometry}
-            material={materials.Skin}
-            skeleton={nodes.Body.skeleton}
-          />
-          <skinnedMesh
-            name="Eyes"
-            geometry={nodes.Eyes.geometry}
-            material={materials.Eyes}
-            skeleton={nodes.Eyes.skeleton}
-          />
-          <skinnedMesh
-            name="Glasses"
-            geometry={nodes.Glasses.geometry}
-            material={materials.Glasses}
-            skeleton={nodes.Glasses.skeleton}
-          />
-          <skinnedMesh
-            name="Hair"
-            geometry={nodes.Hair.geometry}
-            material={materials.Hair}
-            skeleton={nodes.Hair.skeleton}
-          />
-          <skinnedMesh
-            name="Hands"
-            geometry={nodes.Hands.geometry}
-            material={materials.Skin}
-            skeleton={nodes.Hands.skeleton}
-          />
-          <skinnedMesh
-            name="Hands001"
-            geometry={nodes.Hands001.geometry}
-            material={materials.Skin}
-            skeleton={nodes.Hands001.skeleton}
-          />
-          <skinnedMesh
-            name="Head"
-            geometry={nodes.Head.geometry}
-            material={materials.Skin}
-            skeleton={nodes.Head.skeleton}
-          />
-          <skinnedMesh
-            name="Pants"
-            geometry={nodes.Pants.geometry}
-            material={materials["Material.001"]}
-            skeleton={nodes.Pants.skeleton}
-          />
-          <skinnedMesh
-            name="Shoelaces"
-            geometry={nodes.Shoelaces.geometry}
-            material={materials.Laces}
-            skeleton={nodes.Shoelaces.skeleton}
-          />
-          <skinnedMesh
-            name="Shoes"
-            geometry={nodes.Shoes.geometry}
-            material={materials["Shoe Body"]}
-            skeleton={nodes.Shoes.skeleton}
-          />
-          <skinnedMesh
-            name="Sweater"
-            geometry={nodes.Sweater.geometry}
-            material={materials.Sweater}
-            skeleton={nodes.Sweater.skeleton}
-          />
-          <skinnedMesh
-            name="Sweater001"
-            geometry={nodes.Sweater001.geometry}
-            material={materials["Sweater Logo"]}
-            skeleton={nodes.Sweater001.skeleton}
-          />
-        </group>
         <group name="cs_grp">
           <group name="cs_arm_fk" position={[1.5, 8.5, 0]} scale={0.822} />
           <group name="cs_calf_fk" position={[0.5, 8.5, 0]} scale={0.822} />
@@ -200,7 +116,116 @@ export default function JaydenModel({ animationsArray }) {
           <group name="cs_thigh_fk" position={[0.5, 7.5, 0]} scale={0.822} />
           <group name="cs_toe" position={[0.5, 9.5, 0]} scale={0.429} />
         </group>
-        <Scene activeScene={activeScene} name="talking">
+        <group
+          name="Waving"
+          position={[-6.744, 0, 0]}
+          rotation={[Math.PI / 2, 0, 0]}
+          scale={0.01}
+        >
+          <primitive object={nodes.mixamorigHips} />
+        </group>
+        <group
+          name="Talking"
+          position={[-5.375, 0, 0]}
+          rotation={[Math.PI / 2, 0, 0]}
+          scale={0.01}
+        >
+          <primitive object={nodes.mixamorigHips_1} />
+        </group>
+        <group
+          name="Typing"
+          position={[-3.635, 0, 0]}
+          rotation={[Math.PI / 2, 0, 0]}
+          scale={0.01}
+        >
+          <primitive object={nodes.mixamorigHips_2} />
+        </group>
+        <group name="Armature">
+          <primitive object={nodes.mixamorigHips_3} />
+          <primitive object={nodes.Ctrl_Master} />
+          <primitive object={nodes.Ctrl_ArmPole_IK_Left} />
+          <primitive object={nodes.Ctrl_Hand_IK_Left} />
+          <primitive object={nodes.Ctrl_ArmPole_IK_Right} />
+          <primitive object={nodes.Ctrl_Hand_IK_Right} />
+          <primitive object={nodes.Ctrl_Foot_IK_Left} />
+          <primitive object={nodes.Ctrl_LegPole_IK_Left} />
+          <primitive object={nodes.Ctrl_Foot_IK_Right} />
+          <primitive object={nodes.Ctrl_LegPole_IK_Right} />
+          <skinnedMesh
+            name="Ears"
+            geometry={nodes.Ears.geometry}
+            material={materials["Skin.001"]}
+            skeleton={nodes.Ears.skeleton}
+          />
+          <skinnedMesh
+            name="Eyes"
+            geometry={nodes.Eyes.geometry}
+            material={materials["Eyes.001"]}
+            skeleton={nodes.Eyes.skeleton}
+          />
+          <skinnedMesh
+            name="Glasses"
+            geometry={nodes.Glasses.geometry}
+            material={materials["Glasses.001"]}
+            skeleton={nodes.Glasses.skeleton}
+          />
+          <skinnedMesh
+            name="Hair"
+            geometry={nodes.Hair.geometry}
+            material={materials["Hair.001"]}
+            skeleton={nodes.Hair.skeleton}
+          />
+          <skinnedMesh
+            name="Hands"
+            geometry={nodes.Hands.geometry}
+            material={materials["Skin.001"]}
+            skeleton={nodes.Hands.skeleton}
+          />
+          <skinnedMesh
+            name="Head"
+            geometry={nodes.Head.geometry}
+            material={materials["Skin.001"]}
+            skeleton={nodes.Head.skeleton}
+          />
+          <skinnedMesh
+            name="Pants"
+            geometry={nodes.Pants.geometry}
+            material={materials["Material.002"]}
+            skeleton={nodes.Pants.skeleton}
+          />
+          <skinnedMesh
+            name="Shoelaces"
+            geometry={nodes.Shoelaces.geometry}
+            material={materials["Laces.001"]}
+            skeleton={nodes.Shoelaces.skeleton}
+          />
+          <skinnedMesh
+            name="Shoes"
+            geometry={nodes.Shoes.geometry}
+            material={materials["Shoe Body.001"]}
+            skeleton={nodes.Shoes.skeleton}
+          />
+          <skinnedMesh
+            name="Sweater"
+            geometry={nodes.Sweater.geometry}
+            material={materials["Sweater.001"]}
+            skeleton={nodes.Sweater.skeleton}
+          />
+          <skinnedMesh
+            name="Sweater001"
+            geometry={nodes.Sweater001.geometry}
+            material={materials["Sweater Logo.001"]}
+            skeleton={nodes.Sweater001.skeleton}
+          />
+        </group>
+        {/* <mesh
+          name="Body"
+          geometry={nodes.Body.geometry}
+          material={materials.Sweater}
+          position={[0, 1.321, 0]}
+          scale={0.427}
+        /> */}
+        {/* <Scene activeScene={activeScene} name="talking">
           <mesh
             name="Cube003"
             geometry={nodes.Cube003.geometry}
@@ -245,7 +270,7 @@ export default function JaydenModel({ animationsArray }) {
             position={[0, 0.175, 0]}
             scale={[0.404, 0.175, 0.404]}
           />
-        </Scene>
+        </Scene> */}
         <mesh position-y={0} rotation-x={-Math.PI * 0.5} scale={10}>
           <planeGeometry />
           <meshBasicMaterial toneMapped={false} color="white" />
@@ -255,4 +280,4 @@ export default function JaydenModel({ animationsArray }) {
   )
 }
 
-useGLTF.preload("../../models/jayden-animated-3.gltf")
+useGLTF.preload(modelPath)
