@@ -6,7 +6,7 @@ Command: npx gltfjsx@6.2.10 jayden-animated.gltf
 import React, { useRef, useEffect, useState } from "react"
 import { useGLTF, useAnimations } from "@react-three/drei"
 import Scene from "./scene"
-import modelPath from "../../models/jayden-animated-4.glb"
+import modelPath from "../../models/jayden-animated-5.glb"
 
 export default function JaydenModel({ animationsArray }) {
   const [activeScene, setActiveScene] = useState("talking")
@@ -16,7 +16,7 @@ export default function JaydenModel({ animationsArray }) {
 
   const { actions } = useAnimations(animations, group)
 
-  const animationOrder = ["talking", "typing", "waving"]
+  const animationOrder = ["talking", "typing", "walking", "playing piano"]
   const [animationIndex, setAnimationIndex] = useState(0)
 
   useEffect(() => {

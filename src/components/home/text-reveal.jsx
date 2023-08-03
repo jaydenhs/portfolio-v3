@@ -8,8 +8,8 @@ import { motion } from "framer-motion"
 const words = [
   "product designer",
   "front-end developer",
-  "concert pianist",
   "world traveller",
+  "concert pianist",
 ]
 
 // look into individual letter reveal https://codepen.io/bekahmcdonald/pen/vYBXMOZ
