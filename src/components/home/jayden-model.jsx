@@ -6,7 +6,8 @@ Command: npx gltfjsx@6.2.10 jayden-animated.gltf
 import React, { useRef, useEffect, useState } from "react"
 import { useGLTF, useAnimations } from "@react-three/drei"
 import Scene from "./scene"
-import modelPath from "../../models/jayden-animated-5.glb"
+import { useFrame } from "react-three-fiber"
+import modelPath from "../../models/jayden-animated-6.gltf"
 
 export default function JaydenModel({ animationsArray }) {
   const [activeScene, setActiveScene] = useState("talking")
@@ -15,6 +16,7 @@ export default function JaydenModel({ animationsArray }) {
   const { nodes, materials, animations } = useGLTF(modelPath)
 
   const { actions } = useAnimations(animations, group)
+  console.log({ actions })
 
   const animationOrder = ["talking", "typing", "walking", "playing piano"]
   const [animationIndex, setAnimationIndex] = useState(0)
@@ -44,105 +46,34 @@ export default function JaydenModel({ animationsArray }) {
     return () => clearInterval(intervalId)
   }, [animationIndex]) // Only re-run the effect if the count changes
 
+  useEffect(() => {
+    actions["earth rotating"]?.play()
+  }, [])
+
+  const planeRef = useRef()
+  const [positionY, setPositionY] = useState(0)
+
+  // Function to smoothly animate the cube's position from y = -4 to y = 0
+  const animatePositionY = () => {
+    if (positionY > -0.5 && activeScene === "walking") {
+      setPositionY(prevY => Math.min(prevY - 0.02, 0))
+    }
+    if (positionY < 0 && activeScene !== "walking") {
+      setPositionY(prevY => Math.min(prevY + 0.02, 0))
+    }
+  }
+
+  // Use the useFrame hook to update the cube's position on each frame
+  useFrame(() => {
+    animatePositionY()
+    planeRef.current.position.y = positionY
+  })
+
   return (
     <group ref={group} position={[1, -1.2, 0]} dispose={null}>
       <group name="Scene">
-        <group name="cs_grp">
-          <group name="cs_arm_fk" position={[1.5, 8.5, 0]} scale={0.822} />
-          <group name="cs_calf_fk" position={[0.5, 8.5, 0]} scale={0.822} />
-          <group name="cs_circle" position={[0.5, 4.5, 0]} scale={0.206} />
-          <group
-            name="cs_foot"
-            position={[0.5, 10.5, 0]}
-            rotation={[-Math.PI, 0, 0]}
-            scale={0.308}
-          />
-          <group
-            name="cs_foot001"
-            position={[0.5, 10.5, 0]}
-            rotation={[-Math.PI, 0, 0]}
-            scale={0.308}
-          />
-          <group
-            name="cs_foot002"
-            position={[0.5, 10.5, 0]}
-            rotation={[-Math.PI, 0, 0]}
-            scale={0.308}
-          />
-          <group
-            name="cs_foot_01"
-            position={[0.5, 18.5, 0]}
-            rotation={[0, Math.PI / 2, 0]}
-            scale={2.186}
-          />
-          <group name="cs_foot_roll" position={[0.5, 12.5, 0]} scale={0.592} />
-          <group name="cs_forearm_fk" position={[2.5, 8.5, 0]} scale={0.822} />
-          <group
-            name="cs_hand"
-            position={[0.5, 19.5, 0]}
-            rotation={[-Math.PI, 0, 0]}
-            scale={0.308}
-          />
-          <group name="cs_head" position={[0.5, 13.5, 0]} scale={0.206} />
-          <group name="cs_hips" position={[0.5, 11.5, 0]} scale={0.206} />
-          <group name="cs_master" position={[0.5, 17.5, 0]} scale={0.1} />
-          <group name="cs_neck" position={[0.5, 14.5, 0]} scale={0.206} />
-          <group
-            name="cs_shoulder_left"
-            position={[0.5, 15.5, 0]}
-            rotation={[-Math.PI, -Math.PI / 2, 0]}
-            scale={1.038}
-          />
-          <group
-            name="cs_shoulder_right"
-            position={[0.5, 16.5, 0]}
-            rotation={[-Math.PI, -Math.PI / 2, 0]}
-            scale={1.038}
-          />
-          <group name="cs_sphere" position={[0.5, 2.5, 0]} scale={0.206} />
-          <group name="cs_sphere_012" position={[3.5, 2.5, 0]} scale={0.206} />
-          <group
-            name="cs_square"
-            position={[1.5, 1.497, 0]}
-            rotation={[-Math.PI, 0, 0]}
-            scale={0.154}
-          />
-          <group
-            name="cs_square_2"
-            position={[0.5, 1.497, 0]}
-            rotation={[-Math.PI, 0, 0]}
-            scale={0.154}
-          />
-          <group name="cs_thigh_fk" position={[0.5, 7.5, 0]} scale={0.822} />
-          <group name="cs_toe" position={[0.5, 9.5, 0]} scale={0.429} />
-        </group>
-        <group
-          name="Waving"
-          position={[-6.744, 0, 0]}
-          rotation={[Math.PI / 2, 0, 0]}
-          scale={0.01}
-        >
-          <primitive object={nodes.mixamorigHips} />
-        </group>
-        <group
-          name="Talking"
-          position={[-5.375, 0, 0]}
-          rotation={[Math.PI / 2, 0, 0]}
-          scale={0.01}
-        >
-          <primitive object={nodes.mixamorigHips_1} />
-        </group>
-        <group
-          name="Typing"
-          position={[-3.635, 0, 0]}
-          rotation={[Math.PI / 2, 0, 0]}
-          scale={0.01}
-        >
-          <primitive object={nodes.mixamorigHips_2} />
-        </group>
         <group name="Armature">
-          <primitive object={nodes.mixamorigHips_3} />
-          <primitive object={nodes.Ctrl_Master} />
+          <primitive object={nodes.mixamorigHips} />
           <primitive object={nodes.Ctrl_ArmPole_IK_Left} />
           <primitive object={nodes.Ctrl_Hand_IK_Left} />
           <primitive object={nodes.Ctrl_ArmPole_IK_Right} />
@@ -151,6 +82,7 @@ export default function JaydenModel({ animationsArray }) {
           <primitive object={nodes.Ctrl_LegPole_IK_Left} />
           <primitive object={nodes.Ctrl_Foot_IK_Right} />
           <primitive object={nodes.Ctrl_LegPole_IK_Right} />
+          <primitive object={nodes.Ctrl_Master} />
           <skinnedMesh
             name="Ears"
             geometry={nodes.Ears.geometry}
@@ -188,6 +120,12 @@ export default function JaydenModel({ animationsArray }) {
             skeleton={nodes.Head.skeleton}
           />
           <skinnedMesh
+            name="Logo"
+            geometry={nodes.Logo.geometry}
+            material={materials["Sweater Logo.001"]}
+            skeleton={nodes.Logo.skeleton}
+          />
+          <skinnedMesh
             name="Pants"
             geometry={nodes.Pants.geometry}
             material={materials["Material.002"]}
@@ -211,67 +149,374 @@ export default function JaydenModel({ animationsArray }) {
             material={materials["Sweater.001"]}
             skeleton={nodes.Sweater.skeleton}
           />
-          <skinnedMesh
-            name="Sweater001"
-            geometry={nodes.Sweater001.geometry}
-            material={materials["Sweater Logo.001"]}
-            skeleton={nodes.Sweater001.skeleton}
-          />
         </group>
-        {/* <mesh
-          name="Body"
-          geometry={nodes.Body.geometry}
-          material={materials.Sweater}
-          position={[0, 1.321, 0]}
-          scale={0.427}
-        /> */}
-        {/* <Scene activeScene={activeScene} name="talking">
-          <mesh
-            name="Cube003"
-            geometry={nodes.Cube003.geometry}
-            material={nodes.Cube003.material}
-            position={[-0.982, 2.415, 1.924]}
-            scale={[0.731, 0.769, 0.059]}
-          />
-          <mesh
-            name="Cube004"
-            geometry={nodes.Cube004.geometry}
-            material={nodes.Cube004.material}
-            position={[0.419, 1.256, 1.924]}
-            scale={[0.503, 0.529, 0.059]}
-          />
+        <Scene activeScene={activeScene} name="playing piano">
+          <group
+            name="Playing_Piano"
+            position={[0.048, 1.104, 1.692]}
+            rotation={[Math.PI, 0, Math.PI]}
+            scale={[1, 1.072, 1]}
+          >
+            <mesh
+              name="Cube167"
+              geometry={nodes.Cube167.geometry}
+              material={materials["Black.001"]}
+            />
+            <mesh
+              name="Cube167_1"
+              geometry={nodes.Cube167_1.geometry}
+              material={materials["Gold.001"]}
+            />
+            <mesh
+              name="Cube167_2"
+              geometry={nodes.Cube167_2.geometry}
+              material={materials["Wood.001"]}
+            />
+            <mesh
+              name="Cube167_3"
+              geometry={nodes.Cube167_3.geometry}
+              material={materials["Material.007"]}
+            />
+            <mesh
+              name="Cube167_4"
+              geometry={nodes.Cube167_4.geometry}
+              material={materials["Material.006"]}
+            />
+          </group>
+        </Scene>
+        <Scene activeScene={activeScene} name="walking">
+          <group name="Walking" position={[0, -3.536, 0]} scale={3.623}>
+            <mesh
+              name="Cube001_Cube004"
+              geometry={nodes.Cube001_Cube004.geometry}
+              material={materials["Red.001"]}
+            />
+            <mesh
+              name="Cube001_Cube004_1"
+              geometry={nodes.Cube001_Cube004_1.geometry}
+              material={materials["White.001"]}
+            />
+            <mesh
+              name="Cube001_Cube004_2"
+              geometry={nodes.Cube001_Cube004_2.geometry}
+              material={materials["LightBrown.001"]}
+            />
+            <mesh
+              name="Cube001_Cube004_3"
+              geometry={nodes.Cube001_Cube004_3.geometry}
+              material={materials["Blue.001"]}
+            />
+            <mesh
+              name="Cube001_Cube004_4"
+              geometry={nodes.Cube001_Cube004_4.geometry}
+              material={materials["Green.001"]}
+            />
+            <mesh
+              name="Cube001_Cube004_5"
+              geometry={nodes.Cube001_Cube004_5.geometry}
+              material={materials["Snow.001"]}
+            />
+            <mesh
+              name="Cube001_Cube004_6"
+              geometry={nodes.Cube001_Cube004_6.geometry}
+              material={materials["Brown.001"]}
+            />
+            <mesh
+              name="Cube001_Cube004_7"
+              geometry={nodes.Cube001_Cube004_7.geometry}
+              material={materials["DarkGreen.001"]}
+            />
+          </group>
         </Scene>
         <Scene activeScene={activeScene} name="typing">
           <mesh
-            name="Cube"
-            geometry={nodes.Cube.geometry}
-            material={nodes.Cube.material}
-            position={[-0.001, 0.25, 1.357]}
-            scale={[1, 0.25, 0.69]}
+            name="Typing001"
+            geometry={nodes.Typing001.geometry}
+            material={materials.imac}
+            position={[-0.043, 0.564, 0.842]}
+            rotation={[Math.PI, -0.022, Math.PI]}
+            scale={[0.717, 0.162, 0.198]}
           />
           <mesh
-            name="Cube001"
-            geometry={nodes.Cube001.geometry}
-            material={nodes.Cube001.material}
-            position={[-0.001, 1.281, 1.924]}
-            scale={[0.935, 0.487, 0.037]}
+            name="Typing002"
+            geometry={nodes.Typing002.geometry}
+            material={materials.imac}
+            position={[-1.16, 0.564, 0.982]}
+            rotation={[Math.PI, -0.41, Math.PI]}
+            scale={[0.433, 0.162, 0.162]}
           />
           <mesh
-            name="Cube002"
-            geometry={nodes.Cube002.geometry}
-            material={nodes.Cube002.material}
-            position={[-0.001, 0.621, 1.924]}
-            scale={[0.142, 0.196, 0.015]}
+            name="Typing003"
+            geometry={nodes.Typing003.geometry}
+            material={materials["imac.001"]}
+            position={[-0.264, 1.519, 2.01]}
+            rotation={[1.694, 0, 0.001]}
+            scale={[-1.121, -1.123, -0.835]}
+          >
+            <mesh
+              name="Typing004"
+              geometry={nodes.Typing004.geometry}
+              material={materials["imac.001"]}
+              position={[-0.219, -0.012, -1.018]}
+              rotation={[-0.132, -0.049, -1.569]}
+              scale={[-0.082, -0.119, -0.109]}
+            />
+          </mesh>
+          <mesh
+            name="Typing005"
+            geometry={nodes.Typing005.geometry}
+            material={materials.white}
+            position={[-0.375, 0.287, 1.501]}
+            rotation={[0, -1.571, 0]}
+            scale={[0.814, 1.054, 1.068]}
+          >
+            <mesh
+              name="Typing006"
+              geometry={nodes.Typing006.geometry}
+              material={materials.decor}
+              position={[0.47, -0.284, 0.649]}
+              scale={[0.217, 0.061, 0.129]}
+            />
+            <mesh
+              name="Typing007"
+              geometry={nodes.Typing007.geometry}
+              material={materials.decor}
+              position={[-0.743, -0.284, 0.649]}
+              scale={[0.217, 0.061, 0.129]}
+            />
+            <mesh
+              name="Typing008"
+              geometry={nodes.Typing008.geometry}
+              material={materials.decor}
+              position={[0.47, -0.284, -1.083]}
+              scale={[0.217, 0.061, 0.129]}
+            />
+            <mesh
+              name="Typing009"
+              geometry={nodes.Typing009.geometry}
+              material={materials.decor}
+              position={[-0.743, -0.284, -1.083]}
+              scale={[0.217, 0.061, 0.129]}
+            />
+          </mesh>
+          <mesh
+            name="Typing011"
+            geometry={nodes.Typing011.geometry}
+            material={materials["white.003"]}
+            position={[0.918, 0.83, 1.718]}
+            rotation={[-Math.PI, 0.191, -Math.PI]}
+            scale={[-0.13, -0.153, -0.13]}
+          >
+            <group name="Typing010" position={[0, 0.515, 0]} scale={1.051}>
+              <mesh
+                name="Cylinder032"
+                geometry={nodes.Cylinder032.geometry}
+                material={materials["imac.002"]}
+              />
+              <mesh
+                name="Cylinder032_1"
+                geometry={nodes.Cylinder032_1.geometry}
+                material={materials["decor.002"]}
+              />
+            </group>
+          </mesh>
+        </Scene>
+        <Scene activeScene={activeScene} name="talking">
+          <mesh
+            name="Talking023"
+            geometry={nodes.Talking023.geometry}
+            material={materials["white.001"]}
+            position={[0.118, 1.117, 1.594]}
+            rotation={[-1.45, -0.018, 2.971]}
+            scale={[-0.426, -0.358, -0.358]}
           />
           <mesh
-            name="Cylinder"
-            geometry={nodes.Cylinder.geometry}
-            material={nodes.Cylinder.material}
-            position={[0, 0.175, 0]}
-            scale={[0.404, 0.175, 0.404]}
+            name="Talking010"
+            geometry={nodes.Talking010.geometry}
+            material={materials["floor lamp head.001"]}
+            position={[-0.214, 1.388, 1.558]}
+            rotation={[-1.414, -0.032, 2.945]}
+            scale={-0.085}
           />
-        </Scene> */}
-        <mesh position-y={0} rotation-x={-Math.PI * 0.5} scale={10}>
+          <mesh
+            name="Talking009"
+            geometry={nodes.Talking009.geometry}
+            material={materials["carpet.002"]}
+            position={[-0.107, 1.388, 1.58]}
+            rotation={[-1.414, -0.032, 2.945]}
+            scale={-0.085}
+          />
+          <mesh
+            name="Talking008"
+            geometry={nodes.Talking008.geometry}
+            material={materials["plant.003"]}
+            position={[0, 1.388, 1.601]}
+            rotation={[-1.414, -0.032, 2.945]}
+            scale={-0.085}
+          />
+          <mesh
+            name="Talking022"
+            geometry={nodes.Talking022.geometry}
+            material={materials["carpet.003"]}
+            position={[0.139, 1.21, 1.538]}
+            rotation={[-1.442, -0.026, 2.944]}
+            scale={[0.318, 0.166, 0.042]}
+          />
+          <mesh
+            name="Talking021"
+            geometry={nodes.Talking021.geometry}
+            material={materials["carpet.003"]}
+            position={[0.144, 1.041, 1.515]}
+            rotation={[-1.442, -0.026, 2.944]}
+            scale={[0.318, 0.166, 0.042]}
+          />
+          <mesh
+            name="Talking020"
+            geometry={nodes.Talking020.geometry}
+            material={materials["carpet.003"]}
+            position={[-0.215, 1.041, 1.447]}
+            rotation={[-1.442, -0.026, 2.944]}
+            scale={[0.318, 0.166, 0.042]}
+          />
+          <mesh
+            name="Talking019"
+            geometry={nodes.Talking019.geometry}
+            material={materials["carpet.003"]}
+            position={[-1.629, 1.996, 1.432]}
+            rotation={[-1.552, -0.004, 2.942]}
+            scale={[0.318, 0.166, 0.042]}
+          />
+          <mesh
+            name="Talking018"
+            geometry={nodes.Talking018.geometry}
+            material={materials["carpet.003"]}
+            position={[-1.629, 2.169, 1.431]}
+            rotation={[-1.552, -0.004, 2.942]}
+            scale={[0.318, 0.166, 0.042]}
+          />
+          <mesh
+            name="Talking017"
+            geometry={nodes.Talking017.geometry}
+            material={materials["carpet.003"]}
+            position={[-1.254, 2.169, 1.507]}
+            rotation={[-1.552, -0.004, 2.942]}
+            scale={[0.318, 0.166, 0.042]}
+          />
+          <mesh
+            name="Talking016"
+            geometry={nodes.Talking016.geometry}
+            material={materials["white.001"]}
+            position={[-1.629, 1.439, 1.434]}
+            rotation={[-1.575, 0.001, 2.942]}
+            scale={[0.318, 0.166, 0.042]}
+          />
+          <mesh
+            name="Talking015"
+            geometry={nodes.Talking015.geometry}
+            material={materials["white.001"]}
+            position={[-1.629, 1.267, 1.432]}
+            rotation={[-1.575, 0.001, 2.942]}
+            scale={[0.318, 0.166, 0.042]}
+          />
+          <mesh
+            name="Talking014"
+            geometry={nodes.Talking014.geometry}
+            material={materials["plant.001"]}
+            position={[-0.067, 2.316, 1.612]}
+            rotation={[-1.56, 0.004, 2.969]}
+            scale={[-0.426, -0.358, -0.358]}
+          />
+          <mesh
+            name="Talking007"
+            geometry={nodes.Talking007.geometry}
+            material={materials["floor lamp head.001"]}
+            position={[-0.393, 2.589, 1.546]}
+            rotation={[-1.524, -0.009, 2.942]}
+            scale={-0.085}
+          />
+          <mesh
+            name="Talking005"
+            geometry={nodes.Talking005.geometry}
+            material={materials["carpet.002"]}
+            position={[-0.286, 2.589, 1.568]}
+            rotation={[-1.524, -0.009, 2.942]}
+            scale={-0.085}
+          />
+          <mesh
+            name="Talking004"
+            geometry={nodes.Talking004.geometry}
+            material={materials["plant.003"]}
+            position={[-0.178, 2.589, 1.59]}
+            rotation={[-1.524, -0.009, 2.942]}
+            scale={-0.085}
+          />
+          <mesh
+            name="Talking013"
+            geometry={nodes.Talking013.geometry}
+            material={materials["Material.003"]}
+            position={[-0.285, 2.429, 1.907]}
+            rotation={[-1.56, 0.004, 2.969]}
+            scale={[-0.426, -0.358, -0.358]}
+          />
+          <mesh
+            name="Talking003"
+            geometry={nodes.Talking003.geometry}
+            material={materials["floor lamp head.001"]}
+            position={[-0.612, 2.702, 1.84]}
+            rotation={[-1.524, -0.009, 2.942]}
+            scale={-0.085}
+          />
+          <mesh
+            name="Talking002"
+            geometry={nodes.Talking002.geometry}
+            material={materials["carpet.002"]}
+            position={[-0.505, 2.702, 1.862]}
+            rotation={[-1.524, -0.009, 2.942]}
+            scale={-0.085}
+          />
+          <mesh
+            name="Talking001"
+            geometry={nodes.Talking001.geometry}
+            material={materials["plant.003"]}
+            position={[-0.397, 2.702, 1.884]}
+            rotation={[-1.524, -0.009, 2.942]}
+            scale={-0.085}
+          />
+          <mesh
+            name="Talking011"
+            geometry={nodes.Talking011.geometry}
+            material={materials["carpet.003"]}
+            position={[-1.731, 1.38, 1.593]}
+            rotation={[0, 1.371, Math.PI / 2]}
+            scale={[-0.3, -0.479, -0.326]}
+          />
+          <mesh
+            name="Talking012"
+            geometry={nodes.Talking012.geometry}
+            material={materials["white.001"]}
+            position={[-1.731, 2.131, 1.593]}
+            rotation={[0, 1.371, Math.PI / 2]}
+            scale={[-0.3, -0.479, -0.326]}
+          />
+          <mesh
+            name="Talking006"
+            geometry={nodes.Talking006.geometry}
+            material={materials["floor lamp head.002"]}
+            position={[-0.393, 2.589, 1.546]}
+            rotation={[-1.524, -0.009, 2.942]}
+            scale={-0.085}
+          />
+          <mesh
+            name="Talking024"
+            geometry={nodes.Talking024.geometry}
+            material={materials["white.004"]}
+            position={[-0.791, 2.115, 1.852]}
+            rotation={[0, -0.199, 0]}
+            scale={[-0.034, -1.031, -0.034]}
+          />
+        </Scene>
+
+        <mesh ref={planeRef} rotation-x={-Math.PI * 0.5} scale={10}>
           <planeGeometry />
           <meshBasicMaterial toneMapped={false} color="white" />
         </mesh>

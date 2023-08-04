@@ -5,8 +5,6 @@ const Scene = ({ activeScene, name, children }) => {
   const meshRef = useRef()
   const [positionY, setPositionY] = useState(-4)
 
-  console.log({ activeScene, name })
-
   // Function to smoothly animate the cube's position from y = -4 to y = 0
   const animatePositionY = () => {
     if (positionY < 0 && activeScene === name) {
