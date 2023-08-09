@@ -9,7 +9,7 @@ import Scene from "./scene"
 import { useFrame } from "react-three-fiber"
 import modelPath from "../../models/jayden-animated-6.gltf"
 
-export default function JaydenModel({ animationsArray }) {
+export default function JaydenModel({ currentScene }) {
   const [activeScene, setActiveScene] = useState("talking")
   const group = useRef()
 
@@ -18,33 +18,13 @@ export default function JaydenModel({ animationsArray }) {
   const { actions } = useAnimations(animations, group)
   console.log({ actions })
 
-  const animationOrder = ["talking", "typing", "walking", "playing piano"]
-  const [animationIndex, setAnimationIndex] = useState(0)
-
   useEffect(() => {
-    actions[animationOrder[animationIndex]]?.reset().fadeIn(0.5).play()
-    setActiveScene(animationOrder[animationIndex])
+    actions[currentScene]?.reset().fadeIn(0.5).play()
+    setActiveScene(currentScene)
     return () => {
-      actions[animationOrder[animationIndex]]?.fadeOut(0.5)
+      actions[currentScene]?.fadeOut(0.5)
     }
-  }, [animationIndex])
-
-  // Function to increment the count
-  const incrementCount = () => {
-    if (animationIndex == animationOrder.length - 1) {
-      setAnimationIndex(0)
-    } else {
-      setAnimationIndex(animationIndex + 1)
-    }
-  }
-
-  // Effect to trigger the increment every second
-  useEffect(() => {
-    const intervalId = setInterval(incrementCount, 4000)
-
-    // Cleanup function to clear the interval when the component unmounts
-    return () => clearInterval(intervalId)
-  }, [animationIndex]) // Only re-run the effect if the count changes
+  }, [currentScene])
 
   useEffect(() => {
     actions["earth rotating"]?.play()

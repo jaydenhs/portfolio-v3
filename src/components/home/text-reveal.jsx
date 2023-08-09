@@ -1,58 +1,29 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
+import { AnimatePresence } from "framer-motion"
 import TextLoop from "react-text-loop"
 
 import { styled } from "styled-components"
 import tw from "twin.macro"
 import { motion } from "framer-motion"
 
-const words = [
-  "product designer",
-  "front-end developer",
-  "world traveller",
-  "concert pianist",
-]
-
 // look into individual letter reveal https://codepen.io/bekahmcdonald/pen/vYBXMOZ
 
-export default function TextReveal() {
+export default function TextReveal({ currentWord }) {
   return (
     <>
       <div className="relative h-16 overflow-hidden">
-        {words.map((word, index) => (
+        <AnimatePresence>
           <motion.h1
-            key={index}
-            animate={{
-              y: [
-                "-60px",
-                "0px",
-                "0px",
-                "0px",
-                "0px",
-                "0px",
-                "0px",
-                "0px",
-                "0px",
-                "0px",
-                "0px",
-                "0px",
-                "0px",
-                "0px",
-                "0px",
-                "60px",
-              ],
-            }}
-            transition={{
-              duration: 4,
-              delay: index * 4,
-              repeat: Infinity,
-              repeatType: "loop",
-              repeatDelay: (words.length - 1) * 4,
-            }}
+            key={currentWord}
+            initial={{ y: -60 }}
+            animate={{ y: 0 }}
+            exit={{ y: 60 }}
+            transition={{ duration: 0.4 }}
             className="absolute text-blue-500"
           >
-            {word}
+            {currentWord}
           </motion.h1>
-        ))}
+        </AnimatePresence>
       </div>
     </>
   )

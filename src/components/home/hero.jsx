@@ -10,10 +10,10 @@ import TextReveal from "./text-reveal"
 import { OrbitControls, Loader } from "@react-three/drei"
 
 const words = [
-  "product designer",
-  "front-end developer",
-  "world traveller",
-  "concert pianist",
+  { text: "product designer", animation: "talking" },
+  { text: "front-end developer", animation: "typing" },
+  { text: "world traveller", animation: "walking" },
+  { text: "concert pianist", animation: "playing piano" },
 ]
 
 export default function Hero() {
@@ -41,7 +41,7 @@ export default function Hero() {
       <div className="wide h-full flex items-center">
         <motion.div {...fadeIn} className="w-1/2">
           <h1 className="wide">Hi! I'm Jayden, a</h1>
-          <TextReveal />
+          <TextReveal currentWord={words[activeWordIndex].text} />
         </motion.div>
         <Canvas
           camera={{
@@ -54,7 +54,7 @@ export default function Hero() {
           <ambientLight intensity={1.1} />
           <directionalLight color="white" position={[0, 1, 1]} intensity={1} />
           <Suspense fallback={null}>
-            <JaydenModel />
+            <JaydenModel currentScene={words[activeWordIndex].animation} />
           </Suspense>
         </Canvas>
       </div>
