@@ -10,7 +10,7 @@ import TextReveal from "./text-reveal"
 import { OrbitControls, Loader } from "@react-three/drei"
 
 const words = [
-  { text: "product designer", animation: "talking" },
+  { text: "product designer", animation: "thinking" },
   { text: "front-end developer", animation: "typing" },
   { text: "world traveller", animation: "walking" },
   { text: "concert pianist", animation: "playing piano" },

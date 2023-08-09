@@ -16,7 +16,6 @@ export default function JaydenModel({ currentScene }) {
   const { nodes, materials, animations } = useGLTF(modelPath)
 
   const { actions } = useAnimations(animations, group)
-  console.log({ actions })
 
   useEffect(() => {
     actions[currentScene]?.reset().fadeIn(0.5).play()
@@ -28,6 +27,7 @@ export default function JaydenModel({ currentScene }) {
 
   useEffect(() => {
     actions["earth rotating"]?.play()
+    console.log({ actions })
   }, [])
 
   const planeRef = useRef()
@@ -165,7 +165,7 @@ export default function JaydenModel({ currentScene }) {
           </group>
         </Scene>
         <Scene activeScene={activeScene} name="walking">
-          <group name="Walking" position={[0, -3.536, 0]} scale={3.623}>
+          <group name="Earth" position={[0, -3.536, 0]} scale={3.623}>
             <mesh
               name="Cube001_Cube004"
               geometry={nodes.Cube001_Cube004.geometry}
@@ -301,7 +301,7 @@ export default function JaydenModel({ currentScene }) {
             </group>
           </mesh>
         </Scene>
-        <Scene activeScene={activeScene} name="talking">
+        <Scene activeScene={activeScene} name="thinking">
           <mesh
             name="Talking023"
             geometry={nodes.Talking023.geometry}
