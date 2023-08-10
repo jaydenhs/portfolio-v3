@@ -40,25 +40,31 @@ export default function Model({ isLoaded, currentScene }) {
   const armatureRef = useRef()
   const [armaturePositionY, setArmaturePositionY] = useState(-3)
 
-  const animatePositionY = () => {
-    if (positionY > -0.5 && activeScene === "walking") {
-      setPositionY(prevY => Math.min(prevY - 0.02, 0))
+  useEffect(() => {
+    const animatePositionY = () => {
+      if (positionY > -0.5 && activeScene === "walking") {
+        setPositionY(prevY => Math.min(prevY - 0.02, 0))
+      }
+      if (positionY < 0 && activeScene !== "walking") {
+        setPositionY(prevY => Math.min(prevY + 0.02, 0))
+      }
     }
-    if (positionY < 0 && activeScene !== "walking") {
-      setPositionY(prevY => Math.min(prevY + 0.02, 0))
-    }
-  }
 
-  const animateArmaturePositionY = () => {
-    if (armaturePositionY < 0 && isLoaded) {
-      setArmaturePositionY(prevY => Math.min(prevY + 0.15, 0))
+    animatePositionY()
+  }, [positionY, activeScene])
+
+  useEffect(() => {
+    const animateArmaturePositionY = () => {
+      if (armaturePositionY < 0 && isLoaded) {
+        setArmaturePositionY(prevY => Math.min(prevY + 0.0022, 0))
+      }
     }
-  }
+
+    animateArmaturePositionY()
+  }, [armaturePositionY, isLoaded])
 
   useFrame(() => {
-    animatePositionY()
     planeRef.current.position.y = positionY
-    animateArmaturePositionY()
     armatureRef.current.position.y = armaturePositionY
   })
 

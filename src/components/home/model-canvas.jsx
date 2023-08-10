@@ -7,11 +7,13 @@ import { motion } from "framer-motion"
 import Model from "./model"
 
 export default function ModelCanvas({ currentScene, className }) {
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(true)
 
   function Loader() {
     const { active, progress, errors, item, loaded, total } = useProgress()
-    if (!active) {
+    if (active) {
+      setIsLoaded(false)
+    } else {
       setIsLoaded(true)
     }
     return null

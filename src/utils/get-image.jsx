@@ -26,10 +26,13 @@ export default function GetImage({ src }) {
 
   const matchedImage = useMemo(
     () =>
-      data.allFile.nodes.find(
-        ({ relativePath, relativeDirectory }) =>
-          `${relativeDirectory}/${src}` === relativePath
-      ),
+      data.allFile.nodes.find(({ relativePath, relativeDirectory }) => {
+        if (relativeDirectory) {
+          return `${relativeDirectory}/${src}` === relativePath
+        } else {
+          return `${src}` === relativePath
+        }
+      }),
     [data, src]
   )
 
