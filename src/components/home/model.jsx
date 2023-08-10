@@ -4,13 +4,13 @@ Command: npx gltfjsx@6.2.10 jayden-animated.gltf
 */
 
 import React, { useRef, useEffect, useState } from "react"
-import { useGLTF, useAnimations } from "@react-three/drei"
+import { useGLTF, useAnimations, Html } from "@react-three/drei"
 import Scene from "./scene"
 import { useFrame } from "react-three-fiber"
 import modelPath from "../../models/jayden-animated-6.gltf"
 
-export default function JaydenModel({ currentScene }) {
-  const [activeScene, setActiveScene] = useState("talking")
+export default function Model({ isLoaded, currentScene }) {
+  const [activeScene, setActiveScene] = useState("")
   const group = useRef()
 
   const { nodes, materials, animations } = useGLTF(modelPath)
@@ -27,13 +27,19 @@ export default function JaydenModel({ currentScene }) {
 
   useEffect(() => {
     actions["earth rotating"]?.play()
-    console.log({ actions })
+    setActiveScene(currentScene)
   }, [])
+
+  useEffect(() => {
+    console.log({ isLoaded })
+  }, [isLoaded])
 
   const planeRef = useRef()
   const [positionY, setPositionY] = useState(0)
 
-  // Function to smoothly animate the cube's position from y = -4 to y = 0
+  const armatureRef = useRef()
+  const [armaturePositionY, setArmaturePositionY] = useState(-3)
+
   const animatePositionY = () => {
     if (positionY > -0.5 && activeScene === "walking") {
       setPositionY(prevY => Math.min(prevY - 0.02, 0))
@@ -43,16 +49,23 @@ export default function JaydenModel({ currentScene }) {
     }
   }
 
-  // Use the useFrame hook to update the cube's position on each frame
+  const animateArmaturePositionY = () => {
+    if (armaturePositionY < 0 && isLoaded) {
+      setArmaturePositionY(prevY => Math.min(prevY + 0.15, 0))
+    }
+  }
+
   useFrame(() => {
     animatePositionY()
     planeRef.current.position.y = positionY
+    animateArmaturePositionY()
+    armatureRef.current.position.y = armaturePositionY
   })
 
   return (
     <group ref={group} position={[1, -1.2, 0]} dispose={null}>
       <group name="Scene">
-        <group name="Armature">
+        <group ref={armatureRef} name="Armature">
           <primitive object={nodes.mixamorigHips} />
           <primitive object={nodes.Ctrl_ArmPole_IK_Left} />
           <primitive object={nodes.Ctrl_Hand_IK_Left} />

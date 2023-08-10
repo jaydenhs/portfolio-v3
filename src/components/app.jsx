@@ -11,7 +11,7 @@ import "../styles/global.css"
 
 import Header from "./header"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, className }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <body className="scroll-container">
+    <body className={`scroll-container ${className}`}>
       <div className="scroll-content">
         <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
         <main>{children}</main>
