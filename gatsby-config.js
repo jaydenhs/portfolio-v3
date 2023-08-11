@@ -8,15 +8,6 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 
-const wrapESMPlugin = name =>
-  function wrapESM(opts) {
-    return async (...args) => {
-      const mod = await import(name)
-      const plugin = mod.default(opts)
-      return plugin(...args)
-    }
-  }
-
 module.exports = {
   siteMetadata: {
     title: `Jayden Hsiao - Designer & Developer`,
@@ -49,7 +40,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/static`,
       },
     },
     // dynamic images
@@ -67,7 +58,7 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `static/favicon.ico`, // This path is relative to the root of the site.
+        icon: `static/images/logo.png`, // This path is relative to the root of the site.
       },
     },
 
