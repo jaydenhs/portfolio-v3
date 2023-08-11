@@ -7,7 +7,10 @@ import Image from "./image"
 const Header = ({ siteTitle }) => (
   <Nav className="reading-grid">
     <AutoLink className="wide" to="/">
-      <Image divClassName="w-12 h-12" src="logo.png" />
+      <Image
+        divClassName="w-12 h-12 transition-transform hover:scale-110 ease-in-out duration-400"
+        src="logo.png"
+      />
     </AutoLink>
   </Nav>
 )
