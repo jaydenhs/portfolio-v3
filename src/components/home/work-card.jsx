@@ -25,7 +25,7 @@ export default function WorkCard({
       <AutoLink to={slug} className={`w-full flex ${flippedClass}`}>
         <Image
           src={thumbnail}
-          divClassName="rounded-3xl"
+          className="rounded-3xl"
           {...(!(isClicked || isNextCard) && fadeInCard)}
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }}

@@ -92,6 +92,7 @@ const components = {
   GridCell,
   GridCellDesktop,
   Metrics,
+  Quote,
 }
 
 export const Head = () => <Seo />

@@ -6,7 +6,7 @@ import GetImage from "../utils/get-image"
 export default function Image({
   src,
   imgClassName,
-  divClassName,
+  className,
   maxWidth,
   shared,
   ...rest
@@ -17,7 +17,7 @@ export default function Image({
     <motion.div
       transition={{ ease: [0.65, 0, 0.35, 1], duration: 0.5 }}
       layoutId={shared && src}
-      className={`overflow-hidden ${maxWidth && "mx-auto"} ${divClassName}`}
+      className={`overflow-hidden ${maxWidth && "mx-auto"} ${className}`}
       style={{ maxWidth: `${maxWidth}px` }}
     >
       <motion.div {...rest}>

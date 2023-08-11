@@ -22,7 +22,7 @@ export default function GridCell({
         {children}
       </div>
       {isTitle ? (
-        <Image divClassName="w-1/2 self-end pt-8 pr-8" src={srcArray[0]} />
+        <Image className="w-1/2 self-end pt-8 pr-8" src={srcArray[0]} />
       ) : (
         <div className="flex space-x-6 mx-auto">
           {srcArray.map(src => {
