@@ -33,8 +33,14 @@ export default function Hero() {
     <div className="reading-grid mb-4" style={{ height: "max(50vh, 40rem)" }}>
       <div className="wide h-full flex items-center">
         <motion.div className="w-1/2" {...fadeIn}>
-          <h1 className="wide whitespace-nowrap">Hi! I'm Jayden, a</h1>
-          <TextReveal currentWord={words[activeWordIndex].text} />
+          <div className="mb-4">
+            <h1 className="wide whitespace-nowrap">Hi! I'm Jayden, a</h1>
+            <TextReveal currentWord={words[activeWordIndex].text} />
+          </div>
+          <motion.p className="text-xl" {...fadeIn}>
+            I strive to empower others by bridging the gap between empathetic
+            design and innovative software.
+          </motion.p>
         </motion.div>
         <ModelCanvas
           className={"w-1/2"}
