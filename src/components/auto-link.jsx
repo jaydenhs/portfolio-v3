@@ -35,7 +35,6 @@ const AnimatedA = styled.a`
       rgba(100, 200, 200, 0)
     ),
     linear-gradient(to right, var(--primary), var(--primaryL));
-  /* linear-gradient(to right, var(--primary), var(--primary)); */
   background-size: 100% 0.1em, 0 0.1em;
   background-position: 100% 100%, 0 100%;
   background-repeat: no-repeat;

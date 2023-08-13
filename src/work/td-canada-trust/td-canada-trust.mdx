@@ -1,26 +1,26 @@
 ---
 company: TD Canada Trust
-title: Automatically track construction progress
-description: I was a product design intern, delivering an import feature for a construction tracking tool which saved $50,000/year in setup costs.
-slug: /td
+title: Empower students' financial journeys
+description: I was a UX/UI design intern, building a multi-platform, accessible Figma design system that increased prototyping efficiency by 16%.
+slug: /td-canada-trust
 thumbnail: "thumbnail-td-canada-trust.jpg"
 priority: 1
 color: [142, 70, 45]
 ---
 
 <Intro>
-  ## I was a Product Design Intern at <AutoLink light to="https://structionsite.com/">StructionSite</AutoLink>, a construction technology company revolutionizing the way teams capture, organize, and access jobsite data.
-  ## I designed, co-developed, and launched a quantity takeoff import feature that **saved $50,000/year** in setup costs.
+  ## I was a UX/UI Design Intern at <AutoLink light to="https://www.td.com/ca/en/personal-banking">TD Canada Trust's</AutoLink> innovation lab, a team focused on equipping students for post-secondary financial challenges.
+  ## I designed, implemented, and tested a multi-platform, accessible Figma design system that **increased prototyping efficiency by 16%**.
 
   <Table>
     <td>
       Product design<br />
-      Front-end development
+      Design system
     </td>
-    <td>1 developer</td>
+    <td>None, independent</td>
     <td>
-      Jul - Aug 2021<br />
-      (4 weeks)
+      Oct - Dec 2020<br />
+      (3 months)
     </td>
   </Table>
 </Intro>
@@ -29,238 +29,147 @@ color: [142, 70, 45]
   # Context
 
   <section>
-    SmartTrack was StructionSite's product which intelligently tracked construction work. For customers to pilot SmartTrack, their construction plan needed to be digitally replicated on our platform.
+    As a UX/UI design intern at TD's Innovation Lab, I was tasked with rapidly
+    prototyping experiences that could impact millions of users.
 
-    The replication process was composed of two steps:
-    1. Draw shapes in SmartTrack that match the customer's existing files
-    2. Assign those shapes properties based on the customer's requirements
+    Within my first week, I quickly realized that there was no complete source or
+    conceptual documentation for styles, UI elements, or design patterns. In such an
+    agile environment, this led to severe inefficiencies in our design
+    workflows.
 
-    <Video className="wide pt-4" src="structionsite/images/current-setup-process.webm" maxWidth={1440} />
+    So, I embarked on a self-driven project to create the foundation for TD Lab's
+    design system.
   </section>
 </section>
 
 <section>
-  # The Challenge
+  # The Problem
 
   <section>
-    With customer files containing thousands of shapes, this process spanned multiple weeks and cost tens of thousands of dollars in external contractors. This delay resulted in trial customers failing to see the value of SmartTrack, leading to high average customer acquisition cost and poor customer experience.
+    We have observed that the TD Lab design library is not meeting user needs, which
+    is causing **inefficient** design workflows and poor accessibility in
+    prototypes.
+
+    How might we build a **design library** that promotes inclusion and innovation
+    by improving accessibility documentation and reducing time spent on creating and
+    updating interface elements?
   </section>
 </section>
 
 <section>
-  # Defining Success
+  # Collecting the Parts
 
   <section>
-    I began by interviewing five users to better understand their pain points. I
-    also set up a project myself to better empathize with the frustrations
-    expressed.
+    ## Inventory
 
-    From those conversations, I centered the success of this project around these
-    goals:
-  </section>
+    My next task was to inventory the common UI elements used in the lab's previous
+    projects. I collected Sketch project files, analyzed the current pattern
+    library, read over the minimal Atlassian documentation we had, and took
+    screenshots of previous projects.
 
-  <section>
-    <NumberedList
-      data={[
-        {
-          title: 'Maximize efficiency',
-          description:
-          'The most critical goal was to reduce the time required to setup each customer project. The shorter the process, the lower our customer acquisition cost becomes.',
-        },
-        {
-          title: 'Improve intuitiveness',
-          description:
-          "Aligning the mental model of SmartTrack's features, modes, and tooling with construction industry standards would improve setup accuracy.",
-        },
-        {
-          title: 'Reduce frustration',
-          description:
-          'Users are able to easily amend mistakes and accomplish their tasks without interruption.',
-        },
-      ]}
-    />
+    ## Audit
+
+    Once I felt I had captured every button, icon, and design pattern I grouped them
+    into categories. Viewing them side-by-side revealed exactly why we needed a
+    system. Without any documentation, many of our prototypes lacked in
+    accessibility, with elements being used incorrectly and colours not satisfying
+    contrast ratios.
   </section>
 </section>
 
 <section>
-  # The A-ha Moment
-  
+  # Researching Best Practices
+
   <section>
-    My belief that there had to be a better way to set up projects was confirmed
-    when one of the users stated this:
+    To ensure that the design library was future-proof, I started this project with
+    some heavy research into design library and UI design best practices.
 
-    <Quote author="James Ofczarzak, SmartTrack's customer success manager" authorImg="james-ofczarzak.png">
-      "The ideal state of SmartTrack is being able to import customers' existing data. Importing customers' files would be nice to have as a baseline, and then it's just verification afterwards."
-    </Quote>
-
-    Instead of manually duplicating all of the customer's data into SmartTrack, let's import it instead!
+    I studied Apple's Human Interface Guidelines and Google's Material Design
+    Guidelines, analyzed design systems from Atlassian, Uber, Github, and Figma, and
+    read through countless Medium articles.
   </section>
 </section>
 
 <section>
-  # Technical Exploration
+  # The Structure
 
   <section>
-    Before sketching out any designs, I first needed to validate if such an import
-    feature was possible. I created a simple file in one of the most popular
-    construction tracking programs and opened the exported PDF in Notepad.
+    Inspired by Dropbox's design system, I decided to structure the design library
+    in a two-tiered hierarchy:
 
-    To my delight, it had all of the information I needed. All of the vertices
-    and properties were available as plain text in Bluebeam Revu's exports.  
-
-    <Image className="wide pt-4" src="data-mapping.jpg" maxWidth={1440} />
+    By creating separate UI Kits that inherit from Global Styles, we get the best of
+    both worlds - the consistency of having shared styles with the flexibility of
+    being able to toggle on specific UI kits based on the project scope.
   </section>
 </section>
 
 <section>
-  # Pivoting for Impact
+  # Testing the System
 
   <section>
-    Prior to detailing this option further, I wanted to ensure that we were building
-    the most impactful file import option. After discussing with our customer
-    success manager, I discovered that over 90% of our current SmartTrack customers
-    submitted files from a different program.
-
-    To **maximize the value** gained from a first iteration of this feature, I
-    decided to pivot to importing from this more popular program instead.
-
-    <Image src='pivoting-to-ost.png' maxWidth={400} />
-
-    Through a similar process as before, I validated that necessary information was
-    available within this program's exports.
+    (While I was building, I was communicating progress to the other designers, allowing them to use it. I was also using it on my other lab projects, to get a feel for it. This allowed me to collect and implement feedback as I went.)
   </section>
 </section>
 
 <section>
-  # Defining a User Flow
-
-  <section>
-    I created a user flow to better define the scope of the solution I was building.
-    This also gave me the perfect opportunity to receive early feedback from
-    stakeholders and validate feasibility with developers.
-
-    <Image src='import-user-flow-1.png' />
-  </section>
-</section>
-
-<section>
-  # Refining for Production
-
-  <section>
-    After iterating on design explorations based on weekly product and design team meeting feedback,
-    the project was **green-lit for production** and I was provided with one
-    engineer to pair with for a week.
-
-    I prepared a specifications doc of the user interfaces and parsing algorithms
-    necessary for hand-off in Notion. After discussing with my engineer, I realized
-    I was missing two key pieces: we could only import one page from the customer file at a time, and there were non-trivial loading times.
-
-    Thus, I needed to revise my user flow to:
-
-    <Image className="wide" src='import-user-flow-2.png' maxWidth={1000} />
-  </section>
-</section>
-
-<section>
-  # The Final Design
+  # The Final System
 
   <section>
     <Grid>
-      <GridCellDesktop isTitle srcArray={["final-completion.png"]} pt={12}>
-        ## No more manual replication of customer projects. 
-        ## Import them perfectly in seconds.
+      <GridCellDesktop isTitle srcArray={["global-styles-overview.png"]} pt={12}>
+        ## Global Styles
+        ## A shared language across all platforms
       </GridCellDesktop>
-      <GridCellDesktop srcArray={["final-start-import.png"]}>
-        **Start**
+      <GridCell cols={8} srcArray={["colour-palette.png"]}>
+        **Colours**
 
-        Begin the import process by clicking "Import QTO" (QTO being quantity-takeoff, the industry term for the customer file).
-      </GridCellDesktop>
-      <GridCellDesktop srcArray={["final-skeleton.png"]}>
-        **File selection**
+        Craft vibrant designs with our WCAG 2.1 compliant colour palette, categorized for seamless styling.
+      </GridCell>
+      <GridCell cols={4} srcArray={[""]}>
+        **Icons**
+        
+        Leverage Material Design icons, with each icon incorporating a union layer to maintain fill color during icon swaps.
+      </GridCell>
+      <GridCell cols={4} srcArray={["shadows.png"]}>
+        **Shadows**
+        
+        Elevate your design with dual lighting: sharp shadows from key lights and diffused shadows from ambient lights.
+      </GridCell>
+      <GridCell cols={8} srcArray={["responsive-grid.png"]}>
+        **Grids**
 
-        Select the customer file on your computer, and we'll smoothly load its contents. We've used a modal because you need to complete the import before doing anything else, but you can cancel the process at any time.
+        Optimize layouts with responsive 12-column grids for mobile, tablet, and desktop, all anchored in an 8px grid.
+      </GridCell>
+      
+      <GridCell cols={12} srcArray={["typography.png"]}>
+        **Typography**
+        
+        Enhance designs across desktop and mobile with typography harmonized with a 4px vertical rhythm.
+      </GridCell>      
+      <GridCellDesktop isTitle srcArray={["ios-kit-overview.png"]} pt={12}>
+        ## iOS Kit
+        ## Prototype apps quicker
       </GridCellDesktop>
-      <GridCellDesktop srcArray={["final-bid-page.png"]} pb={8}>
-        **Page selection**
+      <GridCell cols={4} srcArray={["avatars.png"]}>
+        **Avatars**
 
-        After the file loads, search for and select the page you want to import the contents of.
-      </GridCellDesktop>
-      <GridCellDesktop srcArray={["final-completion.png"]}>
-        **Import complete**
+        Prompt image uploads with placeholders that encourage personalization, featuring an inclusive light blue skintone.
+      </GridCell>
+      <GridCell cols={8} srcArray={["text-inputs.png"]}>
+        **Text inputs**
+        
+        Elevate user autonomy with required and optional labels, external placeholder text, and styled error messaging.
+      </GridCell>
+      <GridCell cols={12} srcArray={["buttons.png"]}>
+        **Buttons**
 
-        As easy as that, you've imported a perfect replica of the customer file in SmartTrack, automatically selected for positioning. We've provided a confirmation to let you know _just_ how much time you saved!
-      </GridCellDesktop>
+        Simplify actions with intuitive buttons, each designed for varying action importance and optimal accessibility.
+      </GridCell>
+      <GridCell cols={12} srcArray={["default-components.png"]}>
+        **Default components**
+        
+        Integrate iOS kit elements, complemented by Human Interface Guidelines' best practice documentation and illustrative examples.
+      </GridCell>
     </Grid>
-  </section>
-</section>
-
-<section>
-  # The Big Reveal
-
-  <section>
-    After the feature was released to production under a feature flag, I demoed it
-    live to the solutions engineer and customer success manager who inspired the
-    concept. They were very, very excited.
-
-    <Video className="wide" src='structionsite/images/adam-and-james-reaction.webm' maxWidth={1440} />
-  </section>
-  <section>
-    <Quote author="Adam Della Monica, SmartTrack's solution engineer" authorImg="adam-della-monica.jpeg">
-      This is probably the single **most functionally developed feature** that I've seen in my time here that will fundamentally change how we do SmartTrack. This is pretty freakin' cool. Just drop out of school and stay here man!
-    </Quote>
-  </section>
-  <section>
-    Their reaction was so positive that I later presented at StructionSite's
-    All-Hands meeting, to even louder acclamation.
-
-    <Image className="wide" src='zoom-and-slack.png' maxWidth={1440} />
-  </section>
-</section>
-
-<section>
-  # The Launch
-
-  <section>
-    After some additional bug testing, we launched the import feature. 
-    
-    The import feature exceeded my original goals. It reduced setup time from days to mere seconds. By aligning with existing industry standards, it enabled perfect accuracy. It did not simply reduce frustration, but now users were excited to set up projects.
-
-    <Image className="wide" src='success-adam-and-joey.png' maxWidth={1440} />
-  </section>
-
-  <section>
-    <Metrics disclaimer>
-      Time to pilot setup completion decreased by 88%
-
-      Customer acquisition cost decreased by $50,000/year
-
-      Post-setup corrections decreased by 27%
-    </Metrics>
-  </section>
-</section>
-
-<section>
-  # Learnings
-
-  <section>
-    <NumberedList
-      data={[
-        {
-          title: 'Approach the impossible',
-          description:
-            'Even if a feature seems infeasible, try to prove it out. Some of the best features come from simple experiments.',
-        },
-        {
-          title: 'Get your hands dirty',
-          description:
-            'My software development experience is just as applicable to the early proof-of-concept phases as it is to developer handoff. Leveraging existing data to increase product value is a tool that I will carry forward.',
-        },
-        {
-          title: 'User joy is the greatest reward',
-          description:
-            "Seeing how this feature has fundamentally improved so many users' lives brings an inescapable smile to my face. It feels so, so good to help others!",
-        },
-      ]}
-    />
   </section>
 </section>
