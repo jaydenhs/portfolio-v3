@@ -6,12 +6,12 @@ export default function TextReveal({ currentWord }) {
   return (
     <>
       <div className="w-full relative h-16 overflow-hidden">
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <motion.h1
-            key={currentWord}
-            initial={{ y: -60 }}
-            animate={{ y: 0 }}
-            exit={{ y: 60 }}
+            key={Math.random()}
+            initial={{ y: -60, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 60, opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="absolute text-blue-500 whitespace-nowrap"
           >

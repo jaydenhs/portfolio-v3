@@ -5,7 +5,6 @@ import { fadeIn } from "../../styles/animations"
 
 import TextReveal from "./text-reveal"
 import ModelCanvas from "./model-canvas"
-import AutoLink from "../auto-link"
 
 const words = [
   { text: "product designer", animation: "thinking" },
