@@ -13,7 +13,7 @@ export default function GridCell({
 
   return (
     <div
-      className={`col-span-1 md:col-span-${cols} flex bg-gray-200 rounded-3xl ${extraDivClass}`}
+      className={`col-span-1 md:col-span-${cols} flex bg-gray-100 rounded-3xl ${extraDivClass}`}
     >
       <div
         style={{ color: `${isTitle ? "var(--primaryD)" : ""}` }}

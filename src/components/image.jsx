@@ -9,6 +9,7 @@ export default function Image({
   className,
   maxWidth,
   shared,
+  caption,
   ...rest
 }) {
   let image = GetImage({ src: src })
@@ -20,12 +21,13 @@ export default function Image({
       className={`overflow-hidden ${maxWidth && "mx-auto"} ${className}`}
       style={{ maxWidth: `${maxWidth}px` }}
     >
-      <motion.div {...rest}>
+      <motion.div className="flex flex-col items-center" {...rest}>
         <GatsbyImage
           image={image}
           className={`w-full ${imgClassName}`}
           imgClassName="object-none"
         />
+        {caption && <p className="text-gray-400">{caption}</p>}
       </motion.div>
     </motion.div>
   ) : (

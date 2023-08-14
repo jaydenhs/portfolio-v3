@@ -32,11 +32,12 @@ export default function Hero() {
 
   return (
     <div className="reading-grid mb-4" style={{ height: "max(50vh, 40rem)" }}>
-      <div
-        className="wide h-full flex items-center mx-auto"
+      <motion.div
+        className="wide w-full h-full flex items-center mx-auto"
         style={{ maxWidth: "1440px" }}
+        {...fadeIn}
       >
-        <motion.div className="w-1/2 space-y-4" {...fadeIn}>
+        <div className="w-1/2 space-y-4">
           <div>
             <h1 className="wide whitespace-nowrap">Hi! I'm Jayden, a</h1>
             <TextReveal currentWord={words[activeWordIndex].text} />
@@ -47,22 +48,16 @@ export default function Hero() {
               innovative software.
             </p>
             <p className="text-lg">
-              Currently in my final year of{" "}
-              <AutoLink
-                light
-                to="https://uwaterloo.ca/future-students/programs/systems-design-engineering"
-              >
-                Systems Design Engineering
-              </AutoLink>{" "}
-              at the University of Waterloo.
+              Currently in my final year of Systems Design Engineering at the
+              University of Waterloo.
             </p>
           </div>
-        </motion.div>
+        </div>
         <ModelCanvas
           className={"w-1/2"}
           currentScene={words[activeWordIndex].animation}
         />
-      </div>
+      </motion.div>
     </div>
   )
 }

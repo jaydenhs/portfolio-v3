@@ -29,16 +29,11 @@ color: [142, 70, 45]
   # Context
 
   <section>
-    As a UX/UI design intern at TD's Innovation Lab, I was tasked with rapidly
-    prototyping experiences that could impact millions of users.
+    At TD's innovation lab, I was tasked with rapidly prototyping experiences that could impact millions of TD's student customers.
 
-    Within my first week, I quickly realized that there was no complete source or
-    conceptual documentation for styles, UI elements, or design patterns. In such an
-    agile environment, this led to severe inefficiencies in our design
-    workflows.
+    Within my first week, I realized that there was no source for styles, UI elements, or design patterns. This led to inefficiencies in our design workflows, poor accessibility, and confusion inconsistencies during user testing.
 
-    So, I embarked on a self-driven project to create the foundation for TD Lab's
-    design system.
+    Thus, I embarked on a self-driven project to create the foundation for TD Lab's design system.
   </section>
 </section>
 
@@ -47,18 +42,26 @@ color: [142, 70, 45]
 
   <section>
     We have observed that the TD Lab design library is not meeting user needs, which
-    is causing **inefficient** design workflows and poor accessibility in
+    is causing inefficient design workflows and poor accessibility in
     prototypes.
 
-    How might we build a **design library** that promotes inclusion and innovation
+    How might we build a design library that promotes inclusion and innovation
     by improving accessibility documentation and reducing time spent on creating and
     updating interface elements?
   </section>
 </section>
 
 <section>
-  # Collecting the Parts
+  # Crafting the Foundation
 
+  <section>
+    ## Observation
+
+    My first order of business was to understand how the lab currently designed.
+    After a few conversations, it was evident that while the lab did have an minimal
+    Sketch pattern library, its unfinished nature resulted in a lot of time being
+    spent on creating user interface elements from scratch.
+  </section>
   <section>
     ## Inventory
 
@@ -66,7 +69,8 @@ color: [142, 70, 45]
     projects. I collected Sketch project files, analyzed the current pattern
     library, read over the minimal Atlassian documentation we had, and took
     screenshots of previous projects.
-
+  </section>
+  <section>
     ## Audit
 
     Once I felt I had captured every button, icon, and design pattern I grouped them
@@ -75,18 +79,10 @@ color: [142, 70, 45]
     accessibility, with elements being used incorrectly and colours not satisfying
     contrast ratios.
   </section>
-</section>
-
-<section>
-  # Researching Best Practices
-
   <section>
-    To ensure that the design library was future-proof, I started this project with
-    some heavy research into design library and UI design best practices.
+    ## Research
 
-    I studied Apple's Human Interface Guidelines and Google's Material Design
-    Guidelines, analyzed design systems from Atlassian, Uber, Github, and Figma, and
-    read through countless Medium articles.
+    To ensure that the design library was future-proof, I started this project with some heavy research into design library and UI design best practices. I studied Apple's Human Interface Guidelines and Google's Material Design Guidelines, analyzed design systems from Atlassian, Uber, Github, and Figma, and read through countless Medium articles.
   </section>
 </section>
 
@@ -96,6 +92,8 @@ color: [142, 70, 45]
   <section>
     Inspired by Dropbox's design system, I decided to structure the design library
     in a two-tiered hierarchy:
+
+    <Image src="design-system-structure.png"/>
 
     By creating separate UI Kits that inherit from Global Styles, we get the best of
     both worlds - the consistency of having shared styles with the flexibility of
@@ -107,7 +105,9 @@ color: [142, 70, 45]
   # Testing the System
 
   <section>
-    (While I was building, I was communicating progress to the other designers, allowing them to use it. I was also using it on my other lab projects, to get a feel for it. This allowed me to collect and implement feedback as I went.)
+    While building the design system, I communicated progress, gathering feedback via Slack and meetings for iterative enhancement. I also tested myself it other lab projects, gauging visual harmony, navigation, and usability.
+
+    <Image className="wide" src="design-system-usage.png" caption="A student budgeting app that I used the design system to design."/>
   </section>
 </section>
 
@@ -125,7 +125,7 @@ color: [142, 70, 45]
 
         Craft vibrant designs with our WCAG 2.1 compliant colour palette, categorized for seamless styling.
       </GridCell>
-      <GridCell cols={4} srcArray={[""]}>
+      <GridCell cols={4} srcArray={["icons.png"]}>
         **Icons**
         
         Leverage Material Design icons, with each icon incorporating a union layer to maintain fill color during icon swaps.
@@ -145,7 +145,12 @@ color: [142, 70, 45]
         **Typography**
         
         Enhance designs across desktop and mobile with typography harmonized with a 4px vertical rhythm.
-      </GridCell>      
+      </GridCell>  
+    </Grid>
+  </section>
+
+  <section>
+    <Grid>   
       <GridCellDesktop isTitle srcArray={["ios-kit-overview.png"]} pt={12}>
         ## iOS Kit
         ## Prototype apps quicker
@@ -171,5 +176,52 @@ color: [142, 70, 45]
         Integrate iOS kit elements, complemented by Human Interface Guidelines' best practice documentation and illustrative examples.
       </GridCell>
     </Grid>
+  </section>
+</section>
+
+<section>
+  # The Launch
+
+  <section>
+    Upon launch, designers seamlessly embraced the system due to its public development. Within a month, notable improvements in collaboration emerged, with designers proactively suggesting enhancements and developers aligning coding efforts. The system's impact extended beyond process, shaping a transformative cultural shift.
+
+    <Metrics>
+      Prototyping effiency increased by 16%
+
+      WCAG colour contrast compliance rose to 98%
+
+      System adoption in new projects rose to 91%
+    </Metrics>
+  </section>  
+  <section>
+    <Quote author="Amanda Cheung, senior UX designer and mentor" authorImg="amanda-cheung.jpeg">
+    	"It was great having Jayden and his enthusiasm around. He has a lot of passion in the work that he does and it shows in the quality of his work and his involvement in projects outside of his assigned work."
+    </Quote>
+  </section>
+</section>
+
+<section>
+  # Learnings
+
+  <section>
+    <NumberedList
+      data={[
+        {
+          title: 'Invest in best practices',
+          description:
+            "Prioritizing quality during the creation of the design system's core components proved invaluable. Developing a well-structured hierarchy and a wide variety of flexible design elements simplified the process of choosing components to suit different design requirements.",
+        },
+        {
+          title: 'Use your own product',
+          description:
+            'When creating a design system, it can be easy to lose usability in the name of "optimizing the library." Using my own components within my own design workflows helped me identify and fix unintuitive or difficult features.',
+        },
+        {
+          title: 'I love designing interfaces',
+          description:
+            "At the start of my internship, I had uncertain feelings about user interface design. Building this design system from scratch truly deepened my appreciation for the craft. Whether it was establishing consistent grids, optimizing for accessibility, or mastering Figma shortcuts, I found my passion for UI design!",
+        },
+      ]}
+    />
   </section>
 </section>
