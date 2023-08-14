@@ -1,17 +1,10 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
- */
-
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import "../styles/global.css"
 
 import Header from "./header"
 
-const Layout = ({ children, className }) => {
+export default function App({ children, className }) {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -23,7 +16,7 @@ const Layout = ({ children, className }) => {
   `)
 
   return (
-    <body className={`scroll-container ${className}`}>
+    <div className="scroll-container">
       <div className="scroll-content">
         <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
         <main>{children}</main>
@@ -38,8 +31,6 @@ const Layout = ({ children, className }) => {
         <a href="https://www.gatsbyjs.com">Gatsby</a>
       </footer> */}
       </div>
-    </body>
+    </div>
   )
 }
-
-export default Layout

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-import Layout from "../components/app"
+import App from "../components/app"
 import Seo from "../components/seo"
 import { graphql } from "gatsby"
 import Hero from "../components/home/hero"
@@ -13,7 +13,7 @@ const IndexPage = ({ data }) => {
   }
 
   return (
-    <Layout>
+    <App>
       <Hero />
       <div className="reading-grid space-y-24 mb-24">
         {data.allMdx.nodes.map(({ frontmatter }) => {
@@ -26,7 +26,7 @@ const IndexPage = ({ data }) => {
           )
         })}
       </div>
-    </Layout>
+    </App>
   )
 }
 

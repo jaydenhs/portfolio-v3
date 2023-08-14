@@ -1,7 +1,7 @@
 import React from "react"
 import Seo from "../seo"
 import { graphql } from "gatsby"
-import Layout from "../app"
+import App from "../app"
 import { MDXProvider } from "@mdx-js/react"
 import { motion } from "framer-motion"
 
@@ -35,7 +35,7 @@ export default function PostLayout({
   children,
 }) {
   return (
-    <Layout>
+    <App>
       <Image
         src={thumbnail}
         initial={{ scale: 1.05 }}
@@ -55,7 +55,7 @@ export default function PostLayout({
         </motion.p>
         <WorkCard frontmatter={next.frontmatter} flipped clipped isNextCard />
       </div>
-    </Layout>
+    </App>
   )
 }
 
