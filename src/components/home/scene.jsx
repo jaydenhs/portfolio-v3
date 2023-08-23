@@ -3,21 +3,22 @@ import { useFrame } from "react-three-fiber"
 
 const Scene = ({ activeScene, name, children }) => {
   const meshRef = useRef()
-  const [positionY, setPositionY] = useState(-4)
+  const [positionY, setPositionY] = useState(-8)
 
-  // Function to smoothly animate the cube's position from y = -4 to y = 0
-  const animatePositionY = () => {
-    if (positionY < 0 && activeScene === name) {
-      setPositionY(prevY => Math.min(prevY + 0.2, 0))
+  useEffect(() => {
+    const animatePositionY = () => {
+      if (positionY < 0 && activeScene === name) {
+        setPositionY(prevY => Math.min(prevY + 0.001, 0))
+      }
+      if (positionY > -8 && activeScene !== name) {
+        setPositionY(prevY => Math.min(prevY - 0.001, 0))
+      }
     }
-    if (positionY > -4 && activeScene !== name) {
-      setPositionY(prevY => Math.min(prevY - 0.2, 0))
-    }
-  }
 
-  // Use the useFrame hook to update the cube's position on each frame
-  useFrame(() => {
     animatePositionY()
+  }, [positionY, activeScene])
+
+  useFrame(() => {
     meshRef.current.position.y = positionY
   })
 

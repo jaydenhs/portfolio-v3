@@ -54,6 +54,7 @@ export default function Hero() {
         </div>
         <ModelCanvas
           className={"w-1/2"}
+          style={{ height: "max(50vh, 40rem)" }}
           currentScene={words[activeWordIndex].animation}
         />
       </motion.div>
