@@ -9,7 +9,7 @@ export default function GetImage({ src }) {
         allFile(
           filter: {
             internal: { mediaType: { regex: "/image/" } }
-            extension: { ne: "ico" }
+            extension: { nin: ["ico", "svg"] }
           }
         ) {
           nodes {
