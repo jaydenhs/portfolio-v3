@@ -6,11 +6,16 @@ import { motion } from "framer-motion"
 
 import Model from "./model"
 
-export default function ModelCanvas({ currentScene, className }) {
+export default function ModelCanvas({
+  currentScene,
+  position = [6, 0.5, 6],
+  className,
+  ...rest
+}) {
   const [isLoaded, setIsLoaded] = useState(true)
 
   function Loader() {
-    const { active, progress, errors, item, loaded, total } = useProgress()
+    const { active } = useProgress()
     if (active) {
       setIsLoaded(false)
     } else {
@@ -22,11 +27,12 @@ export default function ModelCanvas({ currentScene, className }) {
   return (
     <motion.div
       className={`flex items-center justify-center ${className}`}
-      style={{ height: "max(50vh, 40rem)" }}
+      {...rest}
     >
       <Canvas
+        className="w-full h-full"
         camera={{
-          position: [6, 0.5, 6],
+          position: position,
           zoom: 2,
         }}
       >

@@ -19,10 +19,7 @@ export default function App({ children, className }) {
 
   return (
     <div className="scroll-container" ref={scrollContainerRef}>
-      <Header
-        scrollContainerRef={scrollContainerRef}
-        siteTitle={data.site.siteMetadata?.title || `Title`}
-      />
+      <Header scrollContainerRef={scrollContainerRef} />
       <div className="scroll-content">
         <main className="pt-16">{children}</main>
       </div>

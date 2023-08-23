@@ -7,32 +7,36 @@ import React, { useRef, useEffect, useState } from "react"
 import { useGLTF, useAnimations, Html } from "@react-three/drei"
 import Scene from "./scene"
 import { useFrame } from "react-three-fiber"
-import modelPath from "../../models/jayden-animated-6.gltf"
+import modelPath from "../../models/jayden-animated-6.glb"
+// import roomPath from "../../models/just-the-room.glb"
 
 export default function Model({ isLoaded, currentScene }) {
   const [activeScene, setActiveScene] = useState("")
   const group = useRef()
 
   const { nodes, materials, animations } = useGLTF(modelPath)
+  // const model = useGLTF(roomPath)
 
   const { actions } = useAnimations(animations, group)
 
   useEffect(() => {
     actions[currentScene]?.reset().fadeIn(0.5).play()
     setActiveScene(currentScene)
+
+    if (currentScene === "walking") {
+      actions["earth rotating"]?.play()
+    } else {
+      actions["earth rotating"]?.stop()
+    }
+
     return () => {
       actions[currentScene]?.fadeOut(0.5)
     }
   }, [currentScene])
 
   useEffect(() => {
-    actions["earth rotating"]?.play()
     setActiveScene(currentScene)
   }, [])
-
-  useEffect(() => {
-    console.log({ isLoaded })
-  }, [isLoaded])
 
   const planeRef = useRef()
   const [positionY, setPositionY] = useState(0)
@@ -72,6 +76,10 @@ export default function Model({ isLoaded, currentScene }) {
     <group ref={group} position={[1, -1.2, 0]} dispose={null}>
       <group name="Scene">
         <group ref={armatureRef} name="Armature">
+          {/* <Scene activeScene={activeScene} name="typing">
+            <primitive object={model.scene} />
+          </Scene> */}
+
           <primitive object={nodes.mixamorigHips} />
           <primitive object={nodes.Ctrl_ArmPole_IK_Left} />
           <primitive object={nodes.Ctrl_Hand_IK_Left} />

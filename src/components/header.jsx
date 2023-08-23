@@ -26,10 +26,7 @@ const Header = ({ scrollContainerRef }) => {
   }, [prevScrollPos, scrollContainerRef])
 
   return (
-    <header
-      className={`fixed h-16 bg-white z-50 reading-grid`}
-      style={{ width: "calc(100% - 15px)" }}
-    >
+    <header className={`fixed h-16 bg-white z-50 reading-grid w-full`}>
       <Nav className="wide flex items-center justify-between">
         <AutoLink to="/">
           <Image
@@ -40,7 +37,9 @@ const Header = ({ scrollContainerRef }) => {
         <div className="space-x-12 text-lg">
           <AutoLink to="/">Home</AutoLink>
           <AutoLink to="/about">About</AutoLink>
-          <AutoLink to={Resume}>Resume</AutoLink>
+          <a href={Resume} target="_blank" rel="noopener noreferrer">
+            Resume
+          </a>
         </div>
       </Nav>
     </header>
