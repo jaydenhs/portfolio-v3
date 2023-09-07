@@ -15,7 +15,7 @@ const IndexPage = ({ data }) => {
   return (
     <App>
       <Hero />
-      <div className="reading-grid space-y-24 mb-24">
+      <div className="reading-grid space-y-16 md:space-y-24 mb-24">
         {data.allMdx.nodes.map(({ frontmatter }) => {
           return (
             <WorkCard

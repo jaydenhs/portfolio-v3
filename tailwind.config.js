@@ -18,6 +18,9 @@ module.exports = {
         "reading-wide": ["72px 1fr min(65ch, calc(100% - 64px)) 1fr 72px"],
         "reading-narrow": ["24px 1fr min(65ch, calc(100% - 64px)) 1fr 24px"],
       },
+      height: {
+        "screen-3/4": "75vh",
+      },
     },
   },
   plugins: [],

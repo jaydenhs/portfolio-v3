@@ -34,7 +34,7 @@ const Header = ({ scrollContainerRef }) => {
             src="logo.png"
           />
         </AutoLink>
-        <div className="space-x-12 text-lg">
+        <div className="space-x-6 md:space-x-12 text-lg">
           <AutoLink to="/">Home</AutoLink>
           <AutoLink to="/about">About</AutoLink>
           <a href={Resume} target="_blank" rel="noopener noreferrer">

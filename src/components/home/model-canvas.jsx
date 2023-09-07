@@ -33,7 +33,7 @@ export default function ModelCanvas({
         className="w-full h-full"
         camera={{
           position: position,
-          zoom: 2,
+          zoom: 2.5,
         }}
       >
         <ambientLight intensity={1} />
