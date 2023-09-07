@@ -12,7 +12,7 @@ export default function SideBySide({
 
   return (
     <div
-      className="wide grid md:grid-cols-2 pb-4 md:pb-0 gap-6 mx-auto"
+      className="wide grid md:grid-cols-2 pb-4 md:pb-0 gap-6 mx-auto pt-8"
       style={{ maxWidth: `${maxWidth}px` }}
     >
       <Image className={`w-full ${rightClassName}`} src={src} />
