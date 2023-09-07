@@ -40,6 +40,7 @@ export default function PostLayout({
         src={thumbnail}
         initial={{ scale: 1.05 }}
         animate={{ scale: 1 }}
+        className="h-64 md:h-auto"
         shared
       />
       <motion.div {...fadeIn}>
