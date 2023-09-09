@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 
 import App from "../components/app"
-import Seo from "../components/seo"
 import { graphql } from "gatsby"
 import Hero from "../components/home/hero"
 import WorkCard from "../components/home/work-card"
