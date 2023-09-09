@@ -32,11 +32,11 @@ export default function Hero() {
   return (
     <div className="reading-grid mb-24 lg:mb-16">
       <motion.div
-        className="wide w-full h-screen-3/4 flex flex-col-reverse lg:flex-row lg:items-center mx-auto"
+        className="wide w-full h-screen-3/4 md:h-screen-1/2 flex justify-between flex-col-reverse lg:flex-row lg:items-center mx-auto"
         style={{ maxWidth: "1440px" }}
         {...fadeIn}
       >
-        <div className="flex-1 space-y-0 md:space-y-4">
+        <div className="lg:flex-1 space-y-0 md:space-y-4">
           <div className="w-full mt-8 lg:mt-0 space-y-0 md:space-y-3">
             <h1 className="wide whitespace-nowrap">Hi! I'm Jayden, a</h1>
             <TextReveal currentWord={words[activeWordIndex].text} />
@@ -53,8 +53,7 @@ export default function Hero() {
           </div>
         </div>
         <ModelCanvas
-          className={"flex-1 w-full h-1/2 lg:h-full "}
-          // style={{ height: "max(50vh, 40rem)" }}
+          className={"flex-1 w-full h-1/2 lg:h-full"}
           currentScene={words[activeWordIndex].animation}
         />
       </motion.div>
