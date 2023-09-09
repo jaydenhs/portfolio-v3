@@ -27,7 +27,7 @@ import { motion } from "framer-motion"
 
 const About = () => {
   return (
-    <App>
+    <App page="About">
       <motion.div className="reading-grid" {...fadeIn}>
         <h1 className="mb-1.5">About Me</h1>
         <p className="text-xl mb-8">
