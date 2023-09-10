@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import Seo from "../seo"
 import { graphql } from "gatsby"
 import App from "../app"
@@ -21,7 +21,7 @@ import GridCell from "./grid-cell"
 import GridCellDesktop from "./grid-cell-desktop"
 import Metrics from "./metrics"
 
-import { fadeIn } from "../../styles/animations"
+import { fadeIn, fadeInCard } from "../../styles/animations"
 import { styled, css } from "styled-components"
 import tw from "twin.macro"
 
@@ -34,15 +34,22 @@ export default function PostLayout({
   pageContext: { color, next },
   children,
 }) {
+  const [isLoaded, setIsLoaded] = useState(false)
+  useEffect(() => {
+    setIsLoaded(true)
+  }, [])
+
   return (
     <App>
-      <Image
-        src={thumbnail}
-        initial={{ scale: 1.05 }}
-        animate={{ scale: 1 }}
-        className="h-64 md:h-auto"
-        shared
-      />
+      <motion.div className="h-64 md:h-auto" {...(isLoaded ? fadeIn : null)}>
+        <Image
+          src={thumbnail}
+          initial={{ scale: 1.05 }}
+          animate={{ scale: 1 }}
+          className="h-64 md:h-auto"
+          shared
+        />
+      </motion.div>
       <motion.div {...fadeIn}>
         <MDXProvider components={components}>
           <ContentWrapper color={color} className="content">
@@ -50,10 +57,13 @@ export default function PostLayout({
           </ContentWrapper>
         </MDXProvider>
       </motion.div>
-      <div className="pt-24 overflow-y-hidden reading-grid border-t-4 border-slate-150">
-        <motion.p {...fadeIn} className="wide">
-          Next project
-        </motion.p>
+      <motion.div
+        className="pt-24 overflow-y-hidden reading-grid border-t-4 border-slate-150"
+        {...fadeIn}
+      >
+        <p className="wide">Next project</p>
+      </motion.div>
+      <div className="reading-grid">
         <WorkCard frontmatter={next.frontmatter} flipped clipped isNextCard />
       </div>
     </App>
