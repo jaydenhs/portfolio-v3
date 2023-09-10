@@ -21,11 +21,11 @@ export default function Image({
       className={`overflow-hidden ${maxWidth && "mx-auto"} ${className}`}
       style={{ maxWidth: `${maxWidth}px` }}
     >
-      <motion.div className="flex flex-col items-center" {...rest}>
+      <motion.div className="flex flex-col h-full items-center" {...rest}>
         <GatsbyImage
           image={image}
-          className={`w-full ${imgClassName}`}
-          imgClassName="object-none"
+          className={`w-full ${imgClassName} h-full`}
+          imgClassName="object-cover"
         />
         {caption && <p className="text-gray-400">{caption}</p>}
       </motion.div>

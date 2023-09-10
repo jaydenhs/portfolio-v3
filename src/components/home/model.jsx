@@ -73,7 +73,7 @@ export default function Model({ isLoaded, currentScene }) {
   })
 
   return (
-    <group ref={group} position={[1, -1.2, 0]} dispose={null}>
+    <group ref={group} position={[1, -1.35, 0]} dispose={null}>
       <group name="Scene">
         <group ref={armatureRef} name="Armature">
           {/* <Scene activeScene={activeScene} name="typing">

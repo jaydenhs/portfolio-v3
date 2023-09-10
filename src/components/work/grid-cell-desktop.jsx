@@ -11,7 +11,7 @@ export default function GridCellDesktop({
 }) {
   return (
     <div
-      className={`col-span-1 md:col-span-${cols} flex items-center bg-gray-100 rounded-3xl flex-col justify-between px-8 pt-${pt} pb-${pb}`}
+      className={`col-span-1 lg:col-span-${cols} flex items-center bg-gray-100 rounded-3xl flex-col justify-between px-8 pt-${pt} pb-${pb}`}
     >
       <div
         style={{ color: `${isTitle ? "var(--primaryD)" : ""}` }}

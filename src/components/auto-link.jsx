@@ -3,17 +3,27 @@ import { Link } from "gatsby"
 import { styled } from "styled-components"
 
 const AutoLink = ({ to, children, light = false, ...rest }) => {
-  const internal = `${to}`.startsWith("/")
+  const internal = to.startsWith("/")
+  const resume = to.startsWith("/static")
 
   return (
     <>
-      {internal ? (
+      {resume ? (
+        // Render a link to an external resume
+        <a href={to} target="_blank" rel="noopener noreferrer" {...rest}>
+          Resume
+        </a>
+      ) : internal ? (
+        // Render an internal link using Gatsby's Link
         <Link to={to} {...rest}>
           {children}
         </Link>
       ) : (
+        // Render an animated link with custom styles
         <AnimatedA
-          style={{ color: `${light ? "var(--primary)" : "var(--primaryD)"}` }}
+          style={{
+            color: `${light ? "var(--primary)" : "var(--primaryD)"}`,
+          }}
           href={to}
           target="_blank"
           rel="noopener noreferrer"

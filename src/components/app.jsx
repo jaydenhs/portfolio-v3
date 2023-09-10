@@ -1,28 +1,17 @@
-import React, { useRef } from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react"
+import Seo from "./seo"
 import "../styles/global.css"
 
 import Header from "./header"
 
-export default function App({ children, className }) {
-  const scrollContainerRef = useRef(null)
-
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
+export default function App({ children, page }) {
   return (
-    <div className="scroll-container" ref={scrollContainerRef}>
-      <Header scrollContainerRef={scrollContainerRef} />
+    <div className="scroll-container">
+      <Header page={page} />
       <div className="scroll-content">
         <main className="pt-16">{children}</main>
       </div>
+      <Seo />
     </div>
   )
 }

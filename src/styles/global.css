@@ -39,15 +39,15 @@ ol {
 }
 
 h1 {
-  @apply text-5xl leading-tight;
+  @apply text-4xl md:text-5xl leading-tight;
 }
 
 h2 {
-  @apply text-3xl font-bold;
+  @apply text-2xl md:text-3xl font-bold;
 }
 
 h3 {
-  @apply text-2xl font-bold;
+  @apply text-xl md:text-2xl font-bold;
 }
 
 p {
@@ -59,7 +59,7 @@ th {
 }
 
 td {
-  @apply align-top;
+  @apply align-top space-y-0.5 pt-2;
 }
 
 figcaption {
@@ -91,7 +91,7 @@ figcaption {
 }
 
 .content > section {
-  @apply py-32 reading-grid;
+  @apply py-20 lg:py-32 reading-grid;
 }
 
 .content > section > section {

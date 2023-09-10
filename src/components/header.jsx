@@ -1,53 +1,67 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import AutoLink from "./auto-link"
-import { styled } from "styled-components"
+import { styled, css } from "styled-components"
 import tw from "twin.macro"
 import Image from "./image"
 import Resume from "../../static/resume.pdf"
 
-const Header = ({ scrollContainerRef }) => {
-  const [isHeaderVisible, setIsHeaderVisible] = useState(true)
-  const [prevScrollPos, setPrevScrollPos] = useState(0)
+const links = [
+  { text: "Portfolio", url: "/" },
+  { text: "About", url: "/about" },
+  { text: "Resume", url: Resume },
+]
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = scrollContainerRef?.current.scrollTop
-
-      if (prevScrollPos > currentScrollPos) {
-        setIsHeaderVisible(true)
-      } else {
-        setIsHeaderVisible(false)
-      }
-
-      setPrevScrollPos(currentScrollPos)
-    }
-
-    scrollContainerRef?.current.addEventListener("scroll", handleScroll)
-  }, [prevScrollPos, scrollContainerRef])
+const Header = ({ page }) => {
+  const [isHovered, setIsHovered] = useState(false)
 
   return (
     <header className={`fixed h-16 bg-white z-50 reading-grid w-full`}>
-      <Nav className="wide flex items-center justify-between">
+      <nav className="wide w-full flex items-center justify-between">
         <AutoLink to="/">
-          <Image
-            className="w-12 h-12 transition-transform hover:scale-110 ease-in-out duration-400"
-            src="logo.png"
-          />
+          <div
+            className="w-12 h-12 relative transition-transform hover:scale-110 ease-in-out duration-400"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <Image
+              className={`absolute z-10 ${isHovered ? "hidden" : ""}`}
+              src={"logo.png"}
+            />
+            <Image className={"absolute"} src={"smiling.png"} />
+          </div>
         </AutoLink>
-        <div className="space-x-12 text-lg">
-          <AutoLink to="/">Home</AutoLink>
-          <AutoLink to="/about">About</AutoLink>
-          <a href={Resume} target="_blank" rel="noopener noreferrer">
-            Resume
-          </a>
+        <div className="flex items-center h-full space-x-6 md:space-x-12 md:text-lg">
+          {links.map(({ text, url, colour }, index) => {
+            let match = page === text
+            return (
+              <Item to={url} key={index} match={match} colour={colour}>
+                {text}
+              </Item>
+            )
+          })}
         </div>
-      </Nav>
+      </nav>
     </header>
   )
 }
 
-const Nav = styled.nav`
-  ${tw`w-full`}
-`
+const Item = styled(AutoLink)(
+  ({ match }) => css`
+    ${tw`flex items-center h-full no-underline transition-all relative duration-300`}
+    ${match ? tw`text-primary` : tw`text-gray-500`}
+
+    &:before {
+      content: "";
+      left: -10%;
+      width: 120%;
+      ${tw`h-1 bottom-0 absolute rounded-t-xl duration-300`}
+      ${match ? tw`bg-primary opacity-100` : tw`bg-gray-300 opacity-0`}
+    }
+
+    &:hover:before {
+      ${tw`opacity-100`}
+    }
+  `
+)
 
 export default Header

@@ -11,9 +11,9 @@
 module.exports = {
   siteMetadata: {
     title: `Jayden Hsiao - Designer & Developer`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    description: `I strive to bridge the gap between empathetic design and innovative software.`,
+    author: `Jayden Hsiao`,
+    siteUrl: `https://jaydenh.com/`,
   },
   plugins: [
     //// MDX
