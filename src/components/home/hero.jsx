@@ -8,7 +8,7 @@ import ModelCanvas from "./model-canvas"
 
 const words = [
   { text: "product designer", animation: "thinking" },
-  { text: "front-end developer", animation: "typing" },
+  { text: "software engineer", animation: "typing" },
   { text: "world traveller", animation: "walking" },
   { text: "concert pianist", animation: "playing piano" },
 ]
@@ -47,8 +47,7 @@ export default function Hero() {
               innovative software.
             </p>
             <p className="lg:text-lg">
-              Currently in my final year of Systems Design Engineering at the
-              University of Waterloo.
+              Currently an AI Design Engineer at Arctic Eider Society, creating Indigenous-first solutions for wildlife conservation and sea ice mapping.
             </p>
           </div>
         </div>

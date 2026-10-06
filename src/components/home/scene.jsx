@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react"
-import { useFrame } from "react-three-fiber"
+import { useFrame } from "@react-three/fiber"
 
 const Scene = ({ activeScene, name, children }) => {
   const meshRef = useRef()
