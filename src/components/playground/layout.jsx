@@ -21,7 +21,7 @@ export default function PlaygroundLayout({
 }) {
   return (
     <App page="Play">
-      <div className="reading-grid gap-y-6 pt-12 pb-32 [&>h1]:mt-12 lg:[&>h1]:mt-20">
+      <div className="reading-grid gap-y-6 pt-12 pb-32 font-['Proxima_Nova'] text-base leading-relaxed [&>h1]:mt-12 lg:[&>h1]:mt-20 [&>a:first-child+h1]:mt-0">
         <AutoLink to="/playground" className="text-gray-500">
           ← Playground
         </AutoLink>

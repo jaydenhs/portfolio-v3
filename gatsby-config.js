@@ -10,7 +10,7 @@
 
 module.exports = {
   siteMetadata: {
-    title: `Jayden Hsiao - Designer & Developer`,
+    title: `Jayden Hsiao – Design Engineer`,
     description: `I strive to bridge the gap between empathetic design and innovative software.`,
     author: `Jayden Hsiao`,
     siteUrl: `https://jaydenh.com/`,
@@ -57,7 +57,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
+        name: `Jayden Hsiao – Design Engineer`,
         short_name: `starter`,
         start_url: `/`,
         background_color: `#663399`,

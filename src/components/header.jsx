@@ -8,6 +8,7 @@ import Resume from "../../static/resume.pdf"
 const links = [
   { text: "Work", url: "/" },
   { text: "Play", url: "/playground" },
+  { text: "Write", url: "/write" },
   { text: "Live", url: "/about" },
   { text: "CV", url: Resume },
 ]
@@ -31,7 +32,7 @@ const Header = ({ page }) => {
             <Image className={"absolute"} src={"smiling.png"} />
           </div>
         </AutoLink>
-        <div className="flex items-center h-full space-x-6 md:space-x-12 md:text-lg">
+        <div className="flex items-center h-full -mr-3 md:-mr-6 md:text-lg">
           {links.map(({ text, url, colour }, index) => {
             let match = page === text
             return (
@@ -48,13 +49,17 @@ const Header = ({ page }) => {
 
 const Item = styled(AutoLink)(
   ({ match }) => css`
-    ${tw`flex items-center h-full no-underline transition-all relative duration-300`}
+    ${tw`flex items-center h-full px-3 md:px-6 no-underline transition-all relative duration-300`}
     ${match ? tw`text-primary` : tw`text-gray-500`}
 
     &:before {
       content: "";
-      left: -10%;
-      width: 120%;
+      left: 0.5rem;
+      right: 0.5rem;
+      @media (min-width: 768px) {
+        left: 1.25rem;
+        right: 1.25rem;
+      }
       ${tw`h-1 bottom-0 absolute rounded-t-xl duration-300`}
       ${match ? tw`bg-primary opacity-100` : tw`bg-gray-300 opacity-0`}
     }

@@ -28,12 +28,13 @@ import { motion } from "framer-motion"
 const About = () => {
   return (
     <App page="Live">
-      <motion.div className="reading-grid" {...fadeIn}>
-        <h1 className="mb-1.5">About Me</h1>
-        <p className="text-xl mb-8">
-          Welcome to my room — hover over any of the glowing dots to learn more
-          about me!
-        </p>
+      <motion.div className="reading-grid pt-12 pb-24" {...fadeIn}>
+        <div className="wide space-y-5 mb-12">
+          <h1>About Me</h1>
+          <p className="text-lg">
+            Welcome to my room — hover over any of the glowing dots to learn more about me!
+          </p>
+        </div>
         {/* <Scene /> */}
         <div className="wide">
           <div className="relative">

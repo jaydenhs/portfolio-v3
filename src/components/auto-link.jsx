@@ -9,10 +9,25 @@ const AutoLink = ({ to, children, light = false, ...rest }) => {
   return (
     <>
       {resume ? (
-        // Render a link to an external resume
-        <a href={to} target="_blank" rel="noopener noreferrer" {...rest}>
-          {children || "Resume"}
-        </a>
+        // Render a link to a static file (resume, PDFs). Callers that pass their own
+        // className (e.g. the header nav) keep their own styling; others get the animated underline
+        rest.className ? (
+          <a href={to} target="_blank" rel="noopener noreferrer" {...rest}>
+            {children || "Resume"}
+          </a>
+        ) : (
+          <AnimatedA
+            style={{
+              color: `${light ? "var(--primary)" : "var(--primaryD)"}`,
+            }}
+            href={to}
+            target="_blank"
+            rel="noopener noreferrer"
+            {...rest}
+          >
+            {children || "Resume"}
+          </AnimatedA>
+        )
       ) : internal ? (
         // Render an internal link using Gatsby's Link
         <Link to={to} {...rest}>
