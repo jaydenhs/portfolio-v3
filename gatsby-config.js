@@ -71,6 +71,8 @@ module.exports = {
 
     //// Styles
     "gatsby-plugin-postcss",
+    // server-renders styled-components CSS, so styled elements are laid out before hydration
+    "gatsby-plugin-styled-components",
 
     //// Netlify
     "gatsby-plugin-netlify",
