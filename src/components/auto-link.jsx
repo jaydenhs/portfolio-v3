@@ -11,7 +11,7 @@ const AutoLink = ({ to, children, light = false, ...rest }) => {
       {resume ? (
         // Render a link to an external resume
         <a href={to} target="_blank" rel="noopener noreferrer" {...rest}>
-          Resume
+          {children || "Resume"}
         </a>
       ) : internal ? (
         // Render an internal link using Gatsby's Link
@@ -37,6 +37,9 @@ const AutoLink = ({ to, children, light = false, ...rest }) => {
 }
 
 const AnimatedA = styled.a`
+  /* as a grid child (standalone MDX line) it would stretch and so would the underline */
+  justify-self: start;
+  width: fit-content;
   background: linear-gradient(
       to right,
       rgba(100, 200, 200, 0),

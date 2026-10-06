@@ -30,6 +30,13 @@ module.exports = {
         path: `${__dirname}/src/work`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `playground`,
+        path: `${__dirname}/src/playground`,
+      },
+    },
 
     //// Image Optimization
 

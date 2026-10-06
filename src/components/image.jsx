@@ -1,10 +1,14 @@
-import React from "react"
+import React, { createContext, useContext } from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { motion } from "framer-motion"
 import GetImage from "../utils/get-image"
 
+// Content folder that bare `src` filenames resolve against first (set by write-up layouts)
+export const ImageDirContext = createContext(null)
+
 export default function Image({
   src,
+  dir,
   imgClassName,
   className,
   maxWidth,
@@ -12,7 +16,8 @@ export default function Image({
   caption,
   ...rest
 }) {
-  let image = GetImage({ src: src })
+  const contextDir = useContext(ImageDirContext)
+  let image = GetImage({ src: src, dir: dir ?? contextDir })
 
   return !!image ? (
     <motion.div

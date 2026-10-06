@@ -1,8 +1,10 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import { useMemo } from "react"
+import { useCallback, useMemo } from "react"
 
-export default function GetImage({ src }) {
+// Returns find(src, dir) -> gatsbyImageData | undefined.
+// `dir` (content folder, e.g. "LLAG") is preferred over a bare filename match so identically named files in different folders don't clash
+export function useFindImage() {
   const data = useStaticQuery(
     graphql`
       query getAllImages {
@@ -24,19 +26,31 @@ export default function GetImage({ src }) {
     `
   )
 
-  const matchedImage = useMemo(
-    () =>
-      data.allFile.nodes.find(({ relativePath, relativeDirectory }) => {
-        if (relativeDirectory) {
-          return `${relativeDirectory}/${src}` === relativePath
-        } else {
-          return `${src}` === relativePath
-        }
-      }),
-    [data, src]
+  return useCallback(
+    (src, dir) => {
+      const matchesName = ({ relativePath, relativeDirectory }) =>
+        relativeDirectory
+          ? `${relativeDirectory}/${src}` === relativePath
+          : `${src}` === relativePath
+      const inDir = ({ relativeDirectory }) =>
+        relativeDirectory === dir || relativeDirectory.startsWith(`${dir}/`)
+      // within the entry's own folder, tolerate case mismatches like thumbnail.png vs thumbnail.PNG
+      const matchesNameLoose = ({ relativePath }) =>
+        relativePath.toLowerCase().endsWith(`/${src}`.toLowerCase())
+
+      const matchedImage =
+        (dir && data.allFile.nodes.find(n => matchesName(n) && inDir(n))) ||
+        (dir &&
+          data.allFile.nodes.find(n => inDir(n) && matchesNameLoose(n))) ||
+        data.allFile.nodes.find(matchesName)
+
+      return matchedImage?.childImageSharp?.gatsbyImageData
+    },
+    [data]
   )
+}
 
-  const image = matchedImage?.childImageSharp?.gatsbyImageData
-
-  return image
+export default function GetImage({ src, dir }) {
+  const find = useFindImage()
+  return useMemo(() => find(src, dir), [find, src, dir])
 }

@@ -1,0 +1,38 @@
+---
+link: /zero-views-museum
+thumbnail: "thumbnail.PNG"
+---
+
+import pictorial from "./pictorial.pdf"
+
+Zero Views Museum is a VR art museum that only exhibits artworks with zero views. Our consumption of art is increasingly shaped by algorithms that equate virality with value, so this museum acts as a counterfunctional algorithm. Once an artwork has been experienced, it is erased from our database, making you both the first and potentially last person to see it. The encounter invites reflection: are algorithms good arbiters of artistic worth, what unseen works have already been lost, and does our perception of art change when we know we can never see it again?
+
+I built the data engineering pipeline, database schema, and VR frontend. I collaborated with a friend, Aaron Dyck, on the construction of the canvases which mirror what the user sees.
+
+<Image src="Experience.png" className="wide rounded-xl" />
+
+<YouTube id="OyhZxtvqi-U" title="Zero Views Museum demo" className="wide" />
+
+<AutoLink to={pictorial}>Read the full pictorial (PDF).</AutoLink>
+
+<Image src="AP1GczMqGZHzgDEdLtNpBdKAXkCOvRVbto24G3K9KZSEDvrcUsveyO8oHIh9tqNWoNvDft9BDS6dDKUd3S8r2J8yvdXpD4pC8ptkfe9odz583JodBLm9oEJ7a0knYOPlj5sgNU9X3fnDqB1l8pzkjV_6DAISzww1176-h2092-s-no-gm.PNG" className="wide rounded-xl" />
+
+<h1>Technical Design</h1>
+
+<Image src="Implementation.png" className="wide rounded-xl" />
+
+The implementation has three layers. In the data layer, a Python script uses Flickr's API with `asyncio` to search user-uploaded artworks by category (for example "photography" or "digital art") over date ranges, keeping only those with zero views. It backs off for an hour when Flickr rate-limits it. Each result is saved to Supabase with its creator, title, description, and URL, plus a `viewed` flag.
+
+The backend is that Supabase table. A database function returns six unviewed artworks, and they are marked as viewed as soon as they are displayed. Pressing "A" on the VR controller reloads the artworks, which resets the museum between visitors.
+
+The frontend is a Next.js app that renders the museum with `react-three-fiber` and `@react-three/xr`, for a Quest 2. Each photo is fetched once at high resolution as a blob to save bandwidth, sized to keep its aspect ratio, and hung with a wall plate showing the creator, title, and year.
+
+The physical canvases are 30x30 LED matrices driven by ESP32s. When a visitor looks at an artwork in VR, a raycaster from the headset finds which canvas they are looking at and tells the server. The browser also downsamples the artwork to 30x30, boosts its saturation so it holds up on LEDs, and reorders the pixels for the matrix's serpentine wiring. The ESP32 polls the server every 500ms and fades the image in while the canvas is looked at, then out when the visitor looks away.
+
+<Video src="playground/zero-views-museum/images/IMG_4218.webm" className="wide" />
+
+<Video src="playground/zero-views-museum/images/IMG_4238.webm" maxWidth={400} />
+
+<Image src="IMG_4240.JPG" className="wide rounded-xl" />
+
+<Image src="rn_image_picker_lib_temp_bba317f0-0a4f-410a-8a0b-7328c2b0c055.JPG" className="wide rounded-xl" />

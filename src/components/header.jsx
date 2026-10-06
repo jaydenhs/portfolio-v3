@@ -6,9 +6,10 @@ import Image from "./image"
 import Resume from "../../static/resume.pdf"
 
 const links = [
-  { text: "Portfolio", url: "/" },
-  { text: "About", url: "/about" },
-  { text: "Resume", url: Resume },
+  { text: "Work", url: "/" },
+  { text: "Play", url: "/playground" },
+  { text: "Live", url: "/about" },
+  { text: "CV", url: Resume },
 ]
 
 const Header = ({ page }) => {

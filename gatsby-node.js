@@ -1,13 +1,19 @@
 const path = require("path")
 
 const postTemplate = path.resolve(`./src/components/work/layout.jsx`)
+const playgroundTemplate = path.resolve(
+  `./src/components/playground/layout.jsx`
+)
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
   const { data } = await graphql(`
     {
-      allMdx(sort: { frontmatter: { priority: DESC } }) {
+      allMdx(
+        filter: { internal: { contentFilePath: { regex: "/src.work./" } } }
+        sort: { frontmatter: { priority: DESC } }
+      ) {
         nodes {
           id
           frontmatter {
@@ -18,6 +24,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             priority
             thumbnail
             color
+          }
+          internal {
+            contentFilePath
+          }
+        }
+      }
+      playground: allMdx(
+        filter: {
+          internal: { contentFilePath: { regex: "/src.playground./" } }
+          frontmatter: { link: { glob: "/**" } }
+        }
+      ) {
+        nodes {
+          id
+          frontmatter {
+            link
           }
           internal {
             contentFilePath
@@ -40,6 +62,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         next,
         color: node.frontmatter.color,
       },
+    })
+  })
+
+  data.playground.nodes.forEach(node => {
+    actions.createPage({
+      path: node.frontmatter.link,
+      component: `${playgroundTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+      context: { id: node.id },
     })
   })
 }
