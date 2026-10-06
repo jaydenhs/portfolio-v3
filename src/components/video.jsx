@@ -5,7 +5,11 @@ import { styled } from "styled-components"
 import tw from "twin.macro"
 
 function Video({ src, children, className, caption, maxWidth, endPause = 1 }) {
-  const webm = require(`../work/${src}`)
+  // "playground/..." resolves under src/playground, everything else under src/work.
+  // Webpack bundles every file matching a dynamic require, so keep the extension literal.
+  const webm = src.startsWith("playground/")
+    ? require(`../playground/${src.slice("playground/".length, -".webm".length)}.webm`)
+    : require(`../work/${src}`)
 
   const videoRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(true)

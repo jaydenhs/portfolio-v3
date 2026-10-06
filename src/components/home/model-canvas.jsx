@@ -1,6 +1,6 @@
 import React, { Suspense, useState } from "react"
 
-import { Canvas } from "react-three-fiber"
+import { Canvas } from "@react-three/fiber"
 import { useProgress, OrbitControls } from "@react-three/drei"
 import { motion } from "framer-motion"
 

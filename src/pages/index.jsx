@@ -12,7 +12,7 @@ const IndexPage = ({ data }) => {
   }
 
   return (
-    <App page="Portfolio">
+    <App page="Work">
       <Hero />
       <div className="reading-grid space-y-16 md:space-y-24 mb-24">
         {data.allMdx.nodes.map(({ frontmatter }) => {
@@ -33,7 +33,10 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query getPosts {
-    allMdx(sort: { frontmatter: { priority: DESC } }) {
+    allMdx(
+      filter: { internal: { contentFilePath: { regex: "/src.work./" } } }
+      sort: { frontmatter: { priority: DESC } }
+    ) {
       nodes {
         frontmatter {
           thumbnail

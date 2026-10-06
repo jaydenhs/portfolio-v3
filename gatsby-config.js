@@ -10,7 +10,7 @@
 
 module.exports = {
   siteMetadata: {
-    title: `Jayden Hsiao - Designer & Developer`,
+    title: `Jayden Hsiao – Design Engineer`,
     description: `I strive to bridge the gap between empathetic design and innovative software.`,
     author: `Jayden Hsiao`,
     siteUrl: `https://jaydenh.com/`,
@@ -28,6 +28,13 @@ module.exports = {
       options: {
         name: `pages`,
         path: `${__dirname}/src/work`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `playground`,
+        path: `${__dirname}/src/playground`,
       },
     },
 
@@ -50,7 +57,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
+        name: `Jayden Hsiao – Design Engineer`,
         short_name: `starter`,
         start_url: `/`,
         background_color: `#663399`,
@@ -64,6 +71,8 @@ module.exports = {
 
     //// Styles
     "gatsby-plugin-postcss",
+    // server-renders styled-components CSS, so styled elements are laid out before hydration
+    "gatsby-plugin-styled-components",
 
     //// Netlify
     "gatsby-plugin-netlify",

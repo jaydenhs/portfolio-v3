@@ -6,7 +6,7 @@ Command: npx gltfjsx@6.2.10 jayden-animated.gltf
 import React, { useRef, useEffect, useState } from "react"
 import { useGLTF, useAnimations, Html } from "@react-three/drei"
 import Scene from "./scene"
-import { useFrame } from "react-three-fiber"
+import { useFrame } from "@react-three/fiber"
 import modelPath from "../../models/jayden-animated-6.glb"
 // import roomPath from "../../models/just-the-room.glb"
 

@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Human-in-the-Loop Eider Duck Counting in Arctic Canada with an Open-Vocabulary Multi-Species Wildlife Detector",
+    "award": "AAAI Deployed Applications Award",
+    "links": [
+      { "label": "Paper", "url": "https://ojs.aaai.org/index.php/AAAI/article/download/41432/45393" },
+      { "label": "Oral", "url": "https://underline.io/events/501/sessions/21723/lecture/143484-human-in-the-loop-eider-duck-counting-in-arctic-canada-with-an-open-vocabulary-multi-species-wildlife-detector?tab=video" },
+      { "label": "Poster", "url": "https://underline.io/events/501/sessions/21723/lecture/143484-human-in-the-loop-eider-duck-counting-in-arctic-canada-with-an-open-vocabulary-multi-species-wildlife-detector?tab=poster" },
+      { "label": "Press", "url": "https://wildlifevagabond.com/wildlife-in-the-news/ai-assisted-eider-counting-cut-annotation-time-87-5-percent/" }
+    ]
+  },
+  {
+    "title": "TemporalTemp: Encoding Historical Temperatures for Automated Sea Ice Mapping",
+    "award": "IEEE OCEANS Student Poster Competition – 1st Place (Top 1%)",
+    "links": [
+      { "label": "Journal", "url": "https://ieeexplore.ieee.org/document/11104526" },
+      { "label": "Paper", "url": "/writing/temporaltemp-paper.pdf" },
+      { "label": "Poster", "url": "/writing/temporaltemp-poster.pdf" }
+    ]
+  },
+  {
+    "title": "DINOKey: Transformer-Based Keypoint Detection for Wildlife Monitoring in Aerial Imagery",
+    "award": "Oral Presentation",
+    "links": [
+      { "label": "Paper", "url": "https://isprs-archives.copernicus.org/articles/XLIX-B3-2026/961/2026/isprs-archives-XLIX-B3-2026-961-2026.pdf" }
+    ]
+  },
+  {
+    "title": "MASc Thesis: Towards Adaptable and Deployable Wildlife Detection from Aerial Imagery",
+    "links": [
+      { "label": "Thesis", "url": "https://uwspace.uwaterloo.ca/bitstreams/9e3422e1-9490-4f5d-870e-60876270cb68/download" },
+      { "label": "Slides", "url": "/writing/thesis-seminar-slides.pdf" }
+    ]
+  },
+  {
+    "title": "OpenWildlife: Open-Vocabulary Multi-Species Wildlife Detector for Geographically-Diverse Aerial Imagery",
+    "links": [{ "label": "Paper", "url": "https://arxiv.org/pdf/2506.19204" }]
+  },
+  {
+    "title": "Mirrors, Not Mutuality: Rethinking Friendship in the Age of Intelligent Social Agents",
+    "links": [{ "label": "Paper", "url": "/writing/mirrors-not-mutuality.pdf" }]
+  },
+  {
+    "title": "Modeling Football Player Trajectories During Passes Using Graph-Structured Recurrent Networks",
+    "links": [
+      { "label": "Paper", "url": "/writing/nfl-trajectories-paper.pdf" },
+      { "label": "Poster", "url": "/writing/nfl-trajectories-poster.pdf" }
+    ]
+  }
+]
