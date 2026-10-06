@@ -22,8 +22,7 @@ const PlaygroundPage = ({ data }) => {
           <div className="space-y-5">
             <h1>Playground</h1>
             <p className="text-lg">
-              Welcome to my playground, a place where I can showcase the
-              projects I've created while exploring my creative curiosities.
+              A showcase of the projects I've created while exploring my creative curiosities.
             </p>
           </div>
           <Masonry
@@ -63,6 +62,7 @@ export const pageQuery = graphql`
         }
         frontmatter {
           thumbnail
+          thumbnailVideo
           link
         }
       }

@@ -9,6 +9,8 @@ import Video from "../video"
 import AutoLink from "../auto-link"
 import Quote from "../work/quote"
 import YouTube from "./youtube"
+import PcaWidget from "./pca-widget"
+import PcaExplainer from "./pca-explainer"
 
 export default function PlaygroundLayout({
   data: {
@@ -42,6 +44,8 @@ const components = {
   AutoLink,
   Quote,
   YouTube,
+  PcaWidget,
+  PcaExplainer,
 }
 
 export const Head = ({ data }) => <Seo title={data.mdx.frontmatter.title} />

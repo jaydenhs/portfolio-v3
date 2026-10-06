@@ -4,6 +4,7 @@ import App from "../components/app"
 import Seo from "../components/seo"
 import { motion } from "framer-motion"
 import { fadeIn } from "../styles/animations"
+import { SlidingArrow } from "../components/arrow"
 // Display order = file order. Fields: title, award (optional), links: [{ label, url }]
 import writing from "../data/writing.json"
 
@@ -29,9 +30,10 @@ const WritePage = () => {
                       href={url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-500 no-underline transition-colors duration-300 hover:text-black"
+                      className="group inline-flex items-center gap-1 text-gray-500 no-underline transition-colors duration-300 hover:text-black"
                     >
-                      {label} <span aria-hidden="true">↗</span>
+                      {label}
+                      <SlidingArrow />
                     </a>
                   ))}
                 </div>

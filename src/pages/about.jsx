@@ -32,7 +32,7 @@ const About = () => {
         <div className="wide space-y-5 mb-12">
           <h1>About Me</h1>
           <p className="text-lg">
-            Welcome to my room — hover over any of the glowing dots to learn more about me!
+            Welcome to my room — hover over any of the glowing dots to learn more about me.
           </p>
         </div>
         {/* <Scene /> */}

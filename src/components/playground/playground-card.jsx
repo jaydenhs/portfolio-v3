@@ -1,22 +1,44 @@
 import React from "react"
 import { Link } from "gatsby"
+import { motion } from "framer-motion"
 import Image from "../image"
+import { Arrow } from "../arrow"
+
+// Resolves "<dir>/images/<file>.mp4" to its bundled URL (extension kept literal so webpack only bundles mp4s)
+const videoUrl = (dir, file) =>
+  require(`../../playground/${dir}/images/${file.replace(/\.mp4$/, "")}.mp4`)
+    .default
 
 // `link` is optional: "/path" -> internal write-up, "https://..." -> external, absent -> showcase only
+// `thumbnailVideo` is optional: a looping mp4 played over the `thumbnail` image, which sets the aspect ratio
 export default function PlaygroundCard({
-  frontmatter: { thumbnail, link },
+  frontmatter: { thumbnail, thumbnailVideo, link },
   dir,
 }) {
+  // The frame clips the media, so hover zooms inside it instead of growing the card
   const image = (
-    <Image
-      src={thumbnail}
-      dir={dir}
-      className="rounded-xl"
-      {...(link && {
-        whileHover: { scale: 1.05 },
-        transition: { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] },
-      })}
-    />
+    <div className="relative overflow-hidden rounded-xl">
+      <motion.div
+        className="relative"
+        {...(link && {
+          whileHover: { scale: 1.05 },
+          transition: { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] },
+        })}
+      >
+        <Image src={thumbnail} dir={dir} />
+        {thumbnailVideo && (
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            src={videoUrl(dir, thumbnailVideo)}
+            autoPlay
+            loop
+            muted
+            playsInline
+            aria-hidden="true"
+          />
+        )}
+      </motion.div>
+    </div>
   )
 
   if (!link) {
@@ -48,21 +70,4 @@ const ArrowBadge = () => (
     <Arrow className="transition-transform duration-500 ease-[cubic-bezier(0.43,0.13,0.23,0.96)] group-hover:translate-x-6 group-hover:-translate-y-6" />
     <Arrow className="absolute -translate-x-6 translate-y-6 transition-transform duration-500 ease-[cubic-bezier(0.43,0.13,0.23,0.96)] group-hover:translate-x-0 group-hover:translate-y-0" />
   </span>
-)
-
-const Arrow = ({ className }) => (
-  <svg
-    className={className}
-    width="18"
-    height="18"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M7 17 17 7" />
-    <path d="M8 7h9v9" />
-  </svg>
 )

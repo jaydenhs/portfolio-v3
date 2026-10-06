@@ -1,0 +1,21 @@
+---
+link: /pca-image-compression
+thumbnail: "thumbnail.jpg"
+thumbnailVideo: "thumbnail.mp4"
+---
+
+<h1>PCA Image Compression</h1>
+
+An experiment in how little of an image you need to keep before it stops looking like itself. <AutoLink to="https://en.wikipedia.org/wiki/Principal_component_analysis">Principal component analysis</AutoLink> (PCA) squeezes a picture down to a handful of components that capture most of its structure, and then rebuilds it from only those. Drag the slider to watch the picture sharpen as more components are kept, and move your cursor over the image to inspect the detail up close.
+
+<PcaWidget />
+
+<h1>How it works</h1>
+
+An image is three grids of numbers, one each for red, green and blue. PCA treats every row of pixels in a grid as a sample and finds the directions along which those rows vary the most, ordered from the most important to the least. Keeping the top n of them means describing each row with n numbers instead of one per pixel, and the picture is rebuilt by mapping those numbers back through the components.
+
+<PcaExplainer />
+
+The first few components capture broad gradients and large shapes, which is why low-n results look like smeared, streaky colour. Each extra component adds finer structure, until edges, eyes and strands of hair return. Switch on the error map above to see what is still missing at each step. PSNR summarises how close the rebuilt pixels are to the original, in decibels, so higher is closer.
+
+PCA is not how real images are compressed. It has no idea where the edges are, so its errors smear across whole rows and columns, where formats like JPEG work in small blocks and hide theirs. That is what makes it fun to look at: the artefacts show you exactly what the maths considers important.
